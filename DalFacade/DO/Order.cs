@@ -20,6 +20,5 @@ CustomerAddress={CustomerAddress},
 OrderDate={OrderDate},
 ShipDate={ShipDate},
 DeliveryDate={DeliveryDate}
-
 ";
 }
