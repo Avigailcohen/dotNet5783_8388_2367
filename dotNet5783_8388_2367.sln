@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalFacade", "DalFacade\DalFacade.csproj", "{5A5016CE-7B35-4DFD-BC23-5D90D692FA38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DalFacade", "DalFacade\DalFacade.csproj", "{5A5016CE-7B35-4DFD-BC23-5D90D692FA38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalList", "DalList\DalList.csproj", "{18103AB0-4F51-4A4D-9DCD-4DD32600E38B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DalList", "DalList\DalList.csproj", "{18103AB0-4F51-4A4D-9DCD-4DD32600E38B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalTest", "DalTest\DalTest.csproj", "{DD5F3E7C-3B57-4DB9-9B5C-CFD93B938844}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DalTest", "DalTest\DalTest.csproj", "{DD5F3E7C-3B57-4DB9-9B5C-CFD93B938844}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Stage0", "Stage0\Stage0.csproj", "{840AE76C-A95B-4DC4-83B5-EAAC7851BC65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{DD5F3E7C-3B57-4DB9-9B5C-CFD93B938844}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD5F3E7C-3B57-4DB9-9B5C-CFD93B938844}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD5F3E7C-3B57-4DB9-9B5C-CFD93B938844}.Release|Any CPU.Build.0 = Release|Any CPU
+		{840AE76C-A95B-4DC4-83B5-EAAC7851BC65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{840AE76C-A95B-4DC4-83B5-EAAC7851BC65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{840AE76C-A95B-4DC4-83B5-EAAC7851BC65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{840AE76C-A95B-4DC4-83B5-EAAC7851BC65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
