@@ -12,15 +12,15 @@ internal static class DataSource
     {
         internal const int s_startOrderNumber = 1000;
         private static int s_nextOrderNumber = s_startOrderNumber;
-        internal static int NextOrderNumber { get => s_nextOrderNumber++; }
+        internal static int nextOrderNumber { get => s_nextOrderNumber++; }
         internal const int s_startOrderItemNumber = 1000;
         private static int s_nextOrderItemNumber = s_startOrderItemNumber;
-        internal static int NextOrderItemNumber { get => s_nextOrderItemNumber++; }
+        internal static int nextOrderItemNumber { get => s_nextOrderItemNumber++; }
 
     }
-    internal static List<Product?> ProductList { get; } = new List<Product?>();
-    internal static List<Order?> OrderList { get; } = new List<Order?>();
-    internal static List<OrderItem?> OrderItemList { get; } = new List<OrderItem?>();
+    internal static List<Product?> productList { get; } = new List<Product?>();
+    internal static List<Order?> orderList { get; } = new List<Order?>();
+    internal static List<OrderItem?> orderItemList { get; } = new List<OrderItem?>();
 
     private static void s_Initialize()
     {
@@ -33,9 +33,12 @@ internal static class DataSource
     //{
 
     //}
+    /// <summary>
+    /// fill the list with product
+    /// </summary>
     private static void createAndInitProducts()
     {
-        string[,] Names = new string[,] {{ "midi Dress", " flower dress", " black dress" },
+        string[,] names = new string[,] {{ "midi Dress", " flower dress", " black dress" },
                                           { "short skirt","midi skirt","maki skirt"},
                                           { "golf shirt","long shirt","short shirt"},
                                           { "belts","hats","bags"} ,
@@ -49,11 +52,11 @@ internal static class DataSource
 
             product.ID = s_rand.Next(100000 + i, 999999);
             product.Price = s_rand.Next(50, 500);
-            product.Category = (Enums.Category)x;
-            product.Name = Names[x, s_rand.Next(2)];
+            product.Category = (Enums.Category)x;// convert the num for category
+            product.Name = names[x, s_rand.Next(2)];
             //Name = Names(x, s_rand.Next(5)),
             product.InStock =InStocks[i];
-            ProductList.Add(product);
+            productList.Add(product);
 
         }
 
@@ -64,7 +67,8 @@ internal static class DataSource
 
     private static void createAndInitOrders()
     {
-        string[] CustomerNames = { "Avigail", "Shira", "Daniel", "Noa", "Ari" };
+        /// fill the list of orders
+        string[] customerNames = { "Avigail", "Shira", "Daniel", "Noa", "Ari" };
         string[] CustomerAdrress = { "Akalir", "Geva", "Rainess", "Yerusalim" };
 
         for (int i = 0; i < 20; i++)
@@ -73,10 +77,10 @@ internal static class DataSource
             int x = s_rand.Next(5);
 
 
-            order.ID = config.NextOrderNumber;
-            order.CustomerName = CustomerNames[x];
+            order.ID = config.nextOrderNumber;
+            order.CustomerName = customerNames[x];
             order.CustomerAddress = CustomerAdrress[s_rand.Next(4)];
-            order.CustomerEmail = CustomerNames[x] + "@gmail.com";
+            order.CustomerEmail = customerNames[x] + "@gmail.com";
             order.OrderDate = DateTime.Now;
             if (i < 0.8 * 0.20)
             {
@@ -95,7 +99,7 @@ internal static class DataSource
                 order.ShipDate = DateTime.MinValue;
                 order.DeliveryDate = DateTime.MinValue;
             }
-            OrderList.Add(order);
+            orderList.Add(order);
 
 
 
@@ -104,6 +108,7 @@ internal static class DataSource
     }
     private static void createAndInitOrderItems()
     {
+        /// fill the list of orderItem
 
         for (int i = 0; i < 20;)
         {
@@ -112,11 +117,11 @@ internal static class DataSource
             int x = s_rand.Next(1, 4);
             for (int j= 0; j < x; j++)
             {  
-                itemAdd.ID = config.NextOrderItemNumber;
+                itemAdd.ID = config.nextOrderItemNumber;
                 itemAdd.ProductId=1000+s_rand.Next(0,10);
                 itemAdd.Price = s_rand.Next(50, 500);
                 itemAdd.Amount = s_rand.Next(1, 2);
-                OrderItemList.Add(itemAdd);
+                orderItemList.Add(itemAdd);
             }
             i++;
 

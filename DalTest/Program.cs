@@ -2,7 +2,7 @@
 using Dal;
 using System.Collections.Generic;
 
-
+/// The main program which check the function of the crud and the dataSource
 namespace DalTest
 {
 
@@ -11,6 +11,9 @@ namespace DalTest
         private static DalOrder dalOrder = new DalOrder();
         private static DalProduct dalProduct = new DalProduct();
         private static DalOrderItem dalOrderItem = new DalOrderItem();
+        /// <summary>
+        /// productcheck function which check the function of the ProductCrud.
+        /// </summary>
         static void ProductCheck()
         {
             int id;
@@ -18,7 +21,7 @@ namespace DalTest
             float Price;
             int Instock;
             char choice1;
-            Enums.Category category;
+
             Console.WriteLine("Enter one of the following options");
             Console.WriteLine($@"
 press a for Add,
@@ -26,14 +29,15 @@ Press b for show the product,
 press c for update the product,
 press d for Delete the product,
 press e for get the list of the product,
-press f for return to the menue"");
-");
+press f for return to the menue");
+
             char.TryParse(Console.ReadLine(), out choice1);
             while (choice1 != 'f')
             {
                 switch (choice1)
                 {
                     case 'a':
+                        ///add product by get the name, price, amount in stock and category
                         Product product = new Product();
                         Console.WriteLine("Enter your ID");
                         int.TryParse(Console.ReadLine(), out id);
@@ -49,19 +53,39 @@ press f for return to the menue"");
                         product.InStock = Instock;
                         Console.WriteLine("Enter the product category");
                         product.Category = (Enums.Category)Console.Read()-'1' ;
-                        dalProduct.Add(product);
-                        Console.WriteLine(product.ToString());
+                        ///put the function inside try because thehe is risk that the product exist
+                        try
+                        {
+                            dalProduct.Add(product);
+                            Console.WriteLine(product.ID);
+                        }
+                        catch(Exception ex)
+                        {
+                            Console.WriteLine(ex);
+                        }
+                        
+                        
                         //add category
 
                         break;
                     case 'b':
+                        /// get the product by his ID
                         Console.WriteLine("enter the product ID");
                         int.TryParse(Console.ReadLine(), out id);
                         Product product1 = new Product();
-                        product1 = dalProduct.GetById(id);
-                        Console.WriteLine(product1.ToString());
+                        try
+                        {
+                            product1 = dalProduct.GetById(id);
+                            Console.WriteLine(product1);
+                        }
+                        catch(Exception ex)
+                        {
+                            Console.WriteLine(ex);
+                        }
+                        
                         break;
                     case 'c':
+                        /// update product 
                         Product product2 = new Product();
                         Console.WriteLine("Enter product ID: ");
                         int.TryParse(Console.ReadLine(), out id);
@@ -75,16 +99,36 @@ press f for return to the menue"");
                         Console.WriteLine("Enter product amount in stock: ");
                         int.TryParse(Console.ReadLine(), out Instock);
                         product2.InStock = Instock;
-                        dalProduct.update(product2);
+                        /// there is risk that the product not exist 
+                        try
+                        {
+                            dalProduct.update(product2);
+                        }
+                        catch(Exception ex)
+                        {
+                            Console.WriteLine(ex);
+                        }
+                        
                         //add category
                         break;
                     case 'd':
+                        /// delete product by his ID
                         Console.WriteLine("Enter product ID: ");
                         int.TryParse(Console.ReadLine(), out id);
-                        dalProduct.Delete(id);
+                        /// there is risk that the product not exist
+                        try
+                        {
+                            dalProduct.Delete(id);
+                        }
+                        catch(Exception ex)
+                        {
+                            Console.WriteLine(ex);
+                        }
+                        
 
                         break;
                     case 'e':
+                        /// print the product infomation
                         IEnumerable<Product?> list = dalProduct.GetAll();
                         foreach (var item in list)
                         {
@@ -104,13 +148,16 @@ press f for return to the menue"");
             }
 
         }
+        /// <summary>
+        /// function which check the Order function (crud)
+        /// </summary>
         static void OrderCheck()
         {
             Order order = new Order();
             char choice2;
             int id;
             string name;
-            string Email;
+            string email;
             string address;
             DateTime orderDate = DateTime.Now;
             //DateTime deliveryTime = null;
@@ -129,14 +176,15 @@ press f to return the menue");
                 switch (choice2)
                 {
                     case 'a':
+                        ///add order to the list
                         Console.WriteLine("enter the Order ID");
                         int.TryParse(Console.ReadLine(), out id);
                         order.ID = id;
                         Console.WriteLine("Enter the customer Name");
                         name = Console.ReadLine();
                         Console.WriteLine("Enter your Email");
-                        Email = Console.ReadLine();
-                        order.CustomerEmail = Email;
+                        email = Console.ReadLine();
+                        order.CustomerEmail = email;
                         Console.WriteLine("Enter your Address");
                         address = Console.ReadLine();
                         order.CustomerAddress = address;
@@ -146,13 +194,22 @@ press f to return the menue");
                         //check what she return
                         break;
                     case 'b':
+                        /// get the order by his ID
                         Order order1 = new Order();
                         Console.WriteLine("enter the Order ID");
                         int.TryParse(Console.ReadLine(), out id);
-                        order1 = dalOrder.GetById(id);
-                        Console.WriteLine(order1);
+                        try
+                        {
+                            order1 = dalOrder.GetById(id);
+                            Console.WriteLine(order1);
+                        }
+                        catch(Exception ex)
+                        {
+                            Console.WriteLine(ex);
+                        }
                         break;
                     case 'c':
+                        /// update the order
                         Order order2 = new Order();
                         Console.WriteLine("enter the Order ID");
                         int.TryParse(Console.ReadLine(), out id);
@@ -160,20 +217,39 @@ press f to return the menue");
                         Console.WriteLine("Enter the customer Name");
                         name = Console.ReadLine();
                         Console.WriteLine("Enter your Email");
-                        Email = Console.ReadLine();
-                        order2.CustomerEmail = Email;
+                        email = Console.ReadLine();
+                        order2.CustomerEmail = email;
                         Console.WriteLine("Enter your Address");
                         address = Console.ReadLine();
                         order2.CustomerAddress = address;
                         order2.OrderDate = DateTime.Now;
-                        dalOrder.Update(order2);
+                        try
+                        {
+                            dalOrder.Update(order2);
+
+                        }
+                        catch(Exception ex)
+                        {
+                            Console.WriteLine(ex);
+                        }
+                       
                         break;
                     case 'd':
+                        /// delete the Order
                         Console.WriteLine("enter the Order ID");
                         int.TryParse(Console.ReadLine(), out id);
-                        dalOrder.Delete(id);
+                        /// there is risk the the order not exist
+                        try
+                        {
+                            dalOrder.Delete(id);
+                        }
+                        catch(Exception ex)
+                        {
+                            Console.WriteLine(ex);
+                        }
                         break;
                     case 'e':
+                        /// print all the list of order
                         IEnumerable<Order?> list = dalOrder.GetAll();
                         foreach (Order? item in list)
                         {
@@ -192,6 +268,9 @@ press f to return the menue");
 
 
         }
+        /// <summary>
+        /// function which check the OrderItem function (crud)
+        /// </summary>
         static void OrderItemCheck()
         {
             int id;
@@ -216,6 +295,7 @@ press h for return to the menue");
                 switch (choice3)
                 {
                     case 'a':
+                        ///add orderItem
                         OrderItem orderItem = new OrderItem();
                         Console.WriteLine("Enter the orderID");
                         int.TryParse(Console.ReadLine(), out orderId);
@@ -236,10 +316,20 @@ press h for return to the menue");
                         OrderItem orderItem1 = new OrderItem();
                         Console.WriteLine("enter the OrderItem ID");
                         int.TryParse(Console.ReadLine(), out id);
-                        orderItem1 = dalOrderItem.GetById(id);
-                        Console.WriteLine(orderItem1);
+                        /// get the orderItem by his ID
+                        try
+                        {
+                            orderItem1 = dalOrderItem.GetById(id);
+                            Console.WriteLine(orderItem1);
+                        }
+                        catch(Exception ex)
+                        {
+                            Console.WriteLine(ex);
+                        }
+                        
                         break;
                     case 'c':
+                        ///update the orderITEM
                         OrderItem orderItem2 = new OrderItem();
                         Console.WriteLine("enter the OrderItem ID");
                         int.TryParse(Console.ReadLine(), out id);
@@ -256,21 +346,41 @@ press h for return to the menue");
                         Console.WriteLine("enter the amount of OrderItem");
                         int.TryParse(Console.ReadLine(), out amount);
                         orderItem2.Amount = amount;
-                        dalOrderItem.Update(orderItem2);
+                        try
+                        {
+                            dalOrderItem.Update(orderItem2);
+
+                        }
+                        catch(Exception ex)
+                        {
+                            Console.WriteLine(ex);
+                        }                      
                         break;
+
                     case 'd':
+                        /// delete the OrderItem
                         Console.WriteLine("enter the OrderItem ID");
                         int.TryParse(Console.ReadLine(), out id);
-                        dalOrderItem.Delete(id);
+                        try
+                        {
+                            dalOrderItem.Delete(id);
+                        }
+                        catch(Exception ex)
+                        {
+                            Console.WriteLine(ex);
+                        }
+                        
                         break;
                     case 'e':
+                        /// print all the OrderItem
                         IEnumerable<OrderItem?> list = dalOrderItem.GetAll();
-                        foreach (var item in list)
+                        foreach (OrderItem? item in list)
                         {
-                            Console.WriteLine(item?.ToString());
+                            Console.WriteLine(item);
                         }
                         break;
                     case 'f':
+                        /// print the orderItem that belong to this order
                         Console.WriteLine("enter the OrderItem ID");
                         int.TryParse(Console.ReadLine(), out id);
                         List<OrderItem?> orderItem4 = new  List <OrderItem?>();
@@ -280,10 +390,18 @@ press h for return to the menue");
                            
                         break;
                     case 'g':
+                        /// print the OrderItem by productID and OrderItemID
                         Console.WriteLine("enter the orderID,ProductID");
                         int.TryParse(Console.ReadLine(), out orderId);
                         int.TryParse(Console.ReadLine(), out productId);
-                        Console.WriteLine(dalOrderItem.GetOrderItem(orderId, productId));
+                        try
+                        {
+                            Console.WriteLine(dalOrderItem.GetOrderItem(orderId, productId));
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine("the object is nit find" + ex);
+                        }
                         break;
                     case 'h':
                         return;
@@ -300,6 +418,7 @@ press h for return to the menue");
 
         static void Main(string[] args)
         {
+            /// main program which check the function
             program program = new program();
             char choice;
             Console.WriteLine("enter one of the following options");
@@ -309,8 +428,10 @@ press 2 for product,
 press 3 for OrderItem,
 press 4 for exit");
             char.TryParse(Console.ReadLine(), out choice);
+
             while (choice != '5')
             {
+                
                     switch (choice)
                     {
                         case '1':
@@ -323,7 +444,6 @@ press 4 for exit");
                         break;
                         case '3':
                             program.OrderItemCheck();
-
                             break;
 
                         case '4':
@@ -331,6 +451,11 @@ press 4 for exit");
 
 
                     }
+                Console.WriteLine($@"
+press 1 for Order,
+press 2 for product,
+press 3 for OrderItem,
+press 4 for exit");
                 char.TryParse(Console.ReadLine(), out choice);
 
             }

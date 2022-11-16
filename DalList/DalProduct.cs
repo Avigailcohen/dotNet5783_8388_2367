@@ -11,9 +11,9 @@ public class DalProduct
     /// <exception cref="Exception"></exception>
     public int Add ( Product product)
     {
-        if (DataSource.ProductList.Exists(x => x?.ID == product.ID))
+        if (DataSource.productList.Exists(x => x?.ID == product.ID))
             throw new Exception("The product is exist");
-        DataSource.ProductList.Add(product);
+        DataSource.productList.Add(product);
         return product.ID;
     }
     /// <summary>
@@ -26,7 +26,7 @@ public class DalProduct
     public Product GetById (int id)
     {
         Product product = new Product();
-        product = DataSource.ProductList.Find(x => x?.ID == id) ?? throw new Exception("not founded");
+        product = DataSource.productList.Find(x => x?.ID == id) ?? throw new Exception("not founded");
         return product;
     }
     /// <summary>
@@ -36,10 +36,10 @@ public class DalProduct
     /// <exception cref="Exception"></exception>
     public void update(Product product)
     {
-        int x = DataSource.ProductList.FindIndex(x => x?.ID == product.ID);
+        int x = DataSource.productList.FindIndex(x => x?.ID == product.ID);
         if (x == -1)
             throw new Exception("not exist");
-        DataSource.ProductList.Insert(x+1 ,product);         
+        DataSource.productList.Insert(x+1 ,product);         
     }
     /// <summary>
     /// function which get ID of product and delte him. if he doesnt exist we throw exepction
@@ -48,10 +48,10 @@ public class DalProduct
     /// <exception cref="Exception"></exception>
     public void Delete (int id)
     {
-        int x = DataSource.ProductList.FindIndex(x => x?.ID == id);
+        int x = DataSource.productList.FindIndex(x => x?.ID == id);
         if (x == -1)
             throw new Exception("product not founed");
-        DataSource.ProductList.RemoveAt(x);
+        DataSource.productList.RemoveAt(x);
 
     }
     /// <summary>
@@ -60,12 +60,12 @@ public class DalProduct
     /// <returns> the product list</returns>
     public IEnumerable<Product?> GetAll()
     {
-        List<Product?> ProductList1 = new List<Product?>();
-        for (int i = 0; i < DataSource.ProductList.Count; i++)
+        List<Product?> productList1 = new List<Product?>();
+        for (int i = 0; i < DataSource.productList.Count; i++)
         { 
-           ProductList1.Add(DataSource.ProductList[i]);
+           productList1.Add(DataSource.productList[i]);
         }
-        return ProductList1;
+        return productList1;
     }
 
 }
