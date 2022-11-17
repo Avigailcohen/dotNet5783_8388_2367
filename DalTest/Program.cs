@@ -343,6 +343,8 @@ press h for return to the menue");
                         Console.WriteLine("enter the price of OrderItem");
                         float.TryParse(Console.ReadLine(), out price);
                         orderItem2.Price = price;
+                        //check
+
                         Console.WriteLine("enter the amount of OrderItem");
                         int.TryParse(Console.ReadLine(), out amount);
                         orderItem2.Amount = amount;
@@ -394,13 +396,16 @@ press h for return to the menue");
                         Console.WriteLine("enter the orderID,ProductID");
                         int.TryParse(Console.ReadLine(), out orderId);
                         int.TryParse(Console.ReadLine(), out productId);
+                        OrderItem orderItem5 = new OrderItem();
+                        orderItem5.OrderId = orderId;
+                        orderItem5.ProductId = productId;
                         try
                         {
                             Console.WriteLine(dalOrderItem.GetOrderItem(orderId, productId));
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine("the object is nit find" + ex);
+                            Console.WriteLine("the object is not found" + ex);
                         }
                         break;
                     case 'h':

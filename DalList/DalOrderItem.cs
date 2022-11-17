@@ -97,16 +97,17 @@ public class DalOrderItem
     /// <exception cref="Exception"></exception>
     public OrderItem GetOrderItem(int orderId, int productId)
     {
+        
         OrderItem? orderItem = null;
         for (int i = 0; i < DataSource.orderItemList.Count; i++)
         {
             if (DataSource.orderItemList[i]?.ProductId == productId && DataSource.orderItemList[i]?.OrderId == orderId)
             {
                 orderItem = DataSource.orderItemList[i];
+                break;
             }
         }
         if (orderItem == null)
-
             throw new Exception(" order item do not exist");
         return (OrderItem)orderItem;
 

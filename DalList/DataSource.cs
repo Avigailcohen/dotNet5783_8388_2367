@@ -68,8 +68,9 @@ internal static class DataSource
     private static void createAndInitOrders()
     {
         /// fill the list of orders
-        string[] customerNames = { "Avigail", "Shira", "Daniel", "Noa", "Ari" };
-        string[] CustomerAdrress = { "Akalir", "Geva", "Rainess", "Yerusalim" };
+        string[] customerNames = { "Avigail Cohen ", "Shira Levi", "Daniel alon", "Noa Roth", "Ari Yehoda" };
+        string[] CustomerAdrress = { "Akalir 12 ", "Geva 37", "Rainess 30", "Yerusalim 13" };
+        
 
         for (int i = 0; i < 20; i++)
         {
