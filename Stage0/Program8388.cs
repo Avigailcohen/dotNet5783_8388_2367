@@ -1,5 +1,4 @@
 ﻿//avigail and iti
-using System;
 namespace Stage0
 {
     partial class program
@@ -19,5 +18,5 @@ namespace Stage0
             Console.WriteLine("{0},welcome to my first console application", username);
         }
     }
-   
+
 }

@@ -1,10 +1,10 @@
 ﻿
-
+using DalApi;
 using DO;
 
 namespace Dal;
 
-public class DalOrderItem
+internal class DalOrderItem : IOrderItem
 {
     /// <summary>
     /// Add orderItem by using in config
@@ -28,7 +28,7 @@ public class DalOrderItem
     public OrderItem GetById(int id)
     {
         OrderItem orderIt = new OrderItem();
-        orderIt = DataSource.orderItemList.Find(x => x?.ID == id) ?? throw new Exception("ID not founed");
+        orderIt = DataSource.orderItemList.Find(x => x?.ID == id) ?? throw new DalIdDoNotExistException(orderIt.ID,"Order");
         return orderIt;
     }
     /// <summary>
@@ -40,9 +40,9 @@ public class DalOrderItem
     {
 
         int x = DataSource.orderItemList.FindIndex(x => x?.ID == orderUp.ID);
-            if(x==-1)
-               throw new Exception(" not fouded");
-        DataSource.orderItemList.Insert(x+1,orderUp);
+        if (x == -1)
+            throw new DalIdDoNotExistException(orderUp.ID," not fouded");
+        DataSource.orderItemList[x] = orderUp;
     }
     /// <summary>
     /// delete orderItem by his ID, check if exist
@@ -51,24 +51,21 @@ public class DalOrderItem
     /// <exception cref="Exception"></exception>
     public void Delete(int id)
     {
-       
-       int x = DataSource.orderItemList.FindIndex(x => x?.ID == id);
-        if(x==-1)
-              throw new Exception(" not fouded");
+
+        int x = DataSource.orderItemList.FindIndex(x => x?.ID == id);
+        if (x == -1)
+            throw new DalIdDoNotExistException(id," not fouded");
         DataSource.orderItemList.RemoveAt(x);
     }
     /// <summary>
     /// create a new list of OrderItem By copying the organs in the list
     /// </summary>
     /// <returns>List of OrderItems</returns>
-    public IEnumerable<OrderItem?> GetAll()
+    public IEnumerable<OrderItem?> GetAll(Func<OrderItem?, bool>? filter = null)
     {
-        List<OrderItem?> OrderItemList1 = new List<OrderItem?>();
-        for (int i = 0; i < DataSource.orderItemList.Count; i++)
-        {
-            OrderItemList1.Add(DataSource.orderItemList[i]);
-        }
-        return OrderItemList1;
+        if (filter != null)
+            return DataSource.orderItemList.Where(item => filter(item));
+        return DataSource.orderItemList.Select(item => item);
     }
 
     /// <summary>
@@ -97,7 +94,7 @@ public class DalOrderItem
     /// <exception cref="Exception"></exception>
     public OrderItem GetOrderItem(int orderId, int productId)
     {
-        
+
         OrderItem? orderItem = null;
         for (int i = 0; i < DataSource.orderItemList.Count; i++)
         {
@@ -108,7 +105,7 @@ public class DalOrderItem
             }
         }
         if (orderItem == null)
-            throw new Exception(" order item do not exist");
+            throw new DalIdDoNotExistException(orderId," order item do not exist");
         return (OrderItem)orderItem;
 
 

@@ -1,8 +1,4 @@
-﻿
-using System.Diagnostics;
-using System.Xml.Linq;
-
-namespace DO;
+﻿namespace DO;
 
 public struct OrderItem
 {
@@ -18,7 +14,7 @@ public struct OrderItem
     /// <summary>
     /// the Id of the product
     /// </summary>
-    public float Price { set; get; }
+    public double Price { set; get; }
     /// <summary>
     /// the price of the product
     /// </summary>
@@ -29,13 +25,10 @@ public struct OrderItem
     /// <returns>amount</returns>
 
 
-    public override string ToString() => $@"
-ID={ID},
-OrderId={OrderId},
-ProductId={ProductId},
-Price={Price},
-Amount={Amount}
+    public override string ToString()
+    {
+        return this.ToStringProperty();
+    }
 
-";
 
 }

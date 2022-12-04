@@ -7,7 +7,7 @@ internal static class DataSource
     {
         s_Initialize();
     }
-    private static readonly Random s_rand = new Random();
+    private static readonly Random s_rand = new Random(DateTime.Now.Millisecond);
     internal static class config
     {
         internal const int s_startOrderNumber = 1000;
@@ -52,10 +52,10 @@ internal static class DataSource
 
             product.ID = s_rand.Next(100000 + i, 999999);
             product.Price = s_rand.Next(50, 500);
-            product.Category = (Enums.Category)x;// convert the num for category
+            product.Category = (Category)x;// convert the num for category
             product.Name = names[x, s_rand.Next(2)];
             //Name = Names(x, s_rand.Next(5)),
-            product.InStock =InStocks[i];
+            product.InStock = InStocks[i];
             productList.Add(product);
 
         }
@@ -70,7 +70,6 @@ internal static class DataSource
         /// fill the list of orders
         string[] customerNames = { "Avigail Cohen ", "Shira Levi", "Daniel alon", "Noa Roth", "Ari Yehoda" };
         string[] CustomerAdrress = { "Akalir 12 ", "Geva 37", "Rainess 30", "Yerusalim 13" };
-        
 
         for (int i = 0; i < 20; i++)
         {
@@ -82,55 +81,56 @@ internal static class DataSource
             order.CustomerName = customerNames[x];
             order.CustomerAddress = CustomerAdrress[s_rand.Next(4)];
             order.CustomerEmail = customerNames[x] + "@gmail.com";
-            order.OrderDate = DateTime.Now;
-            if (i < 0.8 * 0.20)
+            int month = -s_rand.Next(1, 3);
+            order.OrderDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month + month, s_rand.Next(1, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month + month)));
+
+            if (i < 10)
             {
-                order.ShipDate = order.OrderDate - TimeSpan.FromDays((double)s_rand.Next(4));
-                if (i < 0.6 * 20)
-                {
-                    order.DeliveryDate = order.ShipDate - TimeSpan.FromDays((double)s_rand.Next(4));
-                }
-                else
-                {
-                    order.DeliveryDate = DateTime.MinValue;
-                }
+                order.ShipDate = order.OrderDate?.AddDays(s_rand.Next(2, 5));
+                order.DeliveryDate = null;
             }
             else
             {
-                order.ShipDate = DateTime.MinValue;
-                order.DeliveryDate = DateTime.MinValue;
+                if (i < 15)
+                {
+                    order.ShipDate = order.OrderDate?.AddDays(s_rand.Next(2, 5));
+                    order.DeliveryDate = order.ShipDate?.AddDays(s_rand.Next(2, 5));
+                }
+                else
+                {
+                    order.ShipDate = null;
+                    order.DeliveryDate = null;
+                }
             }
             orderList.Add(order);
-
-
-
-
         }
     }
     private static void createAndInitOrderItems()
     {
         /// fill the list of orderItem
 
-        for (int i = 0; i < 20;)
+        for (int i = 0; i < 40;)
         {
             OrderItem itemAdd = new OrderItem();
-            itemAdd.OrderId = 1000 + i;
+            Product product = new Product();
+
+            if (i < 20)
+                itemAdd.OrderId = orderList[i]!.Value.ID;
+            else
+                itemAdd.OrderId = orderList[s_rand.Next(0, orderList.Count())]!.Value.ID;
             int x = s_rand.Next(1, 4);
-            for (int j= 0; j < x; j++)
-            {  
+            for (int j = 0; j < x; j++)
+            {
                 itemAdd.ID = config.nextOrderItemNumber;
-                itemAdd.ProductId=1000+s_rand.Next(0,10);
-                itemAdd.Price = s_rand.Next(50, 500);
-                itemAdd.Amount = s_rand.Next(1, 2);
+                product = productList[s_rand.Next(0, productList.Count())].Value;
+                itemAdd.ProductId = product.ID;
+                itemAdd.Amount = s_rand.Next(1, 4);
+                itemAdd.Price = product.Price * itemAdd.Amount;
                 orderItemList.Add(itemAdd);
             }
             i++;
-
-
-
-
         }
-        
+
     }
-    
-}  
+
+}

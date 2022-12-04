@@ -1,7 +1,8 @@
-﻿using DO;
+﻿using DalApi;
+using DO;
 namespace Dal;
 
-public class DalProduct
+internal class DalProduct : IProduct
 {
     /// <summary>
     /// function which add product to list of product
@@ -9,10 +10,10 @@ public class DalProduct
     /// <param name="product"></param>
     /// <returns>the ID of the product</returns>
     /// <exception cref="Exception"></exception>
-    public int Add ( Product product)
+    public int Add(Product product)
     {
         if (DataSource.productList.Exists(x => x?.ID == product.ID))
-            throw new Exception("The product is exist");
+            throw new DalIdAlreadyExistException(product.ID, "Product");
         DataSource.productList.Add(product);
         return product.ID;
     }
@@ -22,11 +23,11 @@ public class DalProduct
     /// <param name="id"></param>
     /// <returns>product</returns>
     /// <exception cref="Exception"></exception>
-    
-    public Product GetById (int id)
+
+    public Product GetById(int id)
     {
         Product product = new Product();
-        product = DataSource.productList.Find(x => x?.ID == id) ?? throw new Exception("not founded");
+        product = DataSource.productList.Find(x => x?.ID == id) ?? throw new DalIdDoNotExistException(product.ID,"id");
         return product;
     }
     /// <summary>
@@ -34,23 +35,23 @@ public class DalProduct
     /// </summary>
     /// <param name="product"></param>
     /// <exception cref="Exception"></exception>
-    public void update(Product product)
+    public void Update(Product product)
     {
         int x = DataSource.productList.FindIndex(x => x?.ID == product.ID);
         if (x == -1)
-            throw new Exception("not exist");
-        DataSource.productList.Insert(x+1 ,product);         
+            throw new DalIdDoNotExistException(product.ID,"not exist");
+        DataSource.productList[x] = product;
     }
     /// <summary>
     /// function which get ID of product and delte him. if he doesnt exist we throw exepction
     /// </summary>
     /// <param name="id"></param>
     /// <exception cref="Exception"></exception>
-    public void Delete (int id)
+    public void Delete(int id)
     {
         int x = DataSource.productList.FindIndex(x => x?.ID == id);
         if (x == -1)
-            throw new Exception("product not founed");
+            throw new DalIdDoNotExistException(id,"product not founed");
         DataSource.productList.RemoveAt(x);
 
     }
@@ -58,14 +59,12 @@ public class DalProduct
     /// copy the detalis of one list to another.
     /// </summary>
     /// <returns> the product list</returns>
-    public IEnumerable<Product?> GetAll()
+    public IEnumerable<Product?> GetAll(Func<Product?, bool>? filter = null)
     {
-        List<Product?> productList1 = new List<Product?>();
-        for (int i = 0; i < DataSource.productList.Count; i++)
-        { 
-           productList1.Add(DataSource.productList[i]);
-        }
-        return productList1;
+        if (filter != null)
+            return DataSource.productList.Where(item => filter(item));
+        return DataSource.productList.Select(item => item);
     }
+
 
 }

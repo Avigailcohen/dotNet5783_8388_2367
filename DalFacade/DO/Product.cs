@@ -7,7 +7,7 @@ public struct Product
     /// <summary>
     /// the id of product
     /// </summary>
-    public string?Name{get; set;}
+    public string? Name { get; set; }
     /// <summary>
     /// the name of the product
     /// </summary>
@@ -15,7 +15,7 @@ public struct Product
     /// <summary>
     /// the category of the product
     /// </summary>
-    public float Price { get; set; }
+    public double Price { get; set; }
     /// <summary>
     /// the price of the product
     /// </summary>
@@ -24,14 +24,13 @@ public struct Product
     /// the amount of the stock
     /// </summary>
     /// <returns>how much in stock from the category</returns>
-    public override string ToString() => $@"
-ID={ID},
-Name={Name},
-Category={Category},
-Price={Price},
-InStock={InStock},
-
-";
-        
+    public override string ToString()
+    {
+        return this.ToStringProperty();
     }
+
+
+
+
+}
 
