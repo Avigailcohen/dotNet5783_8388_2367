@@ -34,22 +34,22 @@ press f for return to the menue");
                             break;
                         case 'b':
                             Console.WriteLine("Enter order Id");
-                            if (!int.TryParse(Console.ReadLine(), out ID)) throw new Exception("cant convert ");
+                            if (!int.TryParse(Console.ReadLine(), out ID)) throw new FormatException("wrong input type");
                             Console.WriteLine(bl.Order.GetOrderById(ID));
                             break;
                         case 'c':
                             Console.WriteLine("Enter order Id");
-                            if (!int.TryParse(Console.ReadLine(), out ID)) throw new Exception("cant convert");
+                            if (!int.TryParse(Console.ReadLine(), out ID)) throw new FormatException("wrong input type");
                             Console.WriteLine(bl.Order.UpdateOrderShip(ID));
                             break;
                         case 'd':
                             Console.WriteLine("Enter order Id");
-                            if (!int.TryParse(Console.ReadLine(), out ID)) throw new Exception("cant convert");
+                            if (!int.TryParse(Console.ReadLine(), out ID)) throw new FormatException("wrong input type");
                             Console.WriteLine(bl.Order.UpdateDelivertOrder(ID));//פה קורס
                             break;
                         case 'e':
                             Console.WriteLine("Enter order Id");
-                            if (!int.TryParse(Console.ReadLine(), out ID)) throw new Exception("cant convert");
+                            if (!int.TryParse(Console.ReadLine(), out ID)) throw new FormatException("wrong input type");
                             Console.WriteLine(bl.Order.OrderTracking(ID));///עובד 
                             break;
 

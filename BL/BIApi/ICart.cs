@@ -6,7 +6,7 @@ public interface ICart
 
     public BO.Cart AddProduct(BO.Cart cart, int ProductID);
     BO.Cart UpdateAmount(BO.Cart cart, int ProductID, int NewAmount);
-    void OrderConfirmation(BO.Cart cart);
+     void OrderConfirmation(BO.Cart cart);
 
 
 

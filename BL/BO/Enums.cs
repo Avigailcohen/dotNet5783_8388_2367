@@ -14,6 +14,7 @@
         Skirts,
         Shirts,
         Accessories,
-        shoes,
+        None,
+        
     }
 }

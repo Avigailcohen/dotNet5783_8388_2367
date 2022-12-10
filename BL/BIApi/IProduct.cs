@@ -16,7 +16,7 @@ namespace BIApi
         /// get product list for manager 
         /// </summary>
         /// <returns></returns>
-        IEnumerable<ProductForList?> GetListedProducts();
+        IEnumerable<ProductForList?> GetListedProducts(Func<BO.ProductForList?, bool>? filter = null);
 
         /// <summary>
         /// catalog for client

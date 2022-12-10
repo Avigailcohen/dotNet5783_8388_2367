@@ -40,17 +40,18 @@ namespace BIImplementation
         /// <returns></returns>
         /// <exception cref="BO.BlNullPropertyException"></exception>
         /// <exception cref="BO.BlWrongCategoryException"></exception>
-        public IEnumerable<BO.ProductForList?> GetListedProducts()// for the mannager 
+        public IEnumerable<BO.ProductForList?> GetListedProducts(Func<BO.ProductForList?, bool>? filter = null)// for the mannager 
         {
-            return from DO.Product? doProduct in dal.Product.GetAll()
-                   select new BO.ProductForList///copy from do to bo 
-                   {
-                       ID = doProduct?.ID ?? throw new BO.BlNullPropertyException("missing id"),
-                       ProductName = doProduct?.Name ?? throw new BO.BlNullPropertyException("missing name"),
-                       Category = (BO.Category)(doProduct?.Category ?? throw new BO.BlWrongCategoryException("worng category")),
-                       Price = doProduct?.Price ?? 0
-                   };
+            IEnumerable<BO.ProductForList?> bList = from DO.Product doProduct in dal.Product.GetAll()
+                                                   select new BO.ProductForList///copy from do to bo 
+                                                   {
+                                                       ID = doProduct.ID,
+                                                       ProductName = doProduct.Name,
+                                                       Category = (BO.Category)doProduct.Category,
+                                                       Price = doProduct.Price
+                                                   };
 
+            return filter is null ? bList : bList.Where(filter);
         }
         /// <summary>
         /// return producItem for the client by the id 
@@ -65,7 +66,7 @@ namespace BIImplementation
             if (ProductId < 100000 || ProductId > 999999)
                 throw new BO.BlInvalidInputException("product ID");
 
-            DO.Product product;
+            DO.Product? product;
 
             try
             {
@@ -78,12 +79,12 @@ namespace BIImplementation
             /// return the productItem 
             return new BO.ProductItem()///builiding a productItem
             {
-                ID = product.ID,
-                ProductItemName = product.Name,
-                InStock = product.InStock > 0 ? true : false,
-                Category = (BO.Category)product.Category,
-                Price = product.Price,
-                AmountInCart = cart.OrderItems is null ? 0 : cart.OrderItems.Where(x => x.ProductID == ProductId).Sum(x => x.AmountOfItem)
+                ID = product?.ID ?? throw new BO.BlNullPropertyException("missing id"),
+                ProductItemName = product?.Name ?? throw new BO.BlNullPropertyException("missing name "),
+                InStock = product?.InStock > 0 ? true : false,
+                Category = (BO.Category)(product?.Category ?? throw new BO.BlWrongCategoryException("worng category")),
+                Price = product?.Price ?? throw new BO.BlNullPropertyException("missing price"),
+                AmountInCart = cart.OrderItems is null ? 0 : cart.OrderItems.Where(x => x?.ProductID == ProductId).Sum(x => x!.AmountOfItem)
 
             };
         }
@@ -104,7 +105,7 @@ namespace BIImplementation
                        Category = (BO.Category)(doProduct?.Category ?? throw new NullReferenceException("missing category")),
                        Price = doProduct?.Price ?? 0,
                        InStock = doProduct?.InStock > 0 ? true : false,
-                       AmountInCart =0/////////////////////////////////////////////////////check it!!!!
+                       AmountInCart = 0/////////////////////////////////////////////////////check it!!!!
 
 
                    };
@@ -119,16 +120,16 @@ namespace BIImplementation
         /// <exception cref="BO.BlIdAlreadyExistException"></exception>
         public void AddProduct(BO.Product product)
         {
-            
-            
-                if (product.ProductID < 100000 || product.ProductID > 999999)
-                    throw new BO.BlInvalidInputException("product ID");
-                if(product.Name.Length == 0)
-                    throw new BO.BlInvalidInputException("product name");
-                if (product.Price < 0)
-                    throw new BO.BlInvalidInputException("product price");
-                if(product.InStock < 0)
-                    throw new BO.BlInvalidInputException("product Stock");
+
+
+            if (product.ProductID < 100000 || product.ProductID > 999999)
+                throw new BO.BlInvalidInputException("product ID");
+            if (product.Name.Length == 0)
+                throw new BO.BlInvalidInputException("product name");
+            if (product.Price < 0)
+                throw new BO.BlInvalidInputException("product price");
+            if (product.InStock < 0)
+                throw new BO.BlInvalidInputException("product Stock");
             try
             {
                 DO.Product pro = new DO.Product
@@ -141,7 +142,7 @@ namespace BIImplementation
                 };
                 dal.Product.Add(pro);
             }
-            catch(DO.DalIdAlreadyExistException ex)
+            catch (DO.DalIdAlreadyExistException ex)
             {
                 throw new BO.BlIdAlreadyExistException("couldnt add product", ex);
             }
@@ -155,14 +156,14 @@ namespace BIImplementation
         /// <exception cref="BO.BlIdDoNotExistException"></exception>
         public void DeleteProduct(int ID)
         {
-            DO.OrderItem? orderItems = dal.OrderItem.GetAll().FirstOrDefault(item => item.Value.ID == ID);
+            DO.OrderItem? orderItems = dal.OrderItem.GetAll().FirstOrDefault(item => item?.ID == ID);
             if (orderItems != null)
                 throw new BO.BlNullPropertyException("cant delete, exist in orders");//לשאול מה החריגה שצריכה להיות 
             try
             {
                 dal.Product.Delete(ID);
             }
-            catch(DO.DalIdDoNotExistException ex)
+            catch (DO.DalIdDoNotExistException ex)
             {
                 throw new BO.BlIdDoNotExistException("product", ex);
 
@@ -196,11 +197,11 @@ namespace BIImplementation
         {
             if (product.ProductID < 100000 || product.ProductID > 999999)
                 throw new BO.BlInvalidInputException("product ID");
-            if(product.Name.Length == 0)
+            if (product.Name.Length == 0)
                 throw new BO.BlInvalidInputException("product name");
-            if(product.Price < 0)
+            if (product.Price < 0)
                 throw new BO.BlInvalidInputException("product price ");
-            if(product.InStock < 1)
+            if (product.InStock < 1)
                 throw new BO.BlInvalidInputException("product Stock ");
             try
             {
@@ -213,11 +214,11 @@ namespace BIImplementation
                     Price = product.Price
                 });
             }
-            catch(DO.DalIdDoNotExistException ex)//prduct doesnt exist
+            catch (DO.DalIdDoNotExistException ex)//prduct doesnt exist
             {
                 throw new BO.BlIdDoNotExistException("product", ex);
 
-            }  
+            }
             return;
         }
     }

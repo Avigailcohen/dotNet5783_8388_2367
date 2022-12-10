@@ -96,10 +96,10 @@ namespace BIImplementation
                 throw new BO.BlNullPropertyException(" not in stock");
             ///find the id which answeres the critiorion 
 
-            BO.OrderItem? orderItem = cart.OrderItems.FirstOrDefault(x => x.ID == ProductID);
+            BO.OrderItem? orderItem = cart.OrderItems.FirstOrDefault(x => x?.ID == ProductID);
 
 
-            int x = cart.OrderItems.ToList().FindIndex(x => x.ID == ProductID);
+            int x = cart.OrderItems.ToList().FindIndex(x => x?.ID == ProductID);
             if (orderItem == null)
                 throw new BO.BlNullPropertyException("object doenst found");//the object is not exist
 
@@ -129,12 +129,14 @@ namespace BIImplementation
         public void OrderConfirmation(BO.Cart cart)
         {
             ///check the details 
-            if (cart.CustomerName == null)
+            if (cart.CustomerName ==null )
                 throw new BO.BlInvalidInputException("customer name");
             if(!new EmailAddressAttribute().IsValid(cart.CustomerEmail)) 
                 throw new BO.BlInvalidInputException("customer Email");
-            if (cart.CustomerAddress == null)
+            if (cart.CustomerAddress ==null )
                 throw new BO.BlInvalidInputException("customer Address");
+            if (cart.OrderItems.Count() == 0)//no items in cart
+                throw new BO.BlNullPropertyException("no items in cart");
             DO.Order order = new DO.Order()
             {
                 CustomerName = cart.CustomerName,

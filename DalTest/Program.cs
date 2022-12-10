@@ -53,7 +53,7 @@ press f for return to the menue");
                         int.TryParse(Console.ReadLine(), out Instock);
                         product.InStock = Instock;
                         Console.WriteLine("Enter the product category");
-                        product.Category = (Enums.Category)Console.Read() - '1';
+                        product.Category = (Category)Console.Read() - '1';
                         ///put the function inside try because thehe is risk that the product exist
                         try
                         {

@@ -51,4 +51,34 @@ namespace BO
         public BlInvalidInputException(string Entity, Exception innerException) : base(Entity, innerException) { }
         public override string ToString() => $"invalid {Entity}";
     }
+    public class BlEmptyException: Exception
+    {
+
+        public BlEmptyException(string? label, int id)
+
+           : base($"{label ?? ""} with id number {id} does not exist.\n")
+
+        {
+
+        }
+
+        public BlEmptyException(string? label)
+
+          : base($"{label ?? ""}.\n")
+
+        {
+
+        }
+
+
+
+        public BlEmptyException(string? label, int id, Exception? innerException)
+
+            : base($"{label} with id number {id} does not exist.\n", innerException)
+
+        {
+
+        }
+
+    }
 }

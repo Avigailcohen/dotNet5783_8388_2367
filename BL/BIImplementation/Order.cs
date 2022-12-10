@@ -72,8 +72,8 @@ namespace BIImplementation
                 DeliveryDate = order.DeliveryDate,
                 OrderDate = order.OrderDate,
                 ShipDate = order.ShipDate,
-                OrderItems = GetOrderItemList(dal.OrderItem.GetAll().Where(x => x.Value.OrderId == order.ID)),
-                TotalPrice = GetOrderItemList(dal.OrderItem.GetAll().Where(x => x.Value.OrderId == order.ID)).Sum(x => x.TotalPrice)
+                OrderItems = GetOrderItemList(dal.OrderItem.GetAll().Where(x => x?.OrderId == order.ID)),
+                TotalPrice = GetOrderItemList(dal.OrderItem.GetAll().Where(x => x?.OrderId == order.ID)).Sum(x => x.TotalPrice)
             };
         }
         /// <summary>
