@@ -16,7 +16,7 @@
 
 
 
-        <Label Content="ID" HorizontalAlignment="Left" Margin="82,48,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Bodoni MT Black" FontSize="16" RenderTransformOrigin="0.389,0.81" Foreground="White">
+        <Label Content="ID:" HorizontalAlignment="Left" Margin="82,48,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Bodoni MT Black" FontSize="16" RenderTransformOrigin="0.389,0.81" Foreground="White">
             <Label.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -25,17 +25,20 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Label.RenderTransform>
+
         </Label>
-        <Label Content="Name " HorizontalAlignment="Left" Margin="82,98,0,0" Grid.Row="1" VerticalAlignment="Top" FontWeight="Bold" BorderBrush="#FF9C0F0F" FontFamily="Cooper Black" FontSize="16" Foreground="#FFFFF3F3"/>
-        <Label Content="Category" HorizontalAlignment="Left" Margin="82,148,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Bauhaus 93" FontSize="16" Foreground="#FFFBF4F4"/>
-        <Label Content="Stock" HorizontalAlignment="Left" Margin="82,198,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Bodoni MT Black" FontSize="16" Foreground="Snow"/>
-        <Label Content="Price" HorizontalAlignment="Left" Margin="82,248,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16" FontFamily="Bodoni MT Black" Foreground="#FFFFF5F5"/>
-        <TextBox Name="ID" HorizontalAlignment="Left" Margin="199,51,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF925B5B" FontSize="16"  PreviewKeyDown="ID_PreviewKeyDown"/>
+        
+        <Label Content="Name: " HorizontalAlignment="Left" Margin="82,98,0,0" Grid.Row="1" VerticalAlignment="Top" FontWeight="Bold" BorderBrush="#FF9C0F0F" FontFamily="Cooper Black" FontSize="16" Foreground="#FFFFF3F3"/>
+        <Label Content="Category:" HorizontalAlignment="Left" Margin="82,148,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Bauhaus 93" FontSize="16" Foreground="#FFFBF4F4"/>
+        <Label Content="Stock:" HorizontalAlignment="Left" Margin="82,198,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Bodoni MT Black" FontSize="16" Foreground="Snow"/>
+        <Label Content="Price:" HorizontalAlignment="Left" Margin="82,248,0,0" Grid.Row="1" VerticalAlignment="Top" FontSize="16" FontFamily="Bodoni MT Black" Foreground="#FFFFF5F5"/>
+        <TextBox Name="ID" HorizontalAlignment="Left" Margin="199,51,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Foreground="#FF925B5B" FontSize="16"  PreviewKeyDown="ID_PreviewKeyDown" MaxLength="6"/>
         <TextBox x:Name="Name" HorizontalAlignment="Left" Margin="199,101,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="16"/>
         <ComboBox Name="selectionCB" SelectionChanged="selectCategory" HorizontalAlignment="Left" Margin="199,151,0,0" Grid.Row="1" VerticalAlignment="Top" Width="120" FontSize="16"/>
         <TextBox Name="Amount" HorizontalAlignment="Left" Margin="199,201,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="16" PreviewKeyDown="Amount_PreviewKeyDown"/>
         <TextBox x:Name="Price" HorizontalAlignment="Left" Margin="199,251,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" FontSize="16" PreviewKeyDown="Price_PreviewKeyDown"/>
         <Button x:Name="AddOrUpBtn"  MouseDoubleClick="addOrUp" HorizontalAlignment="Left" Margin="673,434,0,0" Grid.Row="1" VerticalAlignment="Top" BorderBrush="#FFEDE2E2" FontSize="18" FontFamily="Franklin Gothic Demi" Height="40" Width="127" Background="#FF0E0D0D" Foreground="#FFF6F0F0"/>
+       
 
     </Grid>
 

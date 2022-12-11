@@ -23,9 +23,13 @@ namespace PL.Products
     /// </summary>
     /// לבדוק את החריגה בupdate מה אני אמורה לזרוק ואיפה .
     /// ואיך מטלפים בחריגה של add שלרת תזרוק לי 2 שגיאות 
+    /// 
     public partial class ProductWindow : Window
     {
         IBl bl;
+        /// <summary>
+        /// ctor to ADD action 
+        /// </summary>
         public ProductWindow()
         {
             ///for add 
@@ -40,12 +44,13 @@ namespace PL.Products
             Price.BorderBrush = new SolidColorBrush(Colors.Gold);
             selectionCB.BorderBrush = new SolidColorBrush(Colors.Gold);
             Amount.BorderBrush = new SolidColorBrush(Colors.Gold);
+            
 
 
 
         }
         /// <summary>
-        /// for update 
+        /// ctor to UPDATE action 
         /// </summary>
         /// <param name="id"></param>
         public ProductWindow(int id)
@@ -53,16 +58,16 @@ namespace PL.Products
             InitializeComponent();
             bl = new Bl();
 
-            selectionCB.ItemsSource = Enum.GetValues(typeof(BO.Category));
-            BO.Product product = bl.Product.GetProductsById(id);
-            ID.Text = product.ProductID.ToString();
-            ID.IsReadOnly = true;
+            selectionCB.ItemsSource = Enum.GetValues(typeof(BO.Category));///for the comboBox
+            BO.Product product = bl.Product.GetProductsById(id);//getting the details from bl about the product 
+            ID.Text = product.ProductID.ToString();// for the ID textBOX
+            ID.IsReadOnly = true;// makes the textBox unable to change 
             ID.Foreground = Brushes.Black;
-            Name.Text = product.Name;
-            selectionCB.Text = product.Category.ToString();
+            Name.Text = product.Name;//for the ID textBOX
+            selectionCB.Text = product.Category.ToString();//select category 
             Price.Text = product.Price.ToString();
-            Amount.Text = bl.Product.GetProductsById(product.ProductID).InStock.ToString();
-            AddOrUpBtn.Content = "Update";
+            Amount.Text = bl.Product.GetProductsById(product.ProductID).InStock.ToString();// for the Amount 
+            AddOrUpBtn.Content = "Update";// the button of Update 
             ID.BorderBrush = new SolidColorBrush(Colors.Gold);
             Name.BorderBrush = new SolidColorBrush(Colors.Gold);
             Price.BorderBrush = new SolidColorBrush(Colors.Gold);
@@ -72,20 +77,31 @@ namespace PL.Products
 
         
         /// <summary>
-        /// there is a one button for update and add
+        /// there is a one button for update and add.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void addOrUp(object sender, RoutedEventArgs e)
         {
             MessageBoxResult messageBoxResult;
+           
 
 
             try
             {
                 ///when the admin didnt fiil one of the textbox there is a masaage 
-                if (ID.Text.Length == 0 || Price.Text.Length == 0 || Amount.Text.Length == 0 || Name.Text.Length == 0 || selectionCB.Text.Length == 0||selectionCB.SelectedIndex==4||selectionCB.SelectedItem==null)
-                    throw new BO.BlEmptyException("enter value");
+                if (ID.Text.Length == 0 || Price.Text.Length == 0 || Amount.Text.Length == 0 || Name.Text.Length == 0 || selectionCB.Text.Length == 0 || selectionCB.SelectedIndex == 4 || selectionCB.SelectedItem == null)
+                {
+                    ID.BorderBrush = new SolidColorBrush(Colors.DarkRed);
+                    Name.BorderBrush = new SolidColorBrush(Colors.DarkRed);
+                    Price.BorderBrush = new SolidColorBrush(Colors.DarkRed);
+                    selectionCB.BorderBrush = new SolidColorBrush(Colors.DarkRed);
+                    Amount.BorderBrush = new SolidColorBrush(Colors.DarkRed);
+                    MessageBox.Show("Fill in the missing fields","ERROR",MessageBoxButton.OK,MessageBoxImage.Error);
+                    return;
+                    
+                }
+                
 
                 ///adding a product to the list 
                 if (AddOrUpBtn.Content! == "Add")
@@ -121,32 +137,24 @@ namespace PL.Products
             catch (BO.BlIdAlreadyExistException x)
             {
 
-                messageBoxResult = MessageBox.Show(x.InnerException.Message, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                messageBoxResult = MessageBox.Show(x.InnerException!.Message, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
                 MessageBox.Show(x.Message, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-            catch (BO.BlEmptyException x)
+            catch(BO.BlInvalidInputException)
             {
-                messageBoxResult = MessageBox.Show(x.Message, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("press ID again ", "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            
 
-            switch (messageBoxResult)
-            {
-                case MessageBoxResult.OK or MessageBoxResult.Cancel:
-                    //Close();
-                    break;
+            //switch (messageBoxResult)
+            //{
+            //    case MessageBoxResult.OK or MessageBoxResult.Cancel:
+            //        //Close();
+            //        break;
 
-                default:
-                    break;
-            }
-
-
-
-
-            //bl.Product.AddProduct(product);
-
-
-
-
+            //    default:
+            //        break;
+            //}
 
         }
 

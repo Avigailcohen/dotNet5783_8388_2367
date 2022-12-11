@@ -124,7 +124,7 @@ namespace BIImplementation
 
             if (product.ProductID < 100000 || product.ProductID > 999999)
                 throw new BO.BlInvalidInputException("product ID");
-            if (product.Name.Length == 0)
+            if (product.Name!.Length == 0)
                 throw new BO.BlInvalidInputException("product name");
             if (product.Price < 0)
                 throw new BO.BlInvalidInputException("product price");
@@ -197,7 +197,7 @@ namespace BIImplementation
         {
             if (product.ProductID < 100000 || product.ProductID > 999999)
                 throw new BO.BlInvalidInputException("product ID");
-            if (product.Name.Length == 0)
+            if (product.Name!.Length == 0)
                 throw new BO.BlInvalidInputException("product name");
             if (product.Price < 0)
                 throw new BO.BlInvalidInputException("product price ");

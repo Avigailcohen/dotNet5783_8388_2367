@@ -26,7 +26,7 @@ namespace PL.Products
     public partial class ProductListWindow : Window
     {
         IBl bl = new Bl();
-        
+      
         public ProductListWindow(IBl bl)
         {
             InitializeComponent();
@@ -35,7 +35,11 @@ namespace PL.Products
             listViewOfProducts.ItemsSource = bl.Product.GetListedProducts();
            
         }
-
+        /// <summary>
+        /// function for the category with the filter and with the challenge(which allow to come back to the full list)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void selectionChange(object sender, SelectionChangedEventArgs e)
         {
             
@@ -47,7 +51,11 @@ namespace PL.Products
 
 
         }
-
+        /// <summary>
+        /// Move to ProductWindow and refresh the list after adding 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddProduct(object sender, RoutedEventArgs e)
         {
             new ProductWindow().ShowDialog();
@@ -60,7 +68,11 @@ namespace PL.Products
         //    if (listViewOfProducts.SelectedItem is ProductForList productForList)
         //        new Update(productForList).ShowDialog();
         //}
-
+        /// <summary>
+        ///  Move to ProductWindow and refresh the list after updating 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void update(object sender, MouseButtonEventArgs e)
         {
             int id = ((ProductForList)listViewOfProducts.SelectedItem).ID;
