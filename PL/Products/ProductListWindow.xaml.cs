@@ -11,8 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using BIApi;
-using BIImplementation;
+
 using BO;
 
 
@@ -25,14 +24,14 @@ namespace PL.Products
     
     public partial class ProductListWindow : Window
     {
-        IBl bl = new Bl();
-      
-        public ProductListWindow(IBl bl)
+       private  BIApi.IBl? bl = BIApi.Factory.Get();
+
+        public ProductListWindow(BIApi.IBl? bl)
         {
             InitializeComponent();
             Category category = new BO.Category();
             Category.ItemsSource = Enum.GetValues(typeof(BO.Category));
-            listViewOfProducts.ItemsSource = bl.Product.GetListedProducts();
+            listViewOfProducts.ItemsSource = bl?.Product.GetListedProducts();
            
         }
         /// <summary>
@@ -45,9 +44,9 @@ namespace PL.Products
             
             Category category = (BO.Category)Category.SelectedItem;
             
-            listViewOfProducts.ItemsSource = bl.Product.GetListedProducts(x => x?.Category == category);
+            listViewOfProducts.ItemsSource = bl?.Product.GetListedProducts(x => x?.Category == category);
             if (Category.SelectedIndex == 4)
-                listViewOfProducts.ItemsSource = bl.Product.GetListedProducts();
+                listViewOfProducts.ItemsSource = bl?.Product.GetListedProducts();
 
 
         }
@@ -59,7 +58,7 @@ namespace PL.Products
         private void AddProduct(object sender, RoutedEventArgs e)
         {
             new ProductWindow().ShowDialog();
-            listViewOfProducts.ItemsSource = bl.Product.GetListedProducts();
+            listViewOfProducts.ItemsSource = bl?.Product.GetListedProducts();
 
         }
 
@@ -78,7 +77,7 @@ namespace PL.Products
             int id = ((ProductForList)listViewOfProducts.SelectedItem).ID;
 ;            if (listViewOfProducts.SelectedItem is ProductForList productForList)
                 new ProductWindow(id).ShowDialog();
-            listViewOfProducts.ItemsSource = bl.Product.GetListedProducts();
+            listViewOfProducts.ItemsSource = bl?.Product.GetListedProducts();
         }
        
     }

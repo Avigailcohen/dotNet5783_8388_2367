@@ -8,7 +8,8 @@ namespace BIImplementation
     {
 
 
-        DalApi.IDal dal = new Dal.DalList();
+        DalApi.IDal? dal = DalApi.Factory.Get();
+
         /// <summary>
         /// add product to the cart by id and throw exeption if the id dosent founded
         /// </summary>
@@ -24,7 +25,7 @@ namespace BIImplementation
             DO.Product product = new DO.Product();
             try
             {
-                product = dal.Product.GetById(ProductID);
+                product = dal!.Product.GetById(ProductID);
 
 
 
@@ -51,7 +52,7 @@ namespace BIImplementation
                             TotalPrice = product.Price,
                             ProductID = product.ID
                         };
-                        cart.OrderItems = cart.OrderItems.Append(newOrderItem);
+                        cart.OrderItems = cart.OrderItems!.Append(newOrderItem);
                     }
                     else
                     {
@@ -84,7 +85,7 @@ namespace BIImplementation
             DO.Product product = new DO.Product();
             try
             {
-                product = dal.Product.GetById(ProductID);
+                product = dal!.Product.GetById(ProductID);
             }
             catch (DO.DalIdDoNotExistException ex)
             {
@@ -149,7 +150,7 @@ namespace BIImplementation
 
             try
             {
-                int orderID = dal.Order.Add(order);
+                int orderID = dal!.Order.Add(order);
 
                 IEnumerable<int> orderItemsID = from item in cart.OrderItems
                                                 select dal.OrderItem.Add(

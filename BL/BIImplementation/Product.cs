@@ -6,7 +6,8 @@ namespace BIImplementation
 {
     internal class Product : IProduct
     {
-        DalApi.IDal dal = new Dal.DalList();
+        DalApi.IDal? dal = DalApi.Factory.Get();
+
         /// <summary>
         /// get thr details of the product by his ID
         /// </summary>
@@ -19,7 +20,7 @@ namespace BIImplementation
 
             try
             {
-                product = dal.Product.GetById(id);/// לגבי try
+                product = dal!.Product.GetById(id);/// לגבי try
             }
             catch (DO.DalIdDoNotExistException ex)//doesnt exist
             {
@@ -42,7 +43,7 @@ namespace BIImplementation
         /// <exception cref="BO.BlWrongCategoryException"></exception>
         public IEnumerable<BO.ProductForList?> GetListedProducts(Func<BO.ProductForList?, bool>? filter = null)// for the mannager 
         {
-            IEnumerable<BO.ProductForList?> bList = from DO.Product doProduct in dal.Product.GetAll()
+            IEnumerable<BO.ProductForList?> bList = from DO.Product doProduct in dal!.Product.GetAll()
                                                    select new BO.ProductForList///copy from do to bo 
                                                    {
                                                        ID = doProduct.ID,
@@ -70,7 +71,7 @@ namespace BIImplementation
 
             try
             {
-                product = dal.Product.GetById(ProductId);
+                product = dal!.Product.GetById(ProductId);
             }
             catch (DO.DalIdDoNotExistException ex)//product doesnt exist
             {
@@ -97,7 +98,7 @@ namespace BIImplementation
         /// <exception cref="NotImplementedException"></exception>
         public IEnumerable<BO.ProductItem?> GetListedProductsForC()//catalog of products for customer 
         {
-            return from DO.Product? doProduct in dal.Product.GetAll()
+            return from DO.Product? doProduct in dal!.Product.GetAll()
                    select new BO.ProductItem
                    {
                        ID = doProduct?.ID ?? throw new NullReferenceException("MIssing ID"),
@@ -140,7 +141,7 @@ namespace BIImplementation
                     Category = (DO.Category)product.Category,
                     Price = product.Price
                 };
-                dal.Product.Add(pro);
+                dal?.Product.Add(pro);
             }
             catch (DO.DalIdAlreadyExistException ex)
             {
@@ -156,7 +157,7 @@ namespace BIImplementation
         /// <exception cref="BO.BlIdDoNotExistException"></exception>
         public void DeleteProduct(int ID)
         {
-            DO.OrderItem? orderItems = dal.OrderItem.GetAll().FirstOrDefault(item => item?.ID == ID);
+            DO.OrderItem? orderItems = dal!.OrderItem.GetAll().FirstOrDefault(item => item?.ID == ID);
             if (orderItems != null)
                 throw new BO.BlNullPropertyException("cant delete, exist in orders");//לשאול מה החריגה שצריכה להיות 
             try
@@ -205,7 +206,7 @@ namespace BIImplementation
                 throw new BO.BlInvalidInputException("product Stock ");
             try
             {
-                dal.Product.Update(new DO.Product()
+                dal?.Product.Update(new DO.Product()
                 {
                     ID = product.ProductID,
                     Name = product.Name,

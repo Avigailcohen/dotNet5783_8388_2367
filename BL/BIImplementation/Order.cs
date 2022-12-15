@@ -6,25 +6,26 @@ namespace BIImplementation
     internal class Order : IOrder
     {
 
-        DalApi.IDal dal = new Dal.DalList();
+        DalApi.IDal? dal = DalApi.Factory.Get();
+
         /// <summary>
         /// return list of orders 
         /// </summary>
         /// <returns>kist of order </returns>
         public IEnumerable<BO.OrderForList> GetOrders()// בקשת רשימת הזמנות למנהל 
         {
-            IEnumerable<DO.Order?> orders = dal.Order.GetAll();
+            IEnumerable<DO.Order?> orders = dal!.Order.GetAll();
             IEnumerable<DO.OrderItem?> items = dal.OrderItem.GetAll();
 
             return from DO.Order item in orders
-                   let orderItems = items.Where(items => items.Value.OrderId == item.ID)
+                   let orderItems = items.Where(items => items!.Value.OrderId == item.ID)
                    select new BO.OrderForList()
                    {
                        ID = item.ID,
                        CustomerName = item.CustomerName,
                        OrderStatus = GetStatus(item),
                        AmountItems = orderItems.Count(),
-                       TotalPrice = orderItems.Sum(items => items.Value.Amount * items.Value.Price)
+                       TotalPrice = orderItems.Sum(items => items!.Value.Amount * items.Value.Price)
                    };
         }
         /// <summary>
@@ -55,7 +56,7 @@ namespace BIImplementation
             DO.Order order = new DO.Order();
               try
             {
-                order = dal.Order.GetById(OrderId);
+                order = dal!.Order.GetById(OrderId);
             }  
             catch(DO.DalIdDoNotExistException ex)
             {
@@ -73,7 +74,7 @@ namespace BIImplementation
                 OrderDate = order.OrderDate,
                 ShipDate = order.ShipDate,
                 OrderItems = GetOrderItemList(dal.OrderItem.GetAll().Where(x => x?.OrderId == order.ID)),
-                TotalPrice = GetOrderItemList(dal.OrderItem.GetAll().Where(x => x?.OrderId == order.ID)).Sum(x => x.TotalPrice)
+                TotalPrice = GetOrderItemList(dal.OrderItem.GetAll().Where(x => x?.OrderId == order.ID)).Sum(x => x!.TotalPrice)
             };
         }
         /// <summary>
@@ -88,7 +89,7 @@ namespace BIImplementation
                    select new BO.OrderItem()
                    {
                        ID = item.ID,
-                       Name = dal.Product.GetById(item.ProductId).Name,
+                       Name = dal!.Product.GetById(item.ProductId).Name,
                        Price = item.Price,
                        AmountOfItem = item.Amount,
                        TotalPrice = item.Price * item.Amount,
@@ -108,7 +109,7 @@ namespace BIImplementation
 
             try
             {
-                dOrder = dal.Order.GetById(OrderId);
+                dOrder = dal!.Order.GetById(OrderId);
             }
             catch (DO.DalIdDoNotExistException ex)
             {
@@ -134,7 +135,7 @@ namespace BIImplementation
 
             try
             {
-                dOrder = dal.Order.GetById(OrderId);
+                dOrder = dal!.Order.GetById(OrderId);
             }
             catch (DO.DalIdDoNotExistException ex)
             {
@@ -159,7 +160,7 @@ namespace BIImplementation
             DO.Order dOrder = new DO.Order();
             try
             {
-                dOrder = dal.Order.GetById(OrderId);
+                dOrder = dal!.Order.GetById(OrderId);
 
             }
             catch (DO.DalIdDoNotExistException ex)

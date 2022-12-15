@@ -29,7 +29,11 @@
                     </LinearGradientBrush>
                 </ComboBox.Background>
             </ComboBox>
-            <Label Content="Products:" Grid.Column="0" Grid.Row="0" FontWeight="Bold" Margin="10,10,261,-10" Grid.ColumnSpan="2" FontFamily="Rockwell Extra Bold" Foreground="#FFFFF3F3"/>
+            <Label Content="Products:" Grid.Column="0" Grid.Row="0" FontWeight="Bold" Margin="10,10,261,-10" Grid.ColumnSpan="2" FontFamily="Rockwell Extra Bold" Foreground="#FFFFF3F3">
+                <Label.Background>
+                    <ImageBrush/>
+                </Label.Background>
+            </Label>
             <Button Content="Add new Product" Click="AddProduct" HorizontalAlignment="Left" Margin="275,4,0,4" Padding="5" FontFamily="Bell MT" Foreground="#FFFFFBFD" FontSize="14">
                 <Button.Background>
                     <ImageBrush/>

@@ -11,7 +11,9 @@ namespace DalTest
         //private static DalOrder dalOrder = new DalOrder();
         //private static DalProduct dalProduct = new DalProduct();
         //private static DalOrderItem dalOrderItem = new DalOrderItem();
-        static IDal dal = new DalList();
+       static  IDal? dal = Factory.Get();
+
+
         /// <summary>
         /// productcheck function which check the function of the ProductCrud.
         /// </summary>
@@ -57,7 +59,7 @@ press f for return to the menue");
                         ///put the function inside try because thehe is risk that the product exist
                         try
                         {
-                            dal.Product.Add(product);
+                            dal?.Product.Add(product);
                             Console.WriteLine(product.ID);
                         }
                         catch (Exception ex)
@@ -103,7 +105,7 @@ press f for return to the menue");
                         /// there is risk that the product not exist 
                         try
                         {
-                            dal.Product.Update(product2);
+                            dal?.Product.Update(product2);
                         }
                         catch (Exception ex)
                         {
@@ -119,7 +121,7 @@ press f for return to the menue");
                         /// there is risk that the product not exist
                         try
                         {
-                            dal.Product.Delete(id);
+                            dal!.Product.Delete(id);
                         }
                         catch (Exception ex)
                         {
@@ -157,9 +159,9 @@ press f for return to the menue");
             Order order = new Order();
             char choice2;
             int id;
-            string name;
-            string email;
-            string address;
+            string? name;
+            string? email;
+            string? address;
             DateTime orderDate = DateTime.Now;
             //DateTime deliveryTime = null;
             //DateTime shipDate=null;
@@ -190,7 +192,7 @@ press f to return the menue");
                         address = Console.ReadLine();
                         order.CustomerAddress = address;
                         order.OrderDate = DateTime.Now;
-                        dal.Order.Add(order);
+                        dal!.Order.Add(order);
                         Console.WriteLine(order.ID);
                         //check what she return
                         break;
@@ -226,7 +228,7 @@ press f to return the menue");
                         order2.OrderDate = DateTime.Now;
                         try
                         {
-                            dal.Order.Update(order2);
+                            dal!.Order.Update(order2);
 
                         }
                         catch (Exception ex)
@@ -242,7 +244,7 @@ press f to return the menue");
                         /// there is risk the the order not exist
                         try
                         {
-                            dal.Order.Delete(id);
+                            dal?.Order.Delete(id);
                         }
                         catch (Exception ex)
                         {
@@ -251,7 +253,7 @@ press f to return the menue");
                         break;
                     case 'e':
                         /// print all the list of order
-                        IEnumerable<Order?> list = dal.Order.GetAll();
+                        IEnumerable<Order?> list = dal!.Order.GetAll();
                         foreach (Order? item in list)
                         {
                             Console.WriteLine(item);
@@ -310,7 +312,7 @@ press h for return to the menue");
                         Console.WriteLine("enter the amount of OrderItem");
                         int.TryParse(Console.ReadLine(), out amount);
                         orderItem.Amount = amount;
-                        dal.OrderItem.Add(orderItem);
+                        dal?.OrderItem.Add(orderItem);
                         Console.WriteLine(orderItem.ID);
                         break;
                     case 'b':
@@ -320,7 +322,7 @@ press h for return to the menue");
                         /// get the orderItem by his ID
                         try
                         {
-                            orderItem1 = dal.OrderItem.GetById(id);
+                            orderItem1 = dal!.OrderItem.GetById(id);
                             Console.WriteLine(orderItem1);
                         }
                         catch (Exception ex)
@@ -351,7 +353,7 @@ press h for return to the menue");
                         orderItem2.Amount = amount;
                         try
                         {
-                            dal.OrderItem.Update(orderItem2);
+                            dal?.OrderItem.Update(orderItem2);
 
                         }
                         catch (Exception ex)
@@ -366,7 +368,7 @@ press h for return to the menue");
                         int.TryParse(Console.ReadLine(), out id);
                         try
                         {
-                            dal.OrderItem.Delete(id);
+                            dal!.OrderItem.Delete(id);
                         }
                         catch (Exception ex)
                         {
@@ -376,7 +378,7 @@ press h for return to the menue");
                         break;
                     case 'e':
                         /// print all the OrderItem
-                        IEnumerable<OrderItem?> list = dal.OrderItem.GetAll();
+                        IEnumerable<OrderItem?> list = dal!.OrderItem.GetAll();
                         foreach (OrderItem? item in list)
                         {
                             Console.WriteLine(item);
@@ -387,7 +389,7 @@ press h for return to the menue");
                         Console.WriteLine("enter the OrderItem ID");
                         int.TryParse(Console.ReadLine(), out id);
                         List<OrderItem?> orderItem4 = new List<OrderItem?>();
-                        orderItem4 = dal.OrderItem.GetAllOrderItems(id);
+                        orderItem4 = dal!.OrderItem.GetAllOrderItems(id);
                         foreach (OrderItem? item in orderItem4)
                             Console.WriteLine(item);
 
@@ -402,7 +404,7 @@ press h for return to the menue");
                         orderItem5.ProductId = productId;
                         try
                         {
-                            Console.WriteLine(dal.OrderItem.GetOrderItem(orderId, productId));
+                            Console.WriteLine(dal?.OrderItem.GetOrderItem(orderId, productId));
                         }
                         catch (Exception ex)
                         {

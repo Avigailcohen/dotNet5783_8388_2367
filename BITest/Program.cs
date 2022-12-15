@@ -1,13 +1,15 @@
 ﻿using BIApi;
 using BIImplementation;
+
 using BO;
 ///לבדוק על החריגות
 
 namespace BITest
 {
+   
     public class Program
     {
-        static IBl bl = new Bl();
+         static IBl? bl = Factory.Get();
         static Cart newCart = new Cart() { OrderItems = new List<OrderItem>(), Price = 0 };
         static void OrderCheck()
         {
@@ -29,28 +31,28 @@ press f for return to the menue");
                     switch (choice)
                     {
                         case 'a':
-                            var v = bl.Order.GetOrders();
+                            var v = bl!.Order.GetOrders();
                             Console.WriteLine(String.Join(" ", v));//עובד 
                             break;
                         case 'b':
                             Console.WriteLine("Enter order Id");
                             if (!int.TryParse(Console.ReadLine(), out ID)) throw new FormatException("wrong input type");
-                            Console.WriteLine(bl.Order.GetOrderById(ID));
+                            Console.WriteLine(bl!.Order.GetOrderById(ID));
                             break;
                         case 'c':
                             Console.WriteLine("Enter order Id");
                             if (!int.TryParse(Console.ReadLine(), out ID)) throw new FormatException("wrong input type");
-                            Console.WriteLine(bl.Order.UpdateOrderShip(ID));
+                            Console.WriteLine(bl!.Order.UpdateOrderShip(ID));
                             break;
                         case 'd':
                             Console.WriteLine("Enter order Id");
                             if (!int.TryParse(Console.ReadLine(), out ID)) throw new FormatException("wrong input type");
-                            Console.WriteLine(bl.Order.UpdateDelivertOrder(ID));//פה קורס
+                            Console.WriteLine(bl!.Order.UpdateDelivertOrder(ID));//פה קורס
                             break;
                         case 'e':
                             Console.WriteLine("Enter order Id");
                             if (!int.TryParse(Console.ReadLine(), out ID)) throw new FormatException("wrong input type");
-                            Console.WriteLine(bl.Order.OrderTracking(ID));///עובד 
+                            Console.WriteLine(bl!.Order.OrderTracking(ID));///עובד 
                             break;
 
                     }
@@ -131,15 +133,15 @@ press h for exit");
 
                     {
                         case 'a':
-                            var lst = bl.Product.GetListedProducts();
-                            foreach (var item in lst)
+                            var lst = bl?.Product.GetListedProducts();
+                            foreach (var item in lst!)
                                 Console.WriteLine(item);
                             break;
                         case 'b':
                             int id;
                             Console.WriteLine("enter id of product:");
                             if (!int.TryParse(Console.ReadLine(), out id)) throw new FormatException("wrong input type");
-                            Console.WriteLine(bl.Product.GetProductsById(id));
+                            Console.WriteLine(bl?.Product.GetProductsById(id));
                             break;
 
                         case 'c':
@@ -162,13 +164,13 @@ press h for exit");
                             Console.WriteLine("enter amount in stock of product:");
                             if (!int.TryParse(Console.ReadLine(), out stock)) throw new FormatException("wrong input type");
                             addProduct.InStock = stock;
-                            bl.Product.AddProduct(addProduct);
+                            bl?.Product.AddProduct(addProduct);
 
                             break;
                         case 'd':
                             Console.WriteLine("enter id to delete product:");
                             if (!int.TryParse(Console.ReadLine(), out id)) throw new FormatException("wrong input type");
-                            bl.Product.DeleteProduct(id);
+                            bl?.Product.DeleteProduct(id);
                             break;
                         case 'e':
                             Product updateProduct = new Product();
@@ -186,16 +188,16 @@ press h for exit");
                             Console.WriteLine("enter amount in stock of product:");
                             if (!int.TryParse(Console.ReadLine(), out stock)) throw new FormatException("wrong input type");
                             updateProduct.InStock = stock;
-                            bl.Product.UpdateProductData(updateProduct);
+                            bl?.Product.UpdateProductData(updateProduct);
                             break;
                         case 'f':
-                            foreach (var item in bl.Product.GetListedProductsForC())
+                            foreach (var item in bl!.Product.GetListedProductsForC())
                                 Console.WriteLine(item);
                             break;
                         case 'g':
                             Console.WriteLine("enter id of product:");
                             if (!int.TryParse(Console.ReadLine(), out id)) throw new FormatException("wrong input type");
-                            Console.WriteLine(bl.Product.RequestProductDetailsForC(id, newCart));
+                            Console.WriteLine(bl!.Product.RequestProductDetailsForC(id, newCart));
                             break;
 
 
@@ -314,7 +316,7 @@ press f for return to the menue");
 
                                 Console.WriteLine("enter id of product to add to cart:");
                                 if (!int.TryParse(Console.ReadLine(), out id)) throw new Exception("wrong input type ");
-                                Console.WriteLine(bl.Cart.AddProduct(newCart, id));
+                                Console.WriteLine(bl?.Cart.AddProduct(newCart, id));
 
                                 break;
                             case 'b':
@@ -323,7 +325,7 @@ press f for return to the menue");
                                 if (!int.TryParse(Console.ReadLine(), out id)) throw new Exception("wrong input type ");
                                 Console.WriteLine("enter new amount of product:");
                                 if (!int.TryParse(Console.ReadLine(), out amount)) throw new Exception("wrong input type ");
-                                Console.WriteLine(bl.Cart.UpdateAmount(newCart, id, amount));
+                                Console.WriteLine(bl?.Cart.UpdateAmount(newCart, id, amount));
                                 break;
 
                             case 'c':
@@ -333,7 +335,7 @@ press f for return to the menue");
                                 newCart.CustomerAddress = Console.ReadLine();
                                 Console.WriteLine("please insert email address:");
                                 newCart.CustomerEmail = Console.ReadLine();
-                                bl.Cart.OrderConfirmation(newCart);
+                                bl?.Cart.OrderConfirmation(newCart);
                                 newCart = new Cart() { OrderItems = new List<OrderItem>(), Price = 0 };
                                 break;
 

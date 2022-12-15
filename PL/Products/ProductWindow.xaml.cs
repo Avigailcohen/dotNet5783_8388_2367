@@ -26,7 +26,7 @@ namespace PL.Products
     /// 
     public partial class ProductWindow : Window
     {
-        IBl bl;
+        BIApi.IBl? bl = BIApi.Factory.Get();
         /// <summary>
         /// ctor to ADD action 
         /// </summary>
@@ -35,7 +35,7 @@ namespace PL.Products
             ///for add 
             /// when the admin press on add 
             InitializeComponent();
-            bl = new Bl();
+           
             selectionCB.ItemsSource = Enum.GetValues(typeof(BO.Category));
             AddOrUpBtn.Content = "Add";
             ID.Foreground = Brushes.Black;
@@ -56,7 +56,7 @@ namespace PL.Products
         public ProductWindow(int id)
         {
             InitializeComponent();
-            bl = new Bl();
+           
 
             selectionCB.ItemsSource = Enum.GetValues(typeof(BO.Category));///for the comboBox
             BO.Product product = bl.Product.GetProductsById(id);//getting the details from bl about the product 
@@ -104,17 +104,17 @@ namespace PL.Products
                 
 
                 ///adding a product to the list 
-                if (AddOrUpBtn.Content! == "Add")
+                if (AddOrUpBtn.Content == "Add")
                 {
                     BO.Product product = new BO.Product()
                     {
                         ProductID = int.Parse(ID.Text),
                         Name = Name.Text,
                         InStock = int.Parse(Amount.Text),
-                        Price = int.Parse(Price.Text),
+                        Price = double.Parse(Price.Text),
                         Category = (BO.Category)selectionCB.SelectedItem
                     };
-                    bl.Product.AddProduct(product);
+                    bl!.Product.AddProduct(product);
 
                     messageBoxResult = MessageBox.Show("Product Add succefully", "succefully", MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -122,7 +122,7 @@ namespace PL.Products
                 else
                 {
                     ///when he press two clicks on the product for update the prodcut
-                    bl.Product.UpdateProductData(new Product()
+                    bl!.Product.UpdateProductData(new Product()
                     {
                         ProductID = int.Parse(ID.Text),
                         Name = Name.Text,

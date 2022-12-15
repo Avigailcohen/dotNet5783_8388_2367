@@ -12,10 +12,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using BIApi;
 using PL.Products;
 using BL;
-using BIImplementation;
+
+
 namespace PL
 {
     /// <summary>
@@ -23,7 +23,8 @@ namespace PL
     /// </summary>
     public partial class MainWindow : Window
     {
-        IBl bl = new Bl();
+        BIApi.IBl? bl = BIApi.Factory.Get();
+
 
         public MainWindow()
         {

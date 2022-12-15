@@ -122,7 +122,7 @@ internal static class DataSource
             for (int j = 0; j < x; j++)
             {
                 itemAdd.ID = config.nextOrderItemNumber;
-                product = productList[s_rand.Next(0, productList.Count())].Value;
+                product = productList[s_rand.Next(0, productList.Count())]!.Value;
                 itemAdd.ProductId = product.ID;
                 itemAdd.Amount = s_rand.Next(1, 4);
                 itemAdd.Price = product.Price * itemAdd.Amount;
