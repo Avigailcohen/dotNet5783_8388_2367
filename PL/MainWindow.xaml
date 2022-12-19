@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
 
-    <Grid OpacityMask="#FFDCC2C2">
+    <Grid OpacityMask="#FFDCC2C2" Margin="-96,-31,-96,0" Height="533" VerticalAlignment="Top">
         <Grid.Background>
             <ImageBrush ImageSource="/62d1d7e044e7210ff4ba1e06a32bc6df--logos-ideas-logo-google.jpg"/>
         </Grid.Background>
