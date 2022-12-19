@@ -375,7 +375,7 @@ press f for return to the menue");
 
                     //    }
                     //    char.TryParse(Console.ReadLine(), out choice);
-
+///לבדוק את זה
                 }
                 catch (BO.BlIdAlreadyExistException ex) { Console.WriteLine(ex); }
                 catch (BO.BlIdDoNotExistException ex) { Console.WriteLine(ex); }
@@ -392,7 +392,7 @@ press f for return to the menue");
 
             static void Main(string[] args)
             {
-                /// main program which check the function
+                ///The main program which check the function
                 Program Program = new Program();
                 char choice;
                 Console.WriteLine("enter one of the following options");
