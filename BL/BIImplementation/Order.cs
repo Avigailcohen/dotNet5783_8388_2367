@@ -176,6 +176,25 @@ namespace BIImplementation
                     new Tuple<DateTime?, string>( dOrder.DeliveryDate, "delivery date ") }
             };
         }
+/// <summary>
+/// function which sort the orders by total price, need to check how can we use her in PL
+/// </summary>
+/// <param name="ascending"></param>
+/// <returns></returns>
+        public IEnumerable<IGrouping<double, BO.OrderForList>> GetGroupedOrderes(bool ascending = true)
+        {
+            if (ascending == true)
+                return from order in GetOrders()
+                       orderby order.TotalPrice
+                         group order by order.TotalPrice into g
+                         select g;
+            else
+                return from order in GetOrders()
+                       orderby order.TotalPrice descending
+                       group order by order.TotalPrice into g
+                       select g;
+
+        }
     }
 
 }

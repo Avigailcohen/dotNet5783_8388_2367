@@ -58,6 +58,7 @@ namespace PL.Products
         private void AddProduct(object sender, RoutedEventArgs e)
         {
             new ProductWindow().ShowDialog();
+            //observerCollection
             listViewOfProducts.ItemsSource = bl?.Product.GetListedProducts();
 
         }

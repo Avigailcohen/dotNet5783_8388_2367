@@ -115,7 +115,7 @@ namespace PL.Products
                         Category = (BO.Category)selectionCB.SelectedItem
                     };
                     bl!.Product.AddProduct(product);
-
+                   
                     messageBoxResult = MessageBox.Show("Product Add succefully", "succefully", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 }
@@ -131,6 +131,7 @@ namespace PL.Products
                         Category = (BO.Category)selectionCB.SelectedItem
 
                     });
+                    
                     messageBoxResult = MessageBox.Show("Product update succefully", "succefully", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }

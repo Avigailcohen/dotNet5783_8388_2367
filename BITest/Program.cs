@@ -6,10 +6,10 @@ using BO;
 
 namespace BITest
 {
-   
+
     public class Program
     {
-         static IBl? bl = Factory.Get();
+        static IBl? bl = Factory.Get();
         static Cart newCart = new Cart() { OrderItems = new List<OrderItem>(), Price = 0 };
         static void OrderCheck()
         {
@@ -22,11 +22,12 @@ Press b for GetOrderById,
 press c for UpdateOrderShip,
 press d for UpdateDelivertOrder,
 press e for OrderTracking,
-press f for return to the menue");
+press f for sort list,
+press g for return to the menue");
             if (!char.TryParse(Console.ReadLine(), out choice)) throw new Exception("wrong input type");
             try
             {
-                while (choice != 'f')
+                while (choice != 'g')
                 {
                     switch (choice)
                     {
@@ -53,6 +54,9 @@ press f for return to the menue");
                             Console.WriteLine("Enter order Id");
                             if (!int.TryParse(Console.ReadLine(), out ID)) throw new FormatException("wrong input type");
                             Console.WriteLine(bl!.Order.OrderTracking(ID));///עובד 
+                            break;
+                        case 'f':
+                            IEnumerable<IGrouping<double, OrderForList>> list = bl!.Order.GetGroupedOrderes();
                             break;
 
                     }
@@ -295,146 +299,146 @@ press h for exit");
             catch (ArgumentException ex) { Console.WriteLine(ex); }
 
         }
-            static void CartCheck()
-            {
-                char choice;
-                Console.WriteLine("Enter your choice");
-                Console.WriteLine($@"
+        static void CartCheck()
+        {
+            char choice;
+            Console.WriteLine("Enter your choice");
+            Console.WriteLine($@"
 press a for Add Product to the cart ,
 Press b for Update Amount of product in cart ,
 press c for Order Confirmation,
 press f for return to the menue");
-                if (!char.TryParse(Console.ReadLine(), out choice)) throw new Exception("wrong input type");
-                try
+            if (!char.TryParse(Console.ReadLine(), out choice)) throw new Exception("wrong input type");
+            try
+            {
+                while (choice != 'f')
                 {
-                    while (choice != 'f')
+                    switch (choice)
                     {
-                        switch (choice)
-                        {
-                            case 'a':
-                                int id, amount;
+                        case 'a':
+                            int id, amount;
 
-                                Console.WriteLine("enter id of product to add to cart:");
-                                if (!int.TryParse(Console.ReadLine(), out id)) throw new Exception("wrong input type ");
-                                Console.WriteLine(bl?.Cart.AddProduct(newCart, id));
+                            Console.WriteLine("enter id of product to add to cart:");
+                            if (!int.TryParse(Console.ReadLine(), out id)) throw new Exception("wrong input type ");
+                            Console.WriteLine(bl?.Cart.AddProduct(newCart, id));
 
-                                break;
-                            case 'b':
+                            break;
+                        case 'b':
 
-                                Console.WriteLine("enter id of product to add to cart:");
-                                if (!int.TryParse(Console.ReadLine(), out id)) throw new Exception("wrong input type ");
-                                Console.WriteLine("enter new amount of product:");
-                                if (!int.TryParse(Console.ReadLine(), out amount)) throw new Exception("wrong input type ");
-                                Console.WriteLine(bl?.Cart.UpdateAmount(newCart, id, amount));
-                                break;
+                            Console.WriteLine("enter id of product to add to cart:");
+                            if (!int.TryParse(Console.ReadLine(), out id)) throw new Exception("wrong input type ");
+                            Console.WriteLine("enter new amount of product:");
+                            if (!int.TryParse(Console.ReadLine(), out amount)) throw new Exception("wrong input type ");
+                            Console.WriteLine(bl?.Cart.UpdateAmount(newCart, id, amount));
+                            break;
 
-                            case 'c':
-                                Console.WriteLine("please insert name:");
-                                newCart.CustomerName = Console.ReadLine();
-                                Console.WriteLine("please insert address:");
-                                newCart.CustomerAddress = Console.ReadLine();
-                                Console.WriteLine("please insert email address:");
-                                newCart.CustomerEmail = Console.ReadLine();
-                                bl?.Cart.OrderConfirmation(newCart);
-                                newCart = new Cart() { OrderItems = new List<OrderItem>(), Price = 0 };
-                                break;
+                        case 'c':
+                            Console.WriteLine("please insert name:");
+                            newCart.CustomerName = Console.ReadLine();
+                            Console.WriteLine("please insert address:");
+                            newCart.CustomerAddress = Console.ReadLine();
+                            Console.WriteLine("please insert email address:");
+                            newCart.CustomerEmail = Console.ReadLine();
+                            bl?.Cart.OrderConfirmation(newCart);
+                            newCart = new Cart() { OrderItems = new List<OrderItem>(), Price = 0 };
+                            break;
 
-                        }
-                        char.TryParse(Console.ReadLine(), out choice);
                     }
-
-                    // while(choice!='f')
-                    //{
-                    //    switch (choice)
-                    //    {
-                    //        case 'a':
-                    //            int id, amount;
-
-                    //            Console.WriteLine("enter id of product to add to cart:");
-                    //            if (!int.TryParse(Console.ReadLine(), out id)) throw new Exception("wrong input type ");
-                    //            Console.WriteLine(bl.Cart.AddProduct(newCart, id));
-
-                    //            break;
-                    //            case 'b':
-
-                    //            Console.WriteLine("enter id of product to add to cart:");
-                    //            if (!int.TryParse(Console.ReadLine(), out id)) throw new Exception("wrong input type ");
-                    //            Console.WriteLine("enter new amount of product:");
-                    //            if (!int.TryParse(Console.ReadLine(), out amount)) throw new Exception("wrong input type ");
-                    //            Console.WriteLine(bl.Cart.UpdateAmount(newCart, id, amount));
-                    //            break;
-
-                    //        case 'c':
-                    //            Console.WriteLine("please insert name:");
-                    //            newCart.CustomerName = Console.ReadLine();
-                    //            Console.WriteLine("please insert address:");
-                    //            newCart.CustomerAddress = Console.ReadLine();
-                    //            Console.WriteLine("please insert email address:");
-                    //            newCart.CustomerEmail = Console.ReadLine();
-                    //            bl.Cart.OrderConfirmation(newCart);
-                    //            newCart = new Cart() { OrderItems = new List<OrderItem>(), Price = 0 };
-                    //            break;
-
-                    //    }
-                    //    char.TryParse(Console.ReadLine(), out choice);
-
+                    char.TryParse(Console.ReadLine(), out choice);
                 }
-                catch (BO.BlIdAlreadyExistException ex) { Console.WriteLine(ex); }
-                catch (BO.BlIdDoNotExistException ex) { Console.WriteLine(ex); }
-                catch (BO.BlIncorrectDateException ex) { Console.WriteLine(ex); }
-                catch (BO.BlInvalidInputException ex) { Console.WriteLine(ex); }
-                catch (BO.BlNullPropertyException ex) { Console.WriteLine(ex); }
-                catch (BO.BlWrongCategoryException ex) { Console.WriteLine(ex); }
-                catch (FormatException ex) { Console.WriteLine(ex); }
-                catch (ArgumentException ex) { Console.WriteLine(ex); }
 
+                // while(choice!='f')
+                //{
+                //    switch (choice)
+                //    {
+                //        case 'a':
+                //            int id, amount;
 
+                //            Console.WriteLine("enter id of product to add to cart:");
+                //            if (!int.TryParse(Console.ReadLine(), out id)) throw new Exception("wrong input type ");
+                //            Console.WriteLine(bl.Cart.AddProduct(newCart, id));
+
+                //            break;
+                //            case 'b':
+
+                //            Console.WriteLine("enter id of product to add to cart:");
+                //            if (!int.TryParse(Console.ReadLine(), out id)) throw new Exception("wrong input type ");
+                //            Console.WriteLine("enter new amount of product:");
+                //            if (!int.TryParse(Console.ReadLine(), out amount)) throw new Exception("wrong input type ");
+                //            Console.WriteLine(bl.Cart.UpdateAmount(newCart, id, amount));
+                //            break;
+
+                //        case 'c':
+                //            Console.WriteLine("please insert name:");
+                //            newCart.CustomerName = Console.ReadLine();
+                //            Console.WriteLine("please insert address:");
+                //            newCart.CustomerAddress = Console.ReadLine();
+                //            Console.WriteLine("please insert email address:");
+                //            newCart.CustomerEmail = Console.ReadLine();
+                //            bl.Cart.OrderConfirmation(newCart);
+                //            newCart = new Cart() { OrderItems = new List<OrderItem>(), Price = 0 };
+                //            break;
+
+                //    }
+                //    char.TryParse(Console.ReadLine(), out choice);
 
             }
+            catch (BO.BlIdAlreadyExistException ex) { Console.WriteLine(ex); }
+            catch (BO.BlIdDoNotExistException ex) { Console.WriteLine(ex); }
+            catch (BO.BlIncorrectDateException ex) { Console.WriteLine(ex); }
+            catch (BO.BlInvalidInputException ex) { Console.WriteLine(ex); }
+            catch (BO.BlNullPropertyException ex) { Console.WriteLine(ex); }
+            catch (BO.BlWrongCategoryException ex) { Console.WriteLine(ex); }
+            catch (FormatException ex) { Console.WriteLine(ex); }
+            catch (ArgumentException ex) { Console.WriteLine(ex); }
 
-            static void Main(string[] args)
-            {
-                /// main program which check the function
-                Program Program = new Program();
-                char choice;
-                Console.WriteLine("enter one of the following options");
-                Console.WriteLine($@"
+
+
+        }
+
+        static void Main(string[] args)
+        {
+            /// main program which check the function
+            Program Program = new Program();
+            char choice;
+            Console.WriteLine("enter one of the following options");
+            Console.WriteLine($@"
 press 1 for Order,
 press 2 for product,
 press 3 for Cart,
 press 4 for exit");
-                char.TryParse(Console.ReadLine(), out choice);
+            char.TryParse(Console.ReadLine(), out choice);
 
-                while (choice != '5')
+            while (choice != '5')
+            {
+
+                switch (choice)
                 {
+                    case '1':
+                        Program.OrderCheck();
 
-                    switch (choice)
-                    {
-                        case '1':
-                            Program.OrderCheck();
+                        break;
+                    case '2':
+                        Program.ProductCheck();
 
-                            break;
-                        case '2':
-                            Program.ProductCheck();
+                        break;
+                    case '3':
+                        Program.CartCheck();
+                        break;
 
-                            break;
-                        case '3':
-                            Program.CartCheck();
-                            break;
-
-                        case '4':
-                            return;
+                    case '4':
+                        return;
 
 
-                    }
-                    Console.WriteLine($@"
+                }
+                Console.WriteLine($@"
 press 1 for Order,
 press 2 for Product,
 press 3 for Cart,
 press 4 for exit");
-                    char.TryParse(Console.ReadLine(), out choice);
+                char.TryParse(Console.ReadLine(), out choice);
 
-                }
             }
         }
     }
+}

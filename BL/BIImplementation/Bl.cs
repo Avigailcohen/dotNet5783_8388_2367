@@ -3,7 +3,7 @@
 namespace BIImplementation;
 sealed public class Bl : IBl
 {
-    public Bl() { }
+    internal Bl() { }
 
     public IOrder Order { get; } = new Order();
     public IProduct Product { get; } = new Product();
