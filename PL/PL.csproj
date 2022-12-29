@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <None Remove="62d1d7e044e7210ff4ba1e06a32bc6df--logos-ideas-logo-google.jpg" />
+    <None Remove="Products\massimo_dutti.jpg" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,6 +24,7 @@
 
   <ItemGroup>
     <Resource Include="62d1d7e044e7210ff4ba1e06a32bc6df--logos-ideas-logo-google.jpg" />
+    <Resource Include="Products\massimo_dutti.jpg" />
   </ItemGroup>
 
 </Project>

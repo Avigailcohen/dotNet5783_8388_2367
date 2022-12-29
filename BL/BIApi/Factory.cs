@@ -1,4 +1,4 @@
-﻿using BIImplementation;
+﻿
 using DalApi;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace BIApi
         public static IBl? Get()
         {
 
-            return new Bl();
+            return new BIImplementation.Bl();
         }
     }
 }

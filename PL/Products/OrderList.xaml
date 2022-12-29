@@ -1,0 +1,23 @@
+﻿<Window x:Class="PL.Products.OrderList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL.Products"
+        mc:Ignorable="d"
+       
+        Title="OrderList" Height="450" Width="800" Background="Black" >
+
+    <DataGrid x:Name="orderForListDataGrid" AutoGenerateColumns="False" IsReadOnly="True" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="94,27,198,79" Background="Black" MouseDoubleClick="orderForListDataGrid_MouseDoubleClick" FontFamily="Aharoni" FontWeight="Bold" FontStyle="Italic">
+       
+        <DataGrid.Columns>
+            <DataGridTextColumn x:Name="iDColumn" Binding="{Binding ID}" Header="ID" Width="SizeToHeader"/>
+            <DataGridTextColumn x:Name="customerNameColumn" Binding="{Binding CustomerName}" Header="Customer Name" Width="SizeToHeader"/>
+            <DataGridTextColumn x:Name="orderStatusColumn" Binding="{Binding OrderStatus}" Header="Order Status" Width="SizeToHeader"/>
+            <DataGridTextColumn x:Name="amountItemsColumn" Binding="{Binding AmountItems}" Header="Amount Items" Width="SizeToHeader"/>
+            <DataGridTextColumn x:Name="totalPriceColumn" Binding="{Binding TotalPrice}" Header="Total Price" Width="SizeToHeader"/>
+            
+        </DataGrid.Columns>
+        
+    </DataGrid>
+</Window>

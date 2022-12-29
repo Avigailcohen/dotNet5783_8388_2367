@@ -6,14 +6,21 @@
         xmlns:local="clr-namespace:PL.Products"
         mc:Ignorable="d"
         Title="ProductListWindow" Height="640" Width="800">
-    <Grid Name="MainGrid" Background="Black">
+    <Grid Name="MainGrid" Background="Black" RenderTransformOrigin="0.844,0.36">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="41*"/>
-            <RowDefinition Height="514*"/>
-            <RowDefinition Height="69.04"/>
+            <RowDefinition Height="583*"/>
+            <RowDefinition Height="0"/>
         </Grid.RowDefinitions>
 
-        <Grid Name="UpGrid" HorizontalAlignment="Center" Height="auto" Grid.Row="0" Width="800" Margin="0,0,0,3">
+
+        <Grid Name="UpGrid" HorizontalAlignment="Center" Height="auto" Grid.Row="0" Width="800" Margin="0,0,0,3" Grid.Column="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="400*"/>
                 <ColumnDefinition Width="271*"/>
@@ -21,7 +28,16 @@
                 <ColumnDefinition Width="81*"/>
                 <ColumnDefinition Width="32*"/>
             </Grid.ColumnDefinitions >
-            <ComboBox Name="Category" SelectionChanged="selectionChange" Grid.ColumnSpan="5" Margin="390,4,10,-4">
+            <Grid Grid.Column="1" Grid.ColumnSpan="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="400*"/>
+                    <ColumnDefinition Width="271*"/>
+                    <ColumnDefinition Width="16*"/>
+                    <ColumnDefinition Width="81*"/>
+                    <ColumnDefinition Width="32*"/>
+                </Grid.ColumnDefinitions >
+            </Grid>
+            <ComboBox x:Name="Category" SelectionChanged="selectionChange" Grid.ColumnSpan="4" Margin="182,4,10,-4" Grid.Column="1" FontFamily="Cascadia Code SemiBold" FontSize="14">
                 <ComboBox.Background>
                     <LinearGradientBrush EndPoint="0,1">
                         <GradientStop Color="#FFF0F0F0"/>
@@ -29,25 +45,35 @@
                     </LinearGradientBrush>
                 </ComboBox.Background>
             </ComboBox>
-            <Label Content="Products:" Grid.Column="0" Grid.Row="0" FontWeight="Bold" Margin="10,10,261,-10" Grid.ColumnSpan="2" FontFamily="Rockwell Extra Bold" Foreground="#FFFFF3F3">
+            <Label Content="Products:" Grid.Column="0" Grid.Row="0" FontWeight="Bold" Margin="0,4,215,-23" FontFamily="Rockwell Extra Bold" Foreground="#FFFFF3F3" Grid.ColumnSpan="2" FontSize="22">
                 <Label.Background>
                     <ImageBrush/>
                 </Label.Background>
             </Label>
-            <Button Content="Add new Product" Click="AddProduct" HorizontalAlignment="Left" Margin="275,4,0,4" Padding="5" FontFamily="Bell MT" Foreground="#FFFFFBFD" FontSize="14">
-                <Button.Background>
-                    <ImageBrush/>
-                </Button.Background>
-                <Button.BorderBrush>
-                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                        <GradientStop Color="Black"/>
-                        <GradientStop Color="#FF402929" Offset="1"/>
-                    </LinearGradientBrush>
-                </Button.BorderBrush>
-            </Button>
         </Grid>
 
-        <ListView x:Name="listViewOfProducts" MouseDoubleClick="update" Margin="0,34,10,0" Grid.Row="1" Grid.RowSpan="2" />
+        <ListView x:Name="listViewOfProducts" ItemsSource="{Binding}" MouseDoubleClick="update" Margin="10,34,323,5" Grid.Row="1" RenderTransformOrigin="0.515,0.987" Grid.ColumnSpan="4" FontFamily="Bahnschrift SemiBold SemiCondensed" FontSize="14" />
+        <Image Source="C:\Users\avigail cohen\Desktop\images.png" RenderTransformOrigin="0.959,0.5" Margin="681,508,-43,10" Grid.ColumnSpan="3" Grid.Column="1" Grid.Row="1"/>
+        <Button Content="Add new Product" Click="AddProduct" HorizontalAlignment="Left" Margin="530,513,0,5" Padding="5" FontFamily="Bell MT" Foreground="#FFFFFBFD" FontSize="14" Width="187" RenderTransformOrigin="0.554,0.807" Grid.ColumnSpan="4" Grid.Row="1">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0"/>
+                    <RotateTransform Angle="0.16"/>
+                    <TranslateTransform X="0"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+            <Button.Background>
+                <ImageBrush/>
+            </Button.Background>
+            <Button.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FF080808" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.BorderBrush>
+        </Button>
+
 
     </Grid>
 </Window>

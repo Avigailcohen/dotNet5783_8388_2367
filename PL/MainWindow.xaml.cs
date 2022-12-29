@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PL.Products;
 using BL;
-
+using System.Security.Cryptography;
 
 namespace PL
 {
@@ -34,7 +34,51 @@ namespace PL
 
         private void productList(object sender, RoutedEventArgs e)
         {
-            new ProductListWindow(bl).Show();
+            new ChooseForM().Show();
+        }
+
+
+        
+
+        private void Button_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            MoveToT.Visibility = Visibility.Visible;
+            EnterOrderID_.Visibility=Visibility.Visible;
+            IDText.Visibility=Visibility.Visible;
+        }
+
+        private void IDText_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            TextBox text = sender as TextBox;
+
+            if (text == null) return;
+
+            if (e == null) return;
+
+            char c = (char)KeyInterop.VirtualKeyFromKey(e.Key);
+
+            //allow control system keys
+
+            if (Char.IsControl(c)) return;
+
+            //allow digits (without Shift or Alt)
+
+            if (Char.IsDigit(c))
+
+                if (!(Keyboard.IsKeyDown(Key.LeftShift) || Keyboard.IsKeyDown(Key.RightAlt)))
+
+                    return;
+
+
+            e.Handled = true;
+
+            return;
+        }
+
+        private void MoveToT_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            int id;
+            new OrderTrack().Show();
         }
     }
 };

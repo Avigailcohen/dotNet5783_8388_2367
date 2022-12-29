@@ -195,6 +195,8 @@ press h for exit");
                             bl?.Product.UpdateProductData(updateProduct);
                             break;
                         case 'f':
+                           
+                            
                             foreach (var item in bl!.Product.GetListedProductsForC())
                                 Console.WriteLine(item);
                             break;

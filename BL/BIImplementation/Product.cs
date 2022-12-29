@@ -106,9 +106,7 @@ namespace BIImplementation
                        Category = (BO.Category)(doProduct?.Category ?? throw new NullReferenceException("missing category")),
                        Price = doProduct?.Price ?? 0,
                        InStock = doProduct?.InStock > 0 ? true : false,
-                       AmountInCart = 0/////////////////////////////////////////////////////check it!!!!
-
-
+                       AmountInCart = 0
                    };
 
             throw new NotImplementedException();

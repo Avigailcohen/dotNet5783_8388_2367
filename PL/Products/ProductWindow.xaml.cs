@@ -117,6 +117,7 @@ namespace PL.Products
                     bl!.Product.AddProduct(product);
                    
                     messageBoxResult = MessageBox.Show("Product Add succefully", "succefully", MessageBoxButton.OK, MessageBoxImage.Information);
+                    this.Close();
 
                 }
                 else
@@ -133,6 +134,7 @@ namespace PL.Products
                     });
                     
                     messageBoxResult = MessageBox.Show("Product update succefully", "succefully", MessageBoxButton.OK, MessageBoxImage.Information);
+                    this.Close();
                 }
             }
             catch (BO.BlIdAlreadyExistException x)
