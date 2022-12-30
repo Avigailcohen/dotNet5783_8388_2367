@@ -19,9 +19,33 @@ namespace PL.Products
     /// </summary>
     public partial class OrderTrack : Window
     {
-        public OrderTrack()
+        BIApi.IBl? bl = BIApi.Factory.Get();
+
+
+        public BO.OrderTracking?  OrderTracking
+        {
+            get { return (BO.OrderTracking )GetValue(OrderTrackingProperty); }
+            set { SetValue(OrderTrackingProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for OrderTracking.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty OrderTrackingProperty =
+            DependencyProperty.Register("OrderTracking", typeof(BO.OrderTracking ), typeof(Window), new PropertyMetadata(null));
+
+
+        public OrderTrack(int id)
         {
             InitializeComponent();
+            try
+            {
+                OrderTracking= bl?.Order.OrderTracking(id);
+            }
+            catch(BO.BlIdDoNotExistException ex)
+            {
+                MessageBox.Show(ex.Message + "  is not exist","Not exist", MessageBoxButton.OK,MessageBoxImage.Error);
+            }
         }
+
+        
     }
 }

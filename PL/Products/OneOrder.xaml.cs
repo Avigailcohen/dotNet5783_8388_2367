@@ -52,11 +52,11 @@ namespace PL.Products
 
         private void Update_Delivery(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult messageBoxResult;
             try
             {
                 bl?.Order.UpdateDelivertOrder(order!.ID);
-                MessageBox.Show("Updated succefully");
-                this.Close();
+                messageBoxResult= MessageBox.Show("Order delivered  succefully", "succefully", MessageBoxButton.OK, MessageBoxImage.Information);
                 order = bl?.Order.GetOrderById(order!.ID);
                 
             }
@@ -68,15 +68,22 @@ namespace PL.Products
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult messageBoxResult;
             try
             {
                 bl?.Order.UpdateOrderShip(order!.ID);
+                messageBoxResult= MessageBox.Show("Order shipped  succefully", "succefully", MessageBoxButton.OK, MessageBoxImage.Information);
                 order = bl?.Order.GetOrderById(order!.ID);
             }
             catch (BO.BlIdDoNotExistException ex)
             {
                 MessageBox.Show(ex.Message, "Operation Fail", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
+        }
+
+        private void Button_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
         }
     }
 }

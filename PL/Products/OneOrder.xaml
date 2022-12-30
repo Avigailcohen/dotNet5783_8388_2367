@@ -12,10 +12,10 @@
     <Grid Background="Black" Margin="0,0,10,12">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="364*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="29*"/>
+            <ColumnDefinition Width="31*"/>
+            <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <Grid x:Name="grid1"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="162,86,0,0">
+        <Grid x:Name="grid1"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="116,81,0,0" Height="233" Width="295">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0"/>
                 <ColumnDefinition Width="99.307"/>
@@ -63,9 +63,9 @@
             <TextBox x:Name="totalPriceTextBox" Grid.Column="2" HorizontalAlignment="Left" Height="NaN" Margin="3,0,0,0" Grid.Row="9"   IsReadOnly="True" Text="{Binding TotalPrice, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" BorderBrush="#FFF00A0A" Grid.ColumnSpan="2"/>
 
         </Grid>
-        <Button Content="Update" HorizontalAlignment="Left" Margin="112,167,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.097,0.94" Height="23" Width="48" Click="Update_Delivery" BorderBrush="Black" Background="White" FontFamily="Bodoni MT Black"/>
-        <Button Content="Update " HorizontalAlignment="Left" Margin="110,244,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.08,0.577" Click="Button_Click" BorderBrush="#FF060606" Background="White" FontFamily="Bodoni MT Black"/>
-        <ListView x:Name="orderItemListView" ItemsSource="{Binding OrderItems}" SelectionMode="Single" Margin="440,25,30,222" Grid.ColumnSpan="3" Background="#FF151614" FontWeight="Bold" Foreground="#FFFDFDFD">
+        <Button Content="Update" HorizontalAlignment="Left" Margin="48,165,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.097,0.94" Height="23" Width="48" Click="Update_Delivery" BorderBrush="Black" Background="White" FontFamily="Bodoni MT Black"/>
+        <Button Content="Update " HorizontalAlignment="Left" Margin="47,241,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.08,0.577" Click="Button_Click" BorderBrush="#FF060606" Background="White" FontFamily="Bodoni MT Black" Height="18" Width="50"/>
+        <ListView x:Name="orderItemListView" ItemsSource="{Binding OrderItems}" SelectionMode="Single" Margin="410,25,33,222" Grid.ColumnSpan="2" Background="#FF151614" FontWeight="Bold" Foreground="#FFFDFDFD">
             <ListView.ItemContainerStyle>
                 <Style>
                     <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
@@ -119,6 +119,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button Content="Close" HorizontalAlignment="Left" Margin="634,360,0,0" VerticalAlignment="Top" Height="46" Width="96" Background="White" FontWeight="Bold" FontSize="24" MouseDoubleClick="Button_MouseDoubleClick" RenderTransformOrigin="0.855,0.615" Grid.ColumnSpan="2"/>
 
 
     </Grid>

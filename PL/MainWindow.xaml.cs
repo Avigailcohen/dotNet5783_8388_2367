@@ -29,7 +29,7 @@ namespace PL
         public MainWindow()
         {
             InitializeComponent();
-           
+
         }
 
         private void productList(object sender, RoutedEventArgs e)
@@ -38,13 +38,13 @@ namespace PL
         }
 
 
-        
+
 
         private void Button_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             MoveToT.Visibility = Visibility.Visible;
-            EnterOrderID_.Visibility=Visibility.Visible;
-            IDText.Visibility=Visibility.Visible;
+            EnterOrderID_.Visibility = Visibility.Visible;
+            IDText.Visibility = Visibility.Visible;
         }
 
         private void IDText_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -77,8 +77,8 @@ namespace PL
 
         private void MoveToT_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            int id;
-            new OrderTrack().Show();
+          int ID=int.Parse(IDText.Text);
+            new OrderTrack(ID).Show();
         }
     }
 };
