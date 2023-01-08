@@ -49,7 +49,7 @@ namespace BO
         public string? Entity;
         public BlInvalidInputException(string ent) : base() { Entity = ent; }
         public BlInvalidInputException(string Entity, Exception innerException) : base(Entity, innerException) { }
-        public override string ToString() => $"invalid {Entity}";
+        public override string ToString() => base.ToString() + $" Incorrect";
     }
     public class BlEmptyException: Exception
     {

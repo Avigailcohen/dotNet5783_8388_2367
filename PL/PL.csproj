@@ -14,8 +14,41 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="62d1d7e044e7210ff4ba1e06a32bc6df--logos-ideas-logo-google.jpg" />
+    <None Remove="Bigger.png" />
+    <None Remove="Bigger1.png" />
+    <None Remove="Bigger2.jpg" />
+    <None Remove="Bind.jpg" />
+    <None Remove="BlueDress.jpg" />
+    <None Remove="CartImage.jpg" />
+    <None Remove="DressM.jpg" />
+    <None Remove="Flower.jpg" />
+    <None Remove="heart-coloring-page-18.jpg" />
+    <None Remove="heart.png" />
+    <None Remove="heart1.jpg" />
+    <None Remove="hearts_cl_15.jpg" />
+    <None Remove="iCON.jpg" />
+    <None Remove="image1.jpg" />
+    <None Remove="Main1.jpg" />
+    <None Remove="Main3.jpg" />
+    <None Remove="Products\Bon.jpg" />
+    <None Remove="Products\Card.jpg" />
+    <None Remove="Products\CardVisa.png" />
+    <None Remove="Products\CartImage.jpg" />
+    <None Remove="Products\details.jpg" />
+    <None Remove="Products\DownAdd.jpg" />
+    <None Remove="Products\DownAdd1.jpg" />
+    <None Remove="Products\iCON.jpg" />
+    <None Remove="Products\images.png" />
+    <None Remove="Products\logo099.jpg" />
+    <None Remove="Products\LOGO11.jpg" />
+    <None Remove="Products\MAN.jpg" />
     <None Remove="Products\massimo_dutti.jpg" />
+    <None Remove="Products\PayPal.png" />
+    <None Remove="Products\website-icons_Social-Media_01.png" />
+    <None Remove="Products\אינסטגרם.jpg" />
+    <None Remove="Products\וואצפ.jpeg" />
+    <None Remove="Products\שחורלוגו-חדש-סיבי-06.png" />
+    <None Remove="שחורלוגו-חדש-סיבי-06.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,8 +56,41 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="62d1d7e044e7210ff4ba1e06a32bc6df--logos-ideas-logo-google.jpg" />
+    <Resource Include="Bigger.png" />
+    <Resource Include="Bigger1.png" />
+    <Resource Include="Bigger2.jpg" />
+    <Resource Include="Bind.jpg" />
+    <Resource Include="BlueDress.jpg" />
+    <Resource Include="CartImage.jpg" />
+    <Resource Include="DressM.jpg" />
+    <Resource Include="Flower.jpg" />
+    <Resource Include="heart-coloring-page-18.jpg" />
+    <Resource Include="heart.png" />
+    <Resource Include="heart1.jpg" />
+    <Resource Include="hearts_cl_15.jpg" />
+    <Resource Include="iCON.jpg" />
+    <Resource Include="image1.jpg" />
+    <Resource Include="Main1.jpg" />
+    <Resource Include="Main3.jpg" />
+    <Resource Include="Products\Bon.jpg" />
+    <Resource Include="Products\Card.jpg" />
+    <Resource Include="Products\CardVisa.png" />
+    <Resource Include="Products\CartImage.jpg" />
+    <Resource Include="Products\details.jpg" />
+    <Resource Include="Products\DownAdd.jpg" />
+    <Resource Include="Products\DownAdd1.jpg" />
+    <Resource Include="Products\iCON.jpg" />
+    <Resource Include="Products\images.png" />
+    <Resource Include="Products\logo099.jpg" />
+    <Resource Include="Products\LOGO11.jpg" />
+    <Resource Include="Products\MAN.jpg" />
     <Resource Include="Products\massimo_dutti.jpg" />
+    <Resource Include="Products\PayPal.png" />
+    <Resource Include="Products\website-icons_Social-Media_01.png" />
+    <Resource Include="Products\אינסטגרם.jpg" />
+    <Resource Include="Products\וואצפ.jpeg" />
+    <Resource Include="Products\שחורלוגו-חדש-סיבי-06.png" />
+    <Resource Include="שחורלוגו-חדש-סיבי-06.png" />
   </ItemGroup>
 
 </Project>

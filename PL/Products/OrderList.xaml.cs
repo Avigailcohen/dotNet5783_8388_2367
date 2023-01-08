@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +25,12 @@ namespace PL.Products
         {
             InitializeComponent();
             orderForListDataGrid.ItemsSource = bl?.Order.GetOrders();
-       
+            OrderStatus orderStatus= new BO.OrderStatus();
+            Category1.ItemsSource = Enum.GetValues(typeof(BO.OrderStatus));
+            Category1.SelectedIndex = 1;
+
+
+
         }
         
         private void orderForListDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -40,6 +46,16 @@ namespace PL.Products
 
             //new OneOrder().Show();
           
+        }
+
+
+        private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            OrderStatus orderStatus = (OrderStatus)((ComboBox)sender).SelectedItem;
+            orderForListDataGrid.ItemsSource = bl.Order.GetOrders();
+
+
+
         }
     }
 }

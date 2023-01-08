@@ -1,4 +1,5 @@
 ﻿using BIApi;
+using BO;
 ///לשאול לגבי התאריכים של ההזמנות איפה לעשות את הtry
 
 namespace BIImplementation
@@ -195,6 +196,8 @@ namespace BIImplementation
                        select g;
 
         }
+        
     }
+    
 
 }

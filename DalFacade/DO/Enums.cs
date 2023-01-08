@@ -1,7 +1,7 @@
 ﻿
 namespace DO;
 
-    public enum Category { Dresses, Skirts, Shirts, Accessories, None}
+    public enum Category { Dresses, Skirts, Shirts, Accessories,Sport,None}
 
 
 

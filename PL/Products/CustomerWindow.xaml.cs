@@ -1,6 +1,9 @@
-﻿using System;
+﻿using BIApi;
+using BO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.RightsManagement;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,10 +22,40 @@ namespace PL.Products
     /// </summary>
     public partial class CustomerWindow : Window
     {
-        public CustomerWindow()
+        BIApi.IBl? bl = BIApi.Factory.Get();
+        BO.Cart Cart1;
+
+        public CustomerWindow(BO.Cart cart)
         {
+
             InitializeComponent();
-            
+            productItemListView.ItemsSource = bl?.Product?.GetListedProductsForC();
+            Cart1 = cart;
+
+        }
+        
+
+        private void productItemListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            BO.ProductItem? productItem = productItemListView.SelectedItem as BO.ProductItem;
+            if(productItem != null)
+            {
+                OneProductItem oneProductItem = new OneProductItem(Cart1, productItem.ID);
+                oneProductItem.ShowDialog();
+                
+            }
+        }
+
+        
+
+        private void Button_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
+        {
+            new MyCart(Cart1).ShowDialog();
+           
+
+
+
         }
     }
+
 }

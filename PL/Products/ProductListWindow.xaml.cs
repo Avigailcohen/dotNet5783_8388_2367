@@ -32,7 +32,7 @@ namespace PL.Products
             Category category = new BO.Category();
             Category.ItemsSource = Enum.GetValues(typeof(BO.Category));
             listViewOfProducts.ItemsSource = bl?.Product.GetListedProducts();
-            Category.SelectedIndex = 4;
+            Category.SelectedIndex = 5;
            
         }
         /// <summary>
@@ -46,7 +46,7 @@ namespace PL.Products
             Category category = (BO.Category)Category.SelectedItem;
             
             listViewOfProducts.ItemsSource = bl?.Product.GetListedProducts(x => x?.Category == category);
-            if (Category.SelectedIndex == 4)
+            if (Category.SelectedIndex == 5)
                 listViewOfProducts.ItemsSource = bl?.Product.GetListedProducts();
 
 
@@ -58,7 +58,7 @@ namespace PL.Products
         /// <param name="e"></param>
         private void AddProduct(object sender, RoutedEventArgs e)
         {
-            new ProductWindow().ShowDialog();
+            new ProductWindow(false).ShowDialog();
             //observerCollection
             listViewOfProducts.ItemsSource = bl?.Product.GetListedProducts();
 
@@ -78,7 +78,7 @@ namespace PL.Products
         {
             int id = ((ProductForList)listViewOfProducts.SelectedItem).ID;
 ;            if (listViewOfProducts.SelectedItem is ProductForList productForList)
-                new ProductWindow(id).ShowDialog();
+                new ProductWindow(id,true).ShowDialog();
             listViewOfProducts.ItemsSource = bl?.Product.GetListedProducts();
         }
        

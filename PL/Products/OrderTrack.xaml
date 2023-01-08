@@ -10,7 +10,7 @@
     <Window.Resources>
 
     </Window.Resources>
-    <Grid Background="Black">
+    <Grid Background="#FFF7E8E8" RenderTransformOrigin="1.042,1.546">
         <Grid x:Name="grid1"   HorizontalAlignment="Left" VerticalAlignment="Top"  Margin="83,44,0,0" Height="222" Width="470" Background="White">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
@@ -20,15 +20,17 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="107*"/>
+                <RowDefinition Height="22*"/>
             </Grid.RowDefinitions>
-            <Label Grid.Column="0" Content="ID:" HorizontalAlignment="Left"  Margin="3" Grid.Row="0" VerticalAlignment="Center" Background="White" FontWeight="Bold"/>
-            <TextBox x:Name="iDTextBox" Grid.Column="1"  IsReadOnly="True"  HorizontalAlignment="Left" Height="NaN" Margin="3" Grid.Row="0" Text="{Binding ID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Grid.Column="0" Content="ID:" HorizontalAlignment="Left"  Margin="3,0,0,0" VerticalAlignment="Center" Background="White" FontWeight="Bold"/>
+            <TextBox x:Name="iDTextBox" Grid.Column="1"  IsReadOnly="True"  HorizontalAlignment="Left" Height="NaN" Margin="3,0,0,0" Text="{Binding ID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
 
-            <Label Grid.Column="0" Content="Status:" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center" FontWeight="Bold"/>
-            <TextBox x:Name="statusTextBox" IsReadOnly="True" Grid.Column="1" HorizontalAlignment="Left" Height="NaN" Margin="3" Grid.Row="1" Text="{Binding Status, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
-            <Label Content="Tracking" HorizontalAlignment="Center" Margin="0,0,0,3" Grid.Row="2" VerticalAlignment="Bottom" FontWeight="Bold"/>
+            <Label Grid.Column="0" Content="Status:" HorizontalAlignment="Left" Margin="3,0,0,0" Grid.Row="1" VerticalAlignment="Center" FontWeight="Bold"/>
+            <TextBox x:Name="statusTextBox" IsReadOnly="True" Grid.Column="1" HorizontalAlignment="Left" Height="NaN" Margin="3,0,0,0" Grid.Row="1" Text="{Binding Status, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Tracking" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Top" FontWeight="Bold"/>
 
-            <DataGrid x:Name="trackingDataGrid" IsReadOnly="True" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Tracking}" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="3,0,-166,-139" Grid.Column="1" Grid.Row="2" Background="Black" Foreground="Black" FontWeight="Bold">
+            <DataGrid x:Name="trackingDataGrid" IsReadOnly="True" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Tracking}" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="3,0,32,0" Grid.Column="1" Grid.Row="2" Background="#FFF3E4E4" Foreground="Black" FontWeight="Bold" Grid.RowSpan="3">
                 <DataGrid.Columns>
                     <!--<DataGridTemplateColumn x:Name="item1Column" Header="Item 1" IsReadOnly="True" Width="SizeToHeader">-->
                     <!--<DataGridTemplateColumn.CellTemplate>
@@ -37,12 +39,26 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>-->
-                    <DataGridTextColumn x:Name="item1Column" Binding="{Binding Item1}" Header="Item 1" IsReadOnly="True" Width="100" />
+                    <DataGridTextColumn x:Name="item1Column" Binding="{Binding Item1, StringFormat=dd-MM-yyyy}" Header="Item 1" IsReadOnly="True" Width="100" />
 
                     <DataGridTextColumn x:Name="item2Column" Binding="{Binding Item2}" Header="Item 2" IsReadOnly="True" Width="100"/>
                 </DataGrid.Columns>
             </DataGrid>
+            <Button Grid.Column="1" Content="MY ORDER" HorizontalAlignment="Left" Margin="340,12,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Background="#FFE6BABA" Foreground="#FFFFFCFC" MouseDoubleClick="Button_MouseDoubleClick_2"/>
         </Grid>
-
+        <Button Content="BACK" HorizontalAlignment="Left" Margin="574,235,0,0" VerticalAlignment="Top" MouseDoubleClick="Button_MouseDoubleClick" RenderTransformOrigin="0.506,-0.433" Background="White" Foreground="#FFCBA4CA"/>
+        <Image HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="78" Source="/Products/iCON.jpg"/>
+        <TextBlock
+            Text="MY ORDER TRACKING"
+            FontFamily="Arial Black"
+            FontSize="18"
+            Foreground="White"
+            Margin="74,57,313,162">
+  
+            <TextBlock.RenderTransform>
+                <RotateTransform
+                    Angle="90" />
+            </TextBlock.RenderTransform>
+        </TextBlock>
     </Grid>
 </Window>

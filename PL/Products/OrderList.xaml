@@ -6,18 +6,22 @@
         xmlns:local="clr-namespace:PL.Products"
         mc:Ignorable="d"
        
-        Title="OrderList" Height="450" Width="800" Background="Black" >
+        Title="OrderList" Height="450" Width="800" Background="#FFF3E7E7" >
+    <Grid>
+        <DataGrid x:Name="orderForListDataGrid" AutoGenerateColumns="False" IsReadOnly="True" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="0,63,212,40" Background="#FFF4E9E9" MouseDoubleClick="orderForListDataGrid_MouseDoubleClick" FontFamily="Aharoni" FontWeight="Bold" FontStyle="Italic" Foreground="#FFCB8989">
 
-    <DataGrid x:Name="orderForListDataGrid" AutoGenerateColumns="False" IsReadOnly="True" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" Margin="94,27,198,79" Background="Black" MouseDoubleClick="orderForListDataGrid_MouseDoubleClick" FontFamily="Aharoni" FontWeight="Bold" FontStyle="Italic">
-       
-        <DataGrid.Columns>
-            <DataGridTextColumn x:Name="iDColumn" Binding="{Binding ID}" Header="ID" Width="SizeToHeader"/>
-            <DataGridTextColumn x:Name="customerNameColumn" Binding="{Binding CustomerName}" Header="Customer Name" Width="SizeToHeader"/>
-            <DataGridTextColumn x:Name="orderStatusColumn" Binding="{Binding OrderStatus}" Header="Order Status" Width="SizeToHeader"/>
-            <DataGridTextColumn x:Name="amountItemsColumn" Binding="{Binding AmountItems}" Header="Amount Items" Width="SizeToHeader"/>
-            <DataGridTextColumn x:Name="totalPriceColumn" Binding="{Binding TotalPrice}" Header="Total Price" Width="SizeToHeader"/>
-            
-        </DataGrid.Columns>
+            <DataGrid.Columns>
+                <DataGridTextColumn x:Name="iDColumn" Binding="{Binding ID}" Header="ID" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="customerNameColumn" Binding="{Binding CustomerName}" Header="Customer Name" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="orderStatusColumn" Binding="{Binding OrderStatus}" Header="Order Status" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="amountItemsColumn" Binding="{Binding AmountItems}" Header="Amount Items" Width="SizeToHeader"/>
+                <DataGridTextColumn x:Name="totalPriceColumn" Binding="{Binding TotalPrice}" Header="Total Price" Width="SizeToHeader"/>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <ComboBox HorizontalAlignment="Left" Margin="636,10,0,0" VerticalAlignment="Top" Width="120" Name="Category1" SelectionChanged="ComboBox_SelectionChanged_1"/>
         
-    </DataGrid>
+    </Grid>
+
 </Window>

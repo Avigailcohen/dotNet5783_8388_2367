@@ -22,6 +22,24 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "xml", "xml", "{19E4CED8-DA5
 		xml\dal-config.xml = xml\dal-config.xml
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pics", "pics", "{7CEA50D2-1CDD-49F2-B873-1F59D3A37B97}"
+	ProjectSection(SolutionItems) = preProject
+		pics\Card.jpg = pics\Card.jpg
+		pics\CartImage.jpg = pics\CartImage.jpg
+		pics\details.jpg = pics\details.jpg
+		pics\iCON.jpg = pics\iCON.jpg
+		pics\image1.jpg = pics\image1.jpg
+		pics\logo099.jpg = pics\logo099.jpg
+		pics\LOGO11.jpg = pics\LOGO11.jpg
+		pics\MAN.jpg = pics\MAN.jpg
+		pics\Sargel.jpg = pics\Sargel.jpg
+		pics\SHIpping.jpg = pics\SHIpping.jpg
+		pics\website-icons_Social-Media_01.png = pics\website-icons_Social-Media_01.png
+		pics\אינסטגרם.jpg = pics\אינסטגרם.jpg
+		pics\וואצפ.jpeg = pics\וואצפ.jpeg
+		pics\מצגת1.jpg = pics\מצגת1.jpg
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

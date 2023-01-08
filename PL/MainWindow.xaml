@@ -1,53 +1,261 @@
-﻿<Window x:Class="PL.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PL"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+﻿<Window
+    x:Class="PL.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:PL"
+    mc:Ignorable="d"
+    Title="MainWindow"
+    Height="450"
+    Width="800">
 
 
 
-    <Grid OpacityMask="#FFDCC2C2" Margin="-133,-123,-96,-68">
-        <Grid.Background>
-            <ImageBrush ImageSource="/62d1d7e044e7210ff4ba1e06a32bc6df--logos-ideas-logo-google.jpg"/>
-        </Grid.Background>
+    <Grid
+        Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+                Width="528*" />
+            <ColumnDefinition
+                Width="1689*" />
+            <ColumnDefinition
+                Width="25*" />
+            <ColumnDefinition
+                Width="0*" />
+        </Grid.ColumnDefinitions>
 
-        <Button Content="ADMIN" Click="productList" HorizontalAlignment="Left" Margin="693,409,0,0" VerticalAlignment="Top" Height="51" Width="177" Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="24" FontWeight="Bold" BorderBrush="#FFEEDEDE" Background="#FFFFFDFD">
+        <Button
+            Content="LOG IN"
+            Click="productList"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Height="30"
+            Width="60"
+            Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"
+            FontSize="8"
+            FontWeight="Bold"
+            BorderBrush="#FFEEDEDE"
+            Background="#FFFFFDFD"
+            Margin="10,10,0,0">
             <Button.OpacityMask>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black"/>
-                    <GradientStop Color="#FFD14646" Offset="1"/>
+                <LinearGradientBrush
+                    EndPoint="0.5,1"
+                    StartPoint="0.5,0">
+                    <GradientStop
+                        Color="Black" />
+                    <GradientStop
+                        Color="#FFD14646"
+                        Offset="1" />
                 </LinearGradientBrush>
             </Button.OpacityMask>
 
         </Button>
-        <Button Content="New Order"  HorizontalAlignment="Left" Margin="134,409,0,0" VerticalAlignment="Top" Height="51" Width="164"
-                Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="24" FontWeight="Bold" 
-                BorderBrush="#FFEEDEDE" Background="#FFFCF8EC">
+        <Button
+            Content="Catalog"
+            HorizontalAlignment="Left"
+            Margin="10,64,0,0"
+            VerticalAlignment="Top"
+            Height="45"
+            Width="125"
+            Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"
+            FontSize="9"
+            FontWeight="Bold"
+            BorderBrush="#FFEEDEDE"
+            Background="#FFD3F0FA"
+            MouseDoubleClick="Button_MouseDoubleClick_1"
+            Click="Button_Click">
             <Button.OpacityMask>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black"/>
-                    <GradientStop Color="#FFD14646" Offset="1"/>
+                <LinearGradientBrush
+                    EndPoint="0.5,1"
+                    StartPoint="0.5,0">
+                    <GradientStop
+                        Color="Black" />
+                    <GradientStop
+                        Color="#FFD14646"
+                        Offset="1" />
                 </LinearGradientBrush>
             </Button.OpacityMask>
 
         </Button>
-        <Button Content="Order Track" HorizontalAlignment="Left" Margin="409,409,0,0" VerticalAlignment="Top" Height="51" Width="173"
-          Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" FontSize="24" FontWeight="Bold" BorderBrush="#FFF3E7E7" Background="#FFFFFDFD" MouseDoubleClick="Button_MouseDoubleClick" />
-        <Label x:Name="EnterOrderID_" Content="Enter OrderID" Visibility="Hidden" HorizontalAlignment="Left" Margin="379,473,0,0" VerticalAlignment="Top" Foreground="#FFFFF9F9"/>
-        <TextBox x:Name="IDText" HorizontalAlignment="Left" Margin="462,477,0,0" Visibility="Hidden" MaxLength="4" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" PreviewKeyDown="IDText_PreviewKeyDown" />
-        <Button x:Name="MoveToT" Visibility="Hidden" Content="Enter" HorizontalAlignment="Left" Margin="603,480,0,0" VerticalAlignment="Top" MouseDoubleClick="MoveToT_MouseDoubleClick" Width="62"/>
-
-
-
-
-
-
-
-
-
-
+        <Button
+            Content="Order Track"
+            HorizontalAlignment="Left"
+            Margin="440,45,0,0"
+            VerticalAlignment="Top"
+            Height="36"
+            Width="135"
+            Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"
+            FontSize="8"
+            FontWeight="Bold"
+            BorderBrush="#FFF3E7E7"
+            Background="#FFFFFDFD"
+            MouseDoubleClick="Button_MouseDoubleClick"
+            Grid.Column="1"
+            RenderTransformOrigin="0.971,1.726" />
+        <Label
+            x:Name="EnterOrderID_"
+            Content="Enter OrderID:"
+            Visibility="Hidden"
+            HorizontalAlignment="Left"
+            Margin="456,81,0,0"
+            VerticalAlignment="Top"
+            Foreground="#FF190D0D"
+            FontFamily="Cascadia Code"
+            Grid.Column="1"
+            Height="24"
+            Width="111" />
+        <TextBox
+            x:Name="IDText"
+            HorizontalAlignment="Left"
+            Margin="447,115,0,0"
+            Visibility="Hidden"
+            MaxLength="4"
+            TextWrapping="Wrap"
+            VerticalAlignment="Top"
+            Width="120"
+            PreviewKeyDown="IDText_PreviewKeyDown"
+            Foreground="Black"
+            BorderBrush="#FF8F754A"
+            Grid.Column="1"
+            Height="18" />
+        <Button
+            x:Name="MoveToT"
+            Visibility="Hidden"
+            Content="TRACK"
+            Margin="440,142,28,250"
+            MouseDoubleClick="MoveToT_MouseDoubleClick"
+            FontWeight="Bold"
+            FontStyle="Italic"
+            FontFamily="Cascadia Code"
+            BorderBrush="#FF160303"
+            Background="#FFFFE6E6"
+            RenderTransformOrigin="0.306,1.407"
+            Grid.Column="1" />
+        <Image
+            HorizontalAlignment="Left"
+            Height="100"
+            Margin="71,-8,0,0"
+            VerticalAlignment="Top"
+            Width="100"
+            Source="/iCON.jpg"
+            RenderTransformOrigin="0.669,0.439" />
+        <Image
+            HorizontalAlignment="Left"
+            Height="59"
+            Margin="69,45,0,0"
+            VerticalAlignment="Top"
+            Width="416"
+            Source="/שחורלוגו-חדש-סיבי-06.png"
+            Grid.Column="1" />
+        <Label
+            Grid.Column="1"
+            Content="NEW"
+            HorizontalAlignment="Left"
+            Margin="357,119,0,0"
+            VerticalAlignment="Top"
+            RenderTransformOrigin="0.583,0.926"
+            Height="39"
+            Width="60" />
+        <Label
+            Grid.Column="1"
+            Content="Sale"
+            HorizontalAlignment="Left"
+            Margin="212,119,0,0"
+            VerticalAlignment="Top"
+            Height="39"
+            Width="53"
+            Foreground="#FFFF1010" />
+        <Label
+            x:Name="connect"
+            Grid.Column="1"
+            Content="צרי קשר"
+            HorizontalAlignment="Left"
+            Margin="69,121,0,0"
+            VerticalAlignment="Top"
+            Width="54"
+            RenderTransformOrigin="0.275,0.799" />
+        <Label
+            Content="GIFT CARD"
+            HorizontalAlignment="Left"
+            Margin="143,121,0,0"
+            VerticalAlignment="Top"
+            Grid.ColumnSpan="2" />
+        <Rectangle
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            Height="35"
+            Margin="439,5,0,0"
+            Stroke="Black"
+            VerticalAlignment="Top"
+            Width="143" />
+        <Image
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            Height="45"
+            Margin="399,10,0,0"
+            VerticalAlignment="Top"
+            Width="35"
+            Source="/Bigger2.jpg"
+            RenderTransformOrigin="0.789,0.843" />
+        <Image
+            x:Name="bind"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Left"
+            Height="292"
+            Margin="-42,163,0,0"
+            VerticalAlignment="Top"
+            Width="636"
+            Source="/Bind.jpg"
+            RenderTransformOrigin="0.496,0.785"
+            MouseEnter="bind_MouseEnter" />
+        <Image
+            x:Name="blue"
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            Height="276"
+            Margin="96,163,0,0"
+            VerticalAlignment="Top"
+            Width="291"
+            Source="/BlueDress.jpg"
+            MouseEnter="Image_MouseEnter" />
+        <Image
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            Height="261"
+            Margin="302,179,0,0"
+            VerticalAlignment="Top"
+            Width="378"
+            RenderTransformOrigin="0.5,0.5"
+            Source="/Flower.jpg"
+            Grid.ColumnSpan="3">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform
+                        AngleY="0" />
+                    <RotateTransform />
+                    <TranslateTransform
+                        Y="0" />
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            Height="22"
+            Margin="381,11,0,0"
+            VerticalAlignment="Top"
+            Width="27"
+            RenderTransformOrigin="0.593,0.951"
+            Source="/heart.png" />
+        <Image
+            Grid.Column="1"
+            HorizontalAlignment="Left"
+            Height="64"
+            Margin="359,-14,0,0"
+            VerticalAlignment="Top"
+            Width="79"
+            Source="/CartImage.jpg" />
     </Grid>
 </Window>

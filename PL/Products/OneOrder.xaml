@@ -1,125 +1,437 @@
-﻿<Window x:Class="PL.Products.OneOrder"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PL.Products"
-        mc:Ignorable="d"
-        DataContext="{Binding order,RelativeSource={RelativeSource self}}"
-        
-        Title="OneOrder" Height="450" Width="800">
+﻿<Window
+    x:Class="PL.Products.OneOrder"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:PL.Products"
+    mc:Ignorable="d"
+    DataContext="{Binding order,RelativeSource={RelativeSource self}}"
+    Title="OneOrder"
+    Height="450"
+    Width="800">
 
-    <Grid Background="Black" Margin="0,0,10,12">
+    <Grid
+        Background="#FFE6D3D3"
+        Margin="0,0,10,12">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="364*"/>
-            <ColumnDefinition Width="31*"/>
-            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition
+                Width="372*" />
+            <ColumnDefinition
+                Width="23*" />
+            <ColumnDefinition
+                Width="0*" />
         </Grid.ColumnDefinitions>
-        <Grid x:Name="grid1"  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="116,81,0,0" Height="233" Width="295">
+        <Grid
+            x:Name="grid1"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="116,81,0,0"
+            Height="233"
+            Width="295">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0"/>
-                <ColumnDefinition Width="99.307"/>
-                <ColumnDefinition Width="96.7"/>
-                <ColumnDefinition Width="53.3"/>
+                <ColumnDefinition
+                    Width="0" />
+                <ColumnDefinition
+                    Width="99.307" />
+                <ColumnDefinition
+                    Width="96.7" />
+                <ColumnDefinition
+                    Width="53.3" />
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="0"/>
-                <RowDefinition Height="24.25"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition
+                    Height="0" />
+                <RowDefinition
+                    Height="24.25" />
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
             </Grid.RowDefinitions>
-            <Label Grid.Column="1" Content="Customer Address:" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Bernard MT Condensed" Foreground="White" Grid.Row="1"/>
-            <TextBox x:Name="customerAddressTextBox" Grid.Column="2" HorizontalAlignment="Left" Height="NaN" Margin="3,0,0,0" IsReadOnly="True" Text="{Binding CustomerAddress, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" BorderBrush="#FF1C1818" Grid.Row="1" Grid.ColumnSpan="2"/>
-            <Label Grid.Column="0" Content="Customer Email:" HorizontalAlignment="Left" Margin="3,0,0,0" Grid.Row="2" VerticalAlignment="Center" FontFamily="Bernard MT Condensed" Foreground="White" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="customerEmailTextBox" Grid.Column="2" HorizontalAlignment="Left" Height="NaN" Margin="3,0,0,0" Grid.Row="2"  IsReadOnly="True" Text="{Binding CustomerEmail, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" BorderBrush="#FF1C1818" Grid.ColumnSpan="2"/>
-            <Label Grid.Column="0" Content="Customer Name:" HorizontalAlignment="Left" Margin="3,0,0,0" Grid.Row="3" VerticalAlignment="Center" FontFamily="Bernard MT Condensed" Foreground="Snow" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="customerNameTextBox" Grid.Column="2" HorizontalAlignment="Left" Height="34" Grid.Row="3"  IsReadOnly="True" Text="{Binding CustomerName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="141" RenderTransformOrigin="0.5,0.5" BorderBrush="#FFF00A0A" Grid.ColumnSpan="2" Margin="5,0,0,0">
+            <Label
+                Grid.Column="1"
+                Content="Customer Address:"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                FontFamily="Bernard MT Condensed"
+                Foreground="#FFC9A1A1"
+                Grid.Row="1" />
+            <TextBox
+                x:Name="customerAddressTextBox"
+                Grid.Column="2"
+                HorizontalAlignment="Left"
+                Height="NaN"
+                Margin="3,0,0,0"
+                IsReadOnly="True"
+                Text="{Binding CustomerAddress, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                VerticalAlignment="Center"
+                Width="120"
+                BorderBrush="#FFEEE1E1"
+                Grid.Row="1"
+                Grid.ColumnSpan="2" />
+            <Label
+                Grid.Column="0"
+                Content="Customer Email:"
+                HorizontalAlignment="Left"
+                Margin="3,0,0,0"
+                Grid.Row="2"
+                VerticalAlignment="Center"
+                FontFamily="Bernard MT Condensed"
+                Foreground="#FFC9A1A1"
+                Grid.ColumnSpan="2" />
+            <TextBox
+                x:Name="customerEmailTextBox"
+                Grid.Column="2"
+                HorizontalAlignment="Left"
+                Height="NaN"
+                Margin="3,0,0,0"
+                Grid.Row="2"
+                IsReadOnly="True"
+                Text="{Binding CustomerEmail, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                VerticalAlignment="Center"
+                Width="120"
+                BorderBrush="#FFEEE1E1"
+                Grid.ColumnSpan="2" />
+            <Label
+                Grid.Column="0"
+                Content="Customer Name:"
+                HorizontalAlignment="Left"
+                Margin="3,0,0,0"
+                Grid.Row="3"
+                VerticalAlignment="Center"
+                FontFamily="Bernard MT Condensed"
+                Foreground="#FFC9A1A1"
+                Grid.ColumnSpan="2" />
+            <TextBox
+                x:Name="customerNameTextBox"
+                Grid.Column="2"
+                HorizontalAlignment="Left"
+                Height="34"
+                Grid.Row="3"
+                IsReadOnly="True"
+                Text="{Binding CustomerName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                VerticalAlignment="Center"
+                Width="141"
+                RenderTransformOrigin="0.5,0.5"
+                BorderBrush="#FFEEE1E1"
+                Grid.ColumnSpan="2"
+                Margin="5,0,0,0">
                 <TextBox.RenderTransform>
                     <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="0.551"/>
-                        <TranslateTransform/>
+                        <ScaleTransform />
+                        <SkewTransform />
+                        <RotateTransform
+                            Angle="0.551" />
+                        <TranslateTransform />
                     </TransformGroup>
                 </TextBox.RenderTransform>
             </TextBox>
-            <Label Grid.Column="0" Content="Delivery Date:" HorizontalAlignment="Left" Margin="3,0,0,0" Grid.Row="4" VerticalAlignment="Center" FontFamily="Bernard MT Condensed" Foreground="White" Grid.ColumnSpan="2"/>
-            <DatePicker x:Name="deliveryDateDatePicker" Grid.Column="2" HorizontalAlignment="Left" Margin="3,0,0,0"   Grid.Row="4"  SelectedDate="{Binding DeliveryDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Background="#FFB5990C" Grid.ColumnSpan="2"/>
-            <Label Grid.Column="0" Content="ID:" HorizontalAlignment="Left" Margin="3,0,0,0" Grid.Row="5" VerticalAlignment="Center" FontFamily="Bodoni MT Black" Foreground="#FFFFFEFE" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="iDTextBox" Grid.Column="2" HorizontalAlignment="Left" Height="NaN" Margin="3,0,0,0" Grid.Row="5"   IsReadOnly="True" Text="{Binding ID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" BorderBrush="#FFF00A0A" Grid.ColumnSpan="2"/>
-            <Label Grid.Column="0" Content="Order Date:" HorizontalAlignment="Left" Margin="3,0,0,0" Grid.Row="6" VerticalAlignment="Center" FontFamily="Bernard MT Condensed" Foreground="#FFFFF1F1" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="orderDateTextBox" Grid.Column="2" HorizontalAlignment="Left" Height="NaN" Margin="3,0,0,0" Grid.Row="6"   IsReadOnly="True" Text="{Binding OrderDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="147" BorderBrush="#FFF00A0A" Grid.ColumnSpan="2"/>
-            <Label Grid.Column="0" Content="Ship Date:" HorizontalAlignment="Left" Margin="3,0,0,0" Grid.Row="7" VerticalAlignment="Center" FontFamily="Bernard MT Condensed" Foreground="#FFFFF9F9" Grid.ColumnSpan="2"/>
-            <DatePicker x:Name="shipDateDatePicker" Grid.Column="2" HorizontalAlignment="Left" Margin="3,0,0,0" Grid.Row="7" SelectedDate="{Binding ShipDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Background="#FFB5990C" Grid.ColumnSpan="2"/>
-            <Label Grid.Column="0" Content="Status:" HorizontalAlignment="Left" Margin="3,0,0,0" Grid.Row="8" VerticalAlignment="Center" FontFamily="Bernard MT Condensed" Foreground="White" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="statusTextBox" Grid.Column="2" HorizontalAlignment="Left" Height="NaN" Margin="3,0,0,0" Grid.Row="8"   IsReadOnly="True" Text="{Binding Status, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" BorderBrush="#FFF00A0A" Grid.ColumnSpan="2"/>
-            <Label Grid.Column="0" Content="Total Price:" HorizontalAlignment="Left" Margin="3,0,0,0" Grid.Row="9" VerticalAlignment="Center" FontFamily="Bernard MT Condensed" Foreground="White" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="totalPriceTextBox" Grid.Column="2" HorizontalAlignment="Left" Height="NaN" Margin="3,0,0,0" Grid.Row="9"   IsReadOnly="True" Text="{Binding TotalPrice, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" Width="120" BorderBrush="#FFF00A0A" Grid.ColumnSpan="2"/>
+            <Label
+                Grid.Column="0"
+                Content="Delivery Date:"
+                HorizontalAlignment="Left"
+                Margin="3,0,0,0"
+                Grid.Row="4"
+                VerticalAlignment="Center"
+                FontFamily="Bernard MT Condensed"
+                Foreground="#FFC9A1A1"
+                Grid.ColumnSpan="2" />
+            <DatePicker
+                x:Name="deliveryDateDatePicker"
+                
+                Grid.Column="2"
+                HorizontalAlignment="Left"
+                Margin="3,0,0,0"
+                Grid.Row="4"
+                SelectedDate="{Binding DeliveryDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                VerticalAlignment="Center"
+                Background="#FFC9C7BB"
+                Grid.ColumnSpan="2" />
+            <Label
+                Grid.Column="0"
+                Content="ID:"
+                HorizontalAlignment="Left"
+                Margin="3,0,0,0"
+                Grid.Row="5"
+                VerticalAlignment="Center"
+                FontFamily="Bodoni MT Black"
+                Foreground="#FFC9A1A1"
+                Grid.ColumnSpan="2" />
+            <TextBox
+                x:Name="iDTextBox"
+                Grid.Column="2"
+                HorizontalAlignment="Left"
+                Height="NaN"
+                Margin="3,0,0,0"
+                Grid.Row="5"
+                IsReadOnly="True"
+                Text="{Binding ID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                VerticalAlignment="Center"
+                Width="120"
+                BorderBrush="#FFEEE1E1"
+                Grid.ColumnSpan="2" />
+            <Label
+                Grid.Column="0"
+                Content="Order Date:"
+                HorizontalAlignment="Left"
+                Margin="3,0,0,0"
+                Grid.Row="6"
+                VerticalAlignment="Center"
+                FontFamily="Bernard MT Condensed"
+                Foreground="#FFC9A1A1"
+                Grid.ColumnSpan="2" />
+            <TextBox
+                x:Name="orderDateTextBox"
+                Grid.Column="2"
+                HorizontalAlignment="Left"
+                Height="NaN"
+                Margin="3,0,0,0"
+                Grid.Row="6"
+                IsReadOnly="True"
+                Text="{Binding OrderDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                VerticalAlignment="Center"
+                Width="147"
+                BorderBrush="#FFEEE1E1"
+                Grid.ColumnSpan="2" />
+            <Label
+                Grid.Column="0"
+                Content="Ship Date:"
+                HorizontalAlignment="Left"
+                Margin="3,0,0,0"
+                Grid.Row="7"
+                VerticalAlignment="Center"
+                FontFamily="Bernard MT Condensed"
+                Foreground="#FFC9A1A1"
+                Grid.ColumnSpan="2" />
+            <DatePicker
+                x:Name="shipDateDatePicker"
+                Grid.Column="2"
+                HorizontalAlignment="Left"
+                Margin="3,0,0,0"
+                Grid.Row="7"
+                SelectedDate="{Binding ShipDate, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                VerticalAlignment="Center"
+                Background="#FFC9C7BB"
+                Grid.ColumnSpan="2" />
+            <Label
+                Grid.Column="0"
+                Content="Status:"
+                HorizontalAlignment="Left"
+                Margin="3,0,0,0"
+                Grid.Row="8"
+                VerticalAlignment="Center"
+                FontFamily="Bernard MT Condensed"
+                Foreground="#FFC9A1A1"
+                Grid.ColumnSpan="2" />
+            <TextBox
+                x:Name="statusTextBox"
+                Grid.Column="2"
+                HorizontalAlignment="Left"
+                Height="NaN"
+                Margin="3,0,0,0"
+                Grid.Row="8"
+                IsReadOnly="True"
+                Text="{Binding Status, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                VerticalAlignment="Center"
+                Width="120"
+                BorderBrush="#FFEEE1E1"
+                Grid.ColumnSpan="2" />
+            <Label
+                Grid.Column="0"
+                Content="Total Price:"
+                HorizontalAlignment="Left"
+                Margin="3,0,0,0"
+                Grid.Row="9"
+                VerticalAlignment="Center"
+                FontFamily="Bernard MT Condensed"
+                Foreground="#FFC9A1A1"
+                Grid.ColumnSpan="2" />
+            <TextBox
+                x:Name="totalPriceTextBox"
+                Grid.Column="2"
+                HorizontalAlignment="Left"
+                Height="NaN"
+                Margin="3,0,0,0"
+                Grid.Row="9"
+                IsReadOnly="True"
+                Text="{Binding TotalPrice, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+                VerticalAlignment="Center"
+                Width="120"
+                BorderBrush="#FFEEE1E1"
+                Grid.ColumnSpan="2" />
 
         </Grid>
-        <Button Content="Update" HorizontalAlignment="Left" Margin="48,165,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.097,0.94" Height="23" Width="48" Click="Update_Delivery" BorderBrush="Black" Background="White" FontFamily="Bodoni MT Black"/>
-        <Button Content="Update " HorizontalAlignment="Left" Margin="47,241,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.08,0.577" Click="Button_Click" BorderBrush="#FF060606" Background="White" FontFamily="Bodoni MT Black" Height="18" Width="50"/>
-        <ListView x:Name="orderItemListView" ItemsSource="{Binding OrderItems}" SelectionMode="Single" Margin="410,25,33,222" Grid.ColumnSpan="2" Background="#FF151614" FontWeight="Bold" Foreground="#FFFDFDFD">
+        <Button
+            Content="Update"
+            Style="{DynamicResource btn_MU}"
+            Name="upD"
+            HorizontalAlignment="Left"
+            Margin="48,165,0,0"
+            VerticalAlignment="Top"
+            RenderTransformOrigin="-0.097,0.94"
+            Height="23"
+            Width="48"
+            Click="Update_Delivery"
+            BorderBrush="Black"
+            Background="White"
+            FontFamily="Bodoni MT Black" />
+        <Button
+            Content="Update"
+            Style="{DynamicResource btn_MU }"
+            Name="upS"
+            HorizontalAlignment="Left"
+            Margin="47,241,0,0"
+            VerticalAlignment="Top"
+            RenderTransformOrigin="-0.08,0.577"
+            Click="Button_Click"
+            BorderBrush="#FF060606"
+            Background="White"
+            FontFamily="Bodoni MT Black"
+            Height="18"
+            Width="50" />
+        <ListView
+            x:Name="orderItemListView"
+            ItemsSource="{Binding OrderItems}"
+            SelectionMode="Single"
+            Margin="372,9,8,224"
+            Background="#FFF5FFEA"
+            Foreground="#FFE3B9B9"
+            FontStyle="Italic"
+            FontWeight="Bold"
+            FontFamily="Georgia">
             <ListView.ItemContainerStyle>
                 <Style>
-                    <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
-                    <Setter Property="Control.VerticalContentAlignment" Value="Stretch"/>
+                    <Setter
+                        Property="Control.HorizontalContentAlignment"
+                        Value="Stretch" />
+                    <Setter
+                        Property="Control.VerticalContentAlignment"
+                        Value="Stretch" />
                 </Style>
             </ListView.ItemContainerStyle>
             <ListView.View>
                 <GridView>
-                    <GridViewColumn x:Name="amountOfItemColumn" Header="Amount Of Item" Width="80">
+                    <GridViewColumn
+                        x:Name="amountOfItemColumn"
+                        Header="Amount Of Item"
+                        Width="80">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="6,-1,-6,-1" Text="{Binding AmountOfItem}"/>
+                                <TextBlock
+                                    Margin="6,-1,-6,-1"
+                                    Text="{Binding AmountOfItem}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn x:Name="iDColumn2" Header="ID" Width="80">
+                    <GridViewColumn
+                        x:Name="iDColumn2"
+                        Header="ID"
+                        Width="80">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="-6,-1,-6,-1" Text="{Binding ID}"/>
+                                <TextBlock
+                                    Margin="-6,-1,-6,-1"
+                                    Text="{Binding ID}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn x:Name="nameColumn" Header="Name" Width="80">
+                    <GridViewColumn
+                        x:Name="nameColumn"
+                        Header="Name"
+                        Width="80">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="-6,-1,-6,-1" Text="{Binding Name}"/>
+                                <TextBlock
+                                    Margin="-6,-1,-6,-1"
+                                    Text="{Binding Name}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn x:Name="priceColumn" Header="Price" Width="80">
+                    <GridViewColumn
+                        x:Name="priceColumn"
+                        Header="Price"
+                        Width="80">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="-6,-1,-6,-1" Text="{Binding Price}"/>
+                                <TextBlock
+                                    Margin="-6,-1,-6,-1"
+                                    Text="{Binding Price}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn x:Name="productIDColumn" Header="Product ID" Width="80">
+                    <GridViewColumn
+                        x:Name="productIDColumn"
+                        Header="Product ID"
+                        Width="80">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="-6,-1,-6,-1" Text="{Binding ProductID}"/>
+                                <TextBlock
+                                    Margin="-6,-1,-6,-1"
+                                    Text="{Binding ProductID}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn x:Name="totalPriceColumn2" Header="Total Price" Width="80">
+                    <GridViewColumn
+                        x:Name="totalPriceColumn2"
+                        Header="Total Price"
+                        Width="80">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Margin="-6,-1,-6,-1" Text="{Binding TotalPrice}"/>
+                                <TextBlock
+                                    Margin="-6,-1,-6,-1"
+                                    Text="{Binding TotalPrice}" />
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Close" HorizontalAlignment="Left" Margin="634,360,0,0" VerticalAlignment="Top" Height="46" Width="96" Background="White" FontWeight="Bold" FontSize="24" MouseDoubleClick="Button_MouseDoubleClick" RenderTransformOrigin="0.855,0.615" Grid.ColumnSpan="2"/>
+        <Button
+            Content="Close"
+            HorizontalAlignment="Left"
+            Margin="629,356,0,0"
+            VerticalAlignment="Top"
+            Height="46"
+            Width="96"
+            Background="White"
+            FontWeight="Bold"
+            FontSize="24"
+            MouseDoubleClick="Button_MouseDoubleClick"
+            RenderTransformOrigin="0.855,0.615" />
+
+        <Grid.Resources>
+            <BooleanToVisibilityConverter
+                x:Key="BoolToVis" />
+            <Style
+                TargetType="Button"
+                x:Key="btn_MU">
+                <Setter
+                    Property="Visibility"
+                    Value="{Binding Manager , RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}},Converter={StaticResource BoolToVis}}" />
+
+            </Style>
+            <Style
+                TargetType="DatePicker"
+                >
+                <Setter
+                    Property="IsEnabled"
+                    Value="{Binding Manager,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" />
+
+            </Style>
+        </Grid.Resources>
 
 
     </Grid>

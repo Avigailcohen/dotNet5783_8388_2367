@@ -38,22 +38,23 @@ internal static class DataSource
     /// </summary>
     private static void createAndInitProducts()
     {
-        string[,] names = new string[,] {{ "midi Dress", " flower dress", " black dress" },
-                                          { "short skirt","midi skirt","maki skirt"},
-                                          { "golf shirt","long shirt","short shirt"},
-                                          { "belts","hats","bags"} ,
-                                          {"boots","slippers","High Heels" } };
+        //string[,] picturs=new string[,] { { } }
+        string[,] names = new string[,] {{ "midi Dress", " flower dress", " black dress","long dress","Knit dress" },
+                                          { "short skirt","midi skirt","maxi skirt","Knit skirt","Sheath skirt"},
+                                          { "golf shirt","long shirt","short shirt","Knit shirt","Cashmere shirt"},
+                                          { "belts","hats","bags", "glasses","bracelet" } ,
+                                          {"White Sport shirt","Black Sport skirt","Black Sport shirt","White Sport skirt","Pink Sport shirt" } };
         int[] InStocks = { 13, 10, 5, 11, 9, 7, 44, 0, 55, 17, 23, 67, 12, 90, 66 };
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 15; i++)
         {
-            int x = s_rand.Next(4);
+            int x = s_rand.Next(5);
             Product product = new Product();
 
 
-            product.ID = s_rand.Next(100000 + i, 999999);
+            product.ID = 10000 + i;
             product.Price = s_rand.Next(50, 500);
             product.Category = (Category)x;// convert the num for category
-            product.Name = names[x, s_rand.Next(2)];
+            product.Name = names[x, s_rand.Next(5)];
             //Name = Names(x, s_rand.Next(5)),
             product.InStock = InStocks[i];
             productList.Add(product);
@@ -68,38 +69,39 @@ internal static class DataSource
     private static void createAndInitOrders()
     {
         /// fill the list of orders
-        string[] customerNames = { "Avigail Cohen ", "Shira Levi", "Daniel alon", "Noa Roth", "Ari Yehoda" };
-        string[] CustomerAdrress = { "Akalir 12 ", "Geva 37", "Rainess 30", "Yerusalim 13" };
+        string[] customerNames = { "Avigail Cohen ", "Shira Levi", "Daniel alon", "Noa Roth", "Ari Yehoda","Inbal cohen","Tamar katz","Avishag raviv","Tehila Gross" };
+        string[] CustomerAdrress = { "Akalir 12 ", "Geva 37", "Rainess 30", "Yerusalim 13","Witzman 17","Avarham Shpapira 10","Levontin 39","Ywhoda Hanasi 10","Ben Gurion 1" };
 
         for (int i = 0; i < 20; i++)
         {
             Order order = new Order();
-            int x = s_rand.Next(5);
+            int x = s_rand.Next(8);
 
-
+            
             order.ID = config.nextOrderNumber;
             order.CustomerName = customerNames[x];
-            order.CustomerAddress = CustomerAdrress[s_rand.Next(4)];
+            order.CustomerAddress = CustomerAdrress[x];
             order.CustomerEmail = customerNames[x] + "@gmail.com";
-            int month = -s_rand.Next(1, 3);
-            order.OrderDate = new DateTime(DateTime.Now.Year, DateTime.Now.Month + month, s_rand.Next(1, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month + month)));
-
+            //int month = -s_rand.Next(1, 12);
+           
+            order.OrderDate =DateTime.Now+ new TimeSpan(s_rand.Next(1,4),s_rand.Next(24),s_rand.Next(s_rand.Next(60)));
             if (i < 10)
             {
-                order.ShipDate = order.OrderDate?.AddDays(s_rand.Next(2, 5));
+                order.ShipDate = null;
                 order.DeliveryDate = null;
             }
             else
             {
+                order.ShipDate = order.OrderDate?.AddDays(s_rand.Next(2,4));
+                //order.ShipDate=order.OrderDate+new TimeSpan(s_rand.Next(1,4),s_rand.Next(24),s_rand.Next(60));
                 if (i < 15)
                 {
-                    order.ShipDate = order.OrderDate?.AddDays(s_rand.Next(2, 5));
-                    order.DeliveryDate = order.ShipDate?.AddDays(s_rand.Next(2, 5));
+                    order.DeliveryDate=null;
                 }
                 else
                 {
-                    order.ShipDate = null;
-                    order.DeliveryDate = null;
+                    
+                    order.DeliveryDate = order.ShipDate?.AddDays(s_rand.Next(6,8));
                 }
             }
             orderList.Add(order);

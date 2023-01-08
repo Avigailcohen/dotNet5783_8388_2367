@@ -43,9 +43,31 @@ namespace PL.Products
             catch(BO.BlIdDoNotExistException ex)
             {
                 MessageBox.Show(ex.Message + "  is not exist","Not exist", MessageBoxButton.OK,MessageBoxImage.Error);
+                
             }
         }
 
-        
+        private void Button_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            this.Close();
+            
+        }
+
+        //private void Button_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
+        //{
+        //    int id=int.Parse(iDTextBox.Text);
+        //    OrderTracking = bl?.Order.OrderTracking(id);
+        //    bool mannager = false;
+        //    new OneOrder(OrderTracking.ID, mannager).Show();
+        //}
+
+        private void Button_MouseDoubleClick_2(object sender, MouseButtonEventArgs e)
+        {
+            int id = int.Parse(iDTextBox.Text);
+            OrderTracking = bl?.Order.OrderTracking(id);
+            bool mannager = false;
+            new OneOrder(OrderTracking.ID, mannager).Show();
+
+        }
     }
 }

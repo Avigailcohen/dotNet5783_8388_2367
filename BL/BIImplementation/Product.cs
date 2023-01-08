@@ -64,8 +64,7 @@ namespace BIImplementation
         /// <exception cref="BO.BlIdDoNotExistException"></exception>
         public BO.ProductItem RequestProductDetailsForC(int ProductId, BO.Cart cart)
         {
-            if (ProductId < 100000 || ProductId > 999999)
-                throw new BO.BlInvalidInputException("product ID");
+            
 
             DO.Product? product;
 
@@ -119,10 +118,6 @@ namespace BIImplementation
         /// <exception cref="BO.BlIdAlreadyExistException"></exception>
         public void AddProduct(BO.Product product)
         {
-
-
-            if (product.ProductID < 100000 || product.ProductID > 999999)
-                throw new BO.BlInvalidInputException("product ID");
             if (product.Name!.Length == 0)
                 throw new BO.BlInvalidInputException("product name");
             if (product.Price < 0)
@@ -194,8 +189,6 @@ namespace BIImplementation
         /// <exception cref="BO.BlIdDoNotExistException">the producrt not exist </exception>
         public void UpdateProductData(BO.Product product)
         {
-            if (product.ProductID < 100000 || product.ProductID > 999999)
-                throw new BO.BlInvalidInputException("product ID");
             if (product.Name!.Length == 0)
                 throw new BO.BlInvalidInputException("product name");
             if (product.Price < 0)

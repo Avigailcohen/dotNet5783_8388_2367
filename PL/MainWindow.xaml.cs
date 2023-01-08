@@ -34,7 +34,7 @@ namespace PL
 
         private void productList(object sender, RoutedEventArgs e)
         {
-            new ChooseForM().Show();
+            new LogIn().Show();
         }
 
 
@@ -42,6 +42,7 @@ namespace PL
 
         private void Button_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            
             MoveToT.Visibility = Visibility.Visible;
             EnterOrderID_.Visibility = Visibility.Visible;
             IDText.Visibility = Visibility.Visible;
@@ -78,7 +79,40 @@ namespace PL
         private void MoveToT_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
           int ID=int.Parse(IDText.Text);
-            new OrderTrack(ID).Show();
+           new OrderTrack(ID).Show();
+            
+            
+           
+        }
+
+        private void Button_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
+        {
+            BO.Cart cart = new BO.Cart
+            {
+                CustomerName = " ",
+                CustomerAddress = " ",
+                CustomerEmail = " ",
+                OrderItems = new List<BO.OrderItem?>(),
+                Price = 0
+            };
+            new CustomerWindow(cart).Show();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void bind_MouseEnter(object sender, MouseEventArgs e)
+        {
+            bind.Width = 1000;
+            bind.Height = 300;
+
+        }
+
+        private void Image_MouseEnter(object sender, MouseEventArgs e)
+        {
+            blue.Height = 1000;
+            blue.Width = 300;
         }
     }
 };

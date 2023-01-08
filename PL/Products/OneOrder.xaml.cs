@@ -32,6 +32,35 @@ namespace PL.Products
         public static readonly DependencyProperty orderProperty =
             DependencyProperty.Register("order", typeof(BO.Order), typeof(Window), new PropertyMetadata(null));
 
+        public bool Manager
+        {
+            get { return (bool)GetValue(ManagerProperty); }
+            set { SetValue(ManagerProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Manager.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ManagerProperty =
+            DependencyProperty.Register("Manager", typeof(bool), typeof(OneOrder), new PropertyMetadata(null));
+
+
+
+
+
+        //public Visibility visibility
+        //{
+        //    get { return (Visibility)GetValue(visibilityProperty); }
+        //    set { SetValue(visibilityProperty, value); }
+        //}
+
+        //// Using a DependencyProperty as the backing store for visibility.  This enables animation, styling, binding, etc...
+        //public static readonly DependencyProperty visibilityProperty =
+        //    DependencyProperty.Register("visibility", typeof(Visibility), typeof(OneOrder), new PropertyMetadata(null));
+
+
+        public Visibility visibility { get; set; }
+
+
+
 
         public OneOrder(int id)
         {
@@ -40,7 +69,7 @@ namespace PL.Products
             try
             {
                 order = bl?.Order.GetOrderById(id);
-                
+
             }
             catch(BO.BlIdDoNotExistException ex)
             {
@@ -84,6 +113,18 @@ namespace PL.Products
         private void Button_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             this.Close();
+        }
+        public OneOrder(int id,bool manngaer)
+        {
+            InitializeComponent();
+            if (manngaer == false)
+            {
+
+                order=bl?.Order.GetOrderById(id);
+                visibility = Visibility.Hidden;
+                //shipDateDatePicker.IsEnabled = false;
+               // deliveryDateDatePicker.IsEnabled=false;
+            }
         }
     }
 }

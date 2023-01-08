@@ -6,12 +6,63 @@
         xmlns:local="clr-namespace:PL.Products"
         mc:Ignorable="d"
         Title="CustomerWindow" Height="450" Width="800">
-    
-    
+
+
     <Window.Resources>
-        
+
     </Window.Resources>
     <Grid>
-        
+        <ListView x:Name="productItemListView" SelectionMode="Single" Margin="94,28,139,165" MouseDoubleClick="productItemListView_MouseDoubleClick">
+            <ListView.ItemContainerStyle>
+                <Style>
+                    <Setter Property="Control.HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Control.VerticalContentAlignment" Value="Stretch"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.View>
+                <GridView>
+
+                    <GridViewColumn x:Name="categoryColumn" Header="Category" Width="80">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Margin="-6,-1,-6,-1" Text="{Binding Category, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="iDColumn" Header="ID" Width="80">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Margin="-6,-1,-6,-1" Text="{Binding ID, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="inStockColumn" Header="In Stock" Width="80">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding InStock, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" IsEnabled="False"  Margin="-6,-1,-6,-1"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="priceColumn" Header="Price" Width="80">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Margin="-6,-1,-6,-1" Text="{Binding Price, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="productItemNameColumn" Header="Product Item Name" Width="80">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Margin="-6,-1,-6,-1" Text="{Binding ProductItemName, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="MY CART" HorizontalAlignment="Left" Margin="588,324,0,0" VerticalAlignment="Top" Height="44" Width="102" MouseDoubleClick="Button_MouseDoubleClick_1" Background="#FFDDC2C2" FontWeight="Bold" FontStyle="Italic" FontFamily="Copperplate Gothic Bold"/>
+        <Image HorizontalAlignment="Left" Height="62" Margin="690,315,0,0" VerticalAlignment="Top" Width="90" Source="/Products/CartImage.jpg"/>
+
+
     </Grid>
 </Window>
