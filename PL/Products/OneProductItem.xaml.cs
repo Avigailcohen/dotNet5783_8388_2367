@@ -88,5 +88,7 @@ namespace PL.Products
             this.Close();
             new CustomerWindow(cart).ShowDialog();
         }
+
+       
     }
 }

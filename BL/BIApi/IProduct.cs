@@ -54,5 +54,6 @@ namespace BIApi
         /// <param name="product"></param>
         void UpdateProductData(BO.Product product);
 
+        
     }
 }

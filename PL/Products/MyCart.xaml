@@ -9,9 +9,9 @@
     DataContext="{Binding MyCart1,RelativeSource={RelativeSource Self}}"
     Title="MyCart"
     Height="450"
-    Width="800">
+    Width="850">
     <Grid
-        Background="#FFFFF8F8">
+        Background="White">
         <Grid.RowDefinitions>
             <RowDefinition
                 Height="152*" />
@@ -146,19 +146,21 @@
                 HorizontalAlignment="Left"
                 Margin="3,108,0,0"
                 Grid.Row="3"
+                MaxLength="10"
                 TextWrapping="Wrap"
                 
                 VerticalAlignment="Top"
                 Width="120"
-                Grid.Column="1" />
+                Grid.Column="1"
+                PreviewKeyDown="TextBox_PreviewKeyDown" />
 
         </Grid>
         <ListView
             x:Name="orderItemListView"
             ItemsSource="{Binding OrderItems}"
             SelectionMode="Single"
-            Margin="279,26,10,105"
-            Background="#FFF7EDED"
+            Margin="269,27,16,102"
+            Background="White"
             Foreground="#FF080808"
             FontWeight="Bold">
             <ListView.ItemContainerStyle>
@@ -181,7 +183,7 @@
                             <DataTemplate>
                                 <TextBox
                                     x:Name="txtAm"
-                                    Margin="6,-1,-6,-1"
+                                    Margin="6,1,4,7"
                                     Text="{Binding AmountOfItem , Mode=TwoWay, UpdateSourceTrigger=LostFocus}"
                                     LostFocus="TextBox_TextChanged_1" />
                             </DataTemplate>
@@ -247,6 +249,21 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
+                    <GridViewColumn
+                        x:Name="Image"
+                        Header="🥻"
+                        Width="80">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image
+                                    x:Name="prodImag"
+                                    Source="{Binding Path=ImageRelativeName,Converter={StaticResource ImagePathToBitmap}}"></Image>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+
+                   
+
+                    </GridViewColumn>
 
                 </GridView>
             </ListView.View>
@@ -265,25 +282,27 @@
             FontWeight="Bold"
             MouseDoubleClick="Button_MouseDoubleClick_2" />
         <Button
-            Content="Continue shopping "
+            Content="BACK🔙"
             HorizontalAlignment="Left"
-            Margin="664,92,0,0"
+            Margin="714,90,0,0"
             VerticalAlignment="Top"
-            Height="32"
-            Width="126"
+            Height="40"
+            Width="168"
             MouseDoubleClick="Button_MouseDoubleClick_1"
             Grid.Row="1"
             FontWeight="Bold"
             FontFamily="Bodoni MT Black"
-            Background="#FFE9D0D0" />
+            Background="White"
+            RenderTransformOrigin="1.067,0.455"
+            BorderBrush="Snow" />
         <Label
-            Content="----------------------------------------------------------------------------------------------------------------------------------------------------------------"
+            Content="-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------"
             HorizontalAlignment="Left"
             Margin="0,268,0,0"
             VerticalAlignment="Top"
             Height="36"
             Width="882"
-            Foreground="#FFE89595"
+            Foreground="Black"
             FontWeight="Bold"
             FontStyle="Italic" />
         <Image
@@ -330,7 +349,7 @@
             Grid.Row="1"
             VerticalAlignment="Top"
             Width="132"
-            Background="#FFEBD3D3"
+            Background="White"
             Foreground="#FFA77777"
             Height="26" />
         <Image

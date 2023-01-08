@@ -1,10 +1,13 @@
 ﻿using BIApi;
-
-
+using BO;
+using DalApi;
+using DO;
+using System.Collections.Generic;
+using System;
 
 namespace BIImplementation
 {
-    internal class Product : IProduct
+    internal class Product : BIApi.IProduct
     {
         DalApi.IDal? dal = DalApi.Factory.Get();
 
@@ -44,13 +47,17 @@ namespace BIImplementation
         public IEnumerable<BO.ProductForList?> GetListedProducts(Func<BO.ProductForList?, bool>? filter = null)// for the mannager 
         {
             IEnumerable<BO.ProductForList?> bList = from DO.Product doProduct in dal!.Product.GetAll()
-                                                   select new BO.ProductForList///copy from do to bo 
-                                                   {
-                                                       ID = doProduct.ID,
-                                                       ProductName = doProduct.Name,
-                                                       Category = (BO.Category)doProduct.Category,
-                                                       Price = doProduct.Price
-                                                   };
+                                                    select new BO.ProductForList///copy from do to bo 
+                                                    {
+                                                        ID = doProduct.ID,
+                                                        ProductName = doProduct.Name,
+                                                        Category = (BO.Category)doProduct.Category,
+                                                        Price = doProduct.Price,
+                                                        ImageRelativeName = @"\pics\Img" + doProduct.ID + ".jpg"
+
+
+
+                                                    };
 
             return filter is null ? bList : bList.Where(filter);
         }
@@ -64,7 +71,7 @@ namespace BIImplementation
         /// <exception cref="BO.BlIdDoNotExistException"></exception>
         public BO.ProductItem RequestProductDetailsForC(int ProductId, BO.Cart cart)
         {
-            
+
 
             DO.Product? product;
 
@@ -84,7 +91,9 @@ namespace BIImplementation
                 InStock = product?.InStock > 0 ? true : false,
                 Category = (BO.Category)(product?.Category ?? throw new BO.BlWrongCategoryException("worng category")),
                 Price = product?.Price ?? throw new BO.BlNullPropertyException("missing price"),
-                AmountInCart = cart.OrderItems is null ? 0 : cart.OrderItems.Where(x => x?.ProductID == ProductId).Sum(x => x!.AmountOfItem)
+                AmountInCart = cart.OrderItems is null ? 0 : cart.OrderItems.Where(x => x?.ProductID == ProductId).Sum(x => x!.AmountOfItem),
+                ImageRelativeName = @"\pics\Img" + product.Value.ID + ".jpg"
+
 
             };
         }
@@ -97,6 +106,19 @@ namespace BIImplementation
         /// <exception cref="NotImplementedException"></exception>
         public IEnumerable<BO.ProductItem?> GetListedProductsForC()//catalog of products for customer 
         {
+            //IEnumerable<BO.ProductItem?> products = from DO.Product? pro in dal.Product.GetAll()
+            //                                        select new ProductItem
+            //                                        {
+            //                                            ID = pro.Value.ID,
+            //                                            ProductItemName = pro.Value.Name,
+            //                                            Price = pro.Value.Price,
+            //                                            Category = (BO.Category)pro.Value.Category,
+            //                                            AmountInCart = 0,
+            //                                            InStock = pro?.InStock > 0 ? true : false,
+            //                                            ImageRelativeName = @"\pics\Img" + pro.Value.ID + ".jpg"
+            //                                        };
+            //return filter is null ? products : products.Where(filter);
+
             return from DO.Product? doProduct in dal!.Product.GetAll()
                    select new BO.ProductItem
                    {
@@ -105,11 +127,31 @@ namespace BIImplementation
                        Category = (BO.Category)(doProduct?.Category ?? throw new NullReferenceException("missing category")),
                        Price = doProduct?.Price ?? 0,
                        InStock = doProduct?.InStock > 0 ? true : false,
-                       AmountInCart = 0
+                       AmountInCart = 0,
+                       ImageRelativeName = @"\pics\Img" + doProduct.Value.ID + ".jpg"
+
+
                    };
 
             throw new NotImplementedException();
         }
+        //public IEnumerable<ProductItem?> GetProductItems(Func<ProductItem?, bool>? func = null)
+        //{
+
+        //    IEnumerable<ProductItem?> productItems = from DO.Product? pro in dal.Product.GetAll()
+        //                                             select new ProductItem
+        //                                             {
+        //                                                 ID = pro.Value.ID,
+        //                                                 Name = pro.Value.Name,
+        //                                                 Price = (int)pro.Value.Price,
+        //                                                 Category = (Enums.Category?)pro.Value.Category,
+        //                                                 Amount = 0,
+        //                                                 Availability = GetAvailability(pro),
+        //                                                 ImageRelativeName = @"\picss\IMG" + pro.Value.ID + ".jpg"
+        //                                             };
+        //    return func is null ? productItems : productItems.Where(func);
+        //}
+
         /// <summary>
         /// add product to the list 
         /// </summary>
@@ -213,6 +255,8 @@ namespace BIImplementation
             }
             return;
         }
-    }
+        
 
+
+    }
 }

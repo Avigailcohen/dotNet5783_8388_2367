@@ -1,4 +1,6 @@
 ﻿using DO;
+using System.Net.NetworkInformation;
+
 namespace Dal;
 
 internal static class DataSource
@@ -38,28 +40,97 @@ internal static class DataSource
     /// </summary>
     private static void createAndInitProducts()
     {
-        //string[,] picturs=new string[,] { { } }
-        string[,] names = new string[,] {{ "midi Dress", " flower dress", " black dress","long dress","Knit dress" },
-                                          { "short skirt","midi skirt","maxi skirt","Knit skirt","Sheath skirt"},
-                                          { "golf shirt","long shirt","short shirt","Knit shirt","Cashmere shirt"},
-                                          { "belts","hats","bags", "glasses","bracelet" } ,
-                                          {"White Sport shirt","Black Sport skirt","Black Sport shirt","White Sport skirt","Pink Sport shirt" } };
-        int[] InStocks = { 13, 10, 5, 11, 9, 7, 44, 0, 55, 17, 23, 67, 12, 90, 66 };
+        string[] Dresses = new string[5] { "Green Cashmere Dress", "Flower dress", "Black dress", "Long dress", "Knit dress" };
+        string[] Skirt = new string[5] { "Knit skirt", "White skirt", "Maxi skirt", "Knit skirt", "Sheath skirt" };
+        string[] Shirt = new string[5] { "Golf shirt", "Knit shirt", "short shirt", "Knit shirt", "Cashmere shirt" };
+        string[] Accessories = new string[5] { "Hats", " Yellow Bag", "Bag", "Glasses", "Bracelet" };
+        string[] Shoose = new string[5] { "Black Sport shirt", "Black Sport skirt", "Black Sport shirt", "White Sport skirt", "Pink Sport shirt" };
+        int[] InStocks = {  5, 11, 9, 7, 44, 0};
+        int counter = 0;
+
+
+        for ( int i=0;i<5;i++)
+        {
+            
+            for(int j = 0;j < 2;j++)
+            {
+                Product pro = new Product()
+                {
+                    ID = 10000 + counter,
+                    Category = (Category)i,
+                    Price = s_rand.Next(50, 230),
+                    InStock = s_rand.Next(10)
+                };
+                if (i == 0)
+                    pro.Name = Dresses[j];
+                if (i == 1)
+                    pro.Name = Skirt[j];
+                if (i == 2)
+                    pro.Name = Shirt[j];
+                if (i == 3)
+                    pro.Name = Accessories[j];
+                if (i == 4)
+                    pro.Name = Shoose[j];
+                counter++;
+                productList.Add(pro);
+
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //string[,] picturs=new string[,]
+        //string[] ProductsArray ={"Midi Dress","Flower Dress","Black Dress"
+
+        //string[,] names = new string[,] {{ "midi Dress", " flower dress", " black dress","long dress","Knit dress" },
+        //                                  { "short skirt","midi skirt","maxi skirt","Knit skirt","Sheath skirt"},
+        //                                  { "golf shirt","long shirt","short shirt","Knit shirt","Cashmere shirt"},
+        //                                  { "belts","hats","bags", "glasses","bracelet" } ,
+        //                                  {"White Sport shirt","Black Sport skirt","Black Sport shirt","White Sport skirt","Pink Sport shirt" } };
+        //int[] InStocks = { 13, 10, 5, 11, 9, 7, 44, 0, 55, 17, 23, 67, 12, 90, 66 };
         for (int i = 0; i < 15; i++)
         {
-            int x = s_rand.Next(5);
-            Product product = new Product();
-
-
-            product.ID = 10000 + i;
-            product.Price = s_rand.Next(50, 500);
-            product.Category = (Category)x;// convert the num for category
-            product.Name = names[x, s_rand.Next(5)];
-            //Name = Names(x, s_rand.Next(5)),
-            product.InStock = InStocks[i];
-            productList.Add(product);
 
         }
+        //{
+        //    int x = s_rand.Next(5);
+        //    Product product = new Product();
+
+
+            //    product.ID = 10000 + i;
+            //    product.Price = s_rand.Next(50, 500);
+            //    product.Category = (Category)x;// convert the num for category
+            //    product.Name = names[x, s_rand.Next(5)];
+            //    //Name = Names(x, s_rand.Next(5)),
+            //    product.InStock = InStocks[i];
+            //    productList.Add(product);
+
+            //}
 
 
 

@@ -25,7 +25,7 @@ namespace PL
             }
             catch (Exception ex)
             {
-                string imageRelatuveName = @"\pics\IMG_FAILURE.jpg";
+                string imageRelatuveName = @"\pics\NoImag.jpg";
                 string currentDir = Environment.CurrentDirectory[..^4];
                 string imageFullName = currentDir + imageRelatuveName;
                 BitmapImage bitmapImage = new BitmapImage(new Uri(imageFullName));

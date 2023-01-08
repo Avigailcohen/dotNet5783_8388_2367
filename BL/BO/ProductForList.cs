@@ -6,7 +6,9 @@
         public string? ProductName { get; set; }
         public double Price { get; set; }
         public Category Category { get; set; }
-        
+
+        public string? ImageRelativeName { get; set; }
+
         public override string ToString()
         {
             return this.ToStringProperty();

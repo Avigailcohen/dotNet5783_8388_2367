@@ -10,7 +10,8 @@
     Title="OneProductItem"
     Height="450"
     Width="800">
-    <Grid>
+    <Grid
+        Background="White">
         <Grid
             x:Name="grid1"
             HorizontalAlignment="Left"
@@ -42,7 +43,9 @@
                 HorizontalAlignment="Left"
                 Margin="3"
                 Grid.Row="0"
-                VerticalAlignment="Center" />
+                VerticalAlignment="Center"
+                Foreground="#FF232121"
+                FontWeight="Bold" />
             <TextBlock
                 x:Name="amountInCartTextBlock"
                 Grid.Column="1"
@@ -57,7 +60,8 @@
                 HorizontalAlignment="Left"
                 Margin="3"
                 Grid.Row="1"
-                VerticalAlignment="Center" />
+                VerticalAlignment="Center"
+                FontWeight="Bold" />
             <TextBlock
                 x:Name="categoryTextBlock"
                 Grid.Column="1"
@@ -72,7 +76,8 @@
                 HorizontalAlignment="Left"
                 Margin="3"
                 Grid.Row="2"
-                VerticalAlignment="Center" />
+                VerticalAlignment="Center"
+                FontWeight="Bold" />
             <TextBlock
                 x:Name="iDTextBlock"
                 Grid.Column="1"
@@ -87,7 +92,8 @@
                 HorizontalAlignment="Left"
                 Margin="3"
                 Grid.Row="3"
-                VerticalAlignment="Center" />
+                VerticalAlignment="Center"
+                FontWeight="Bold" />
             <CheckBox
                 x:Name="inStockCheckBox"
                 IsEnabled="False"
@@ -104,7 +110,8 @@
                 HorizontalAlignment="Left"
                 Margin="3"
                 Grid.Row="4"
-                VerticalAlignment="Center" />
+                VerticalAlignment="Center"
+                FontWeight="Bold" />
             <TextBlock
                 x:Name="priceTextBlock"
                 Grid.Column="1"
@@ -119,7 +126,8 @@
                 HorizontalAlignment="Left"
                 Margin="3"
                 Grid.Row="5"
-                VerticalAlignment="Center" />
+                VerticalAlignment="Center"
+                FontWeight="Bold" />
             <TextBlock
                 x:Name="productItemNameTextBlock"
                 Grid.Column="1"
@@ -136,15 +144,45 @@
             VerticalAlignment="Top"
             Height="40"
             Width="108"
-            MouseDoubleClick="Button_MouseDoubleClick" />
+            MouseDoubleClick="Button_MouseDoubleClick"
+            Background="#FF0C0C0C"
+            Foreground="White"
+            FontWeight="Bold" />
         <Button
-            Content="Back to catalog"
+            Content="Back to catalog 🔙"
             HorizontalAlignment="Left"
-            Margin="66,297,0,0"
+            Margin="10,299,0,0"
             VerticalAlignment="Top"
-            Height="42"
-            Width="127"
-            Click="Button_Click" />
-        
+            Height="40"
+            Width="185"
+            Click="Button_Click"
+            Foreground="White"
+            FontWeight="Bold"
+            Background="Black"
+            RenderTransformOrigin="0.445,0.934" />
+        <Image
+            x:Name="ProIm"
+            Source="{Binding Path=ImageRelativeName,Converter={StaticResource ImagePathToBitmap}}"
+            HorizontalAlignment="Left"
+            Height="227"
+            Margin="336,73,0,0"
+            VerticalAlignment="Top"
+            Width="222" />
+        <Image
+            HorizontalAlignment="Left"
+            Height="94"
+            Margin="524,10,0,0"
+            VerticalAlignment="Top"
+            Width="276"
+            Source="/Products/שחורלוגו-חדש-סיבי-06.png"
+            />
+        <Image
+            HorizontalAlignment="Left"
+            Height="102"
+            Margin="590,268,0,0"
+            VerticalAlignment="Top"
+            Width="80"
+            Source="/Products/CartImage.jpg" />
+
     </Grid>
 </Window>

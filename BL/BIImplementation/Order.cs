@@ -95,6 +95,7 @@ namespace BIImplementation
                        AmountOfItem = item.Amount,
                        TotalPrice = item.Price * item.Amount,
                        ProductID = dal.Product.GetById(item.ProductId).ID
+                       
                    };
         }
 

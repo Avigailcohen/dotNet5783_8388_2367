@@ -50,7 +50,8 @@ namespace BIImplementation
                             Price = product.Price,
                             AmountOfItem = 1,
                             TotalPrice = product.Price,
-                            ProductID = product.ID
+                            ProductID = product.ID,
+                            ImageRelativeName = @"\pics\Img" + product.ID + ".jpg"
                         };
                         cart.OrderItems = cart.OrderItems!.Append(newOrderItem);
                     }

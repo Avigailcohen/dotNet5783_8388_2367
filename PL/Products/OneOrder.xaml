@@ -12,7 +12,7 @@
     Width="800">
 
     <Grid
-        Background="#FFE6D3D3"
+        Background="White"
         Margin="0,0,10,12">
         <Grid.ColumnDefinitions>
             <ColumnDefinition
@@ -26,9 +26,9 @@
             x:Name="grid1"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Margin="116,81,0,0"
-            Height="233"
-            Width="295">
+            Margin="262,16,0,0"
+            Height="234"
+            Width="266">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition
                     Width="0" />
@@ -97,11 +97,11 @@
                 Grid.Column="2"
                 HorizontalAlignment="Left"
                 Height="NaN"
-                Margin="3,0,0,0"
+                Margin="3,0,0,4"
                 Grid.Row="2"
                 IsReadOnly="True"
                 Text="{Binding CustomerEmail, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
-                VerticalAlignment="Center"
+                VerticalAlignment="Bottom"
                 Width="120"
                 BorderBrush="#FFEEE1E1"
                 Grid.ColumnSpan="2" />
@@ -151,7 +151,6 @@
                 Grid.ColumnSpan="2" />
             <DatePicker
                 x:Name="deliveryDateDatePicker"
-                
                 Grid.Column="2"
                 HorizontalAlignment="Left"
                 Margin="3,0,0,0"
@@ -279,7 +278,7 @@
             Style="{DynamicResource btn_MU}"
             Name="upD"
             HorizontalAlignment="Left"
-            Margin="48,165,0,0"
+            Margin="209,100,0,0"
             VerticalAlignment="Top"
             RenderTransformOrigin="-0.097,0.94"
             Height="23"
@@ -293,7 +292,7 @@
             Style="{DynamicResource btn_MU }"
             Name="upS"
             HorizontalAlignment="Left"
-            Margin="47,241,0,0"
+            Margin="212,174,0,0"
             VerticalAlignment="Top"
             RenderTransformOrigin="-0.08,0.577"
             Click="Button_Click"
@@ -306,8 +305,8 @@
             x:Name="orderItemListView"
             ItemsSource="{Binding OrderItems}"
             SelectionMode="Single"
-            Margin="372,9,8,224"
-            Background="#FFF5FFEA"
+            Margin="133,247,87,0"
+            Background="White"
             Foreground="#FFE3B9B9"
             FontStyle="Italic"
             FontWeight="Bold"
@@ -396,13 +395,14 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
+
                 </GridView>
             </ListView.View>
         </ListView>
         <Button
             Content="Close"
             HorizontalAlignment="Left"
-            Margin="629,356,0,0"
+            Margin="684,-7,0,0"
             VerticalAlignment="Top"
             Height="46"
             Width="96"
@@ -410,7 +410,15 @@
             FontWeight="Bold"
             FontSize="24"
             MouseDoubleClick="Button_MouseDoubleClick"
-            RenderTransformOrigin="0.855,0.615" />
+            RenderTransformOrigin="0.855,0.615"
+            Grid.ColumnSpan="2" />
+        <Image
+            HorizontalAlignment="Left"
+            Height="155"
+            Margin="10,10,0,0"
+            VerticalAlignment="Top"
+            Width="257"
+            Source="/Products/שחורלוגו-חדש-סיבי-06.png" />
 
         <Grid.Resources>
             <BooleanToVisibilityConverter
@@ -424,8 +432,7 @@
 
             </Style>
             <Style
-                TargetType="DatePicker"
-                >
+                TargetType="DatePicker">
                 <Setter
                     Property="IsEnabled"
                     Value="{Binding Manager,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" />

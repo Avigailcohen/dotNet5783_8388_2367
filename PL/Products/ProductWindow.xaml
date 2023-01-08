@@ -167,6 +167,14 @@
             Background="White"
             FontSize="16"
             FontWeight="Bold" />
+        <Image
+            x:Name="prodImage"
+            Source="{Binding Path=ImageRelativeName,Converter={StaticResource ImagePathToBitmap}}"
+            HorizontalAlignment="Left"
+            Height="240"
+            Margin="64,264,0,0"
+            VerticalAlignment="Top"
+            Width="282" />
         <Grid.Resources>
             <Style
                 TargetType="Button"

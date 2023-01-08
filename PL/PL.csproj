@@ -39,6 +39,7 @@
     <None Remove="Products\DownAdd1.jpg" />
     <None Remove="Products\iCON.jpg" />
     <None Remove="Products\images.png" />
+    <None Remove="Products\Login.jpg" />
     <None Remove="Products\logo099.jpg" />
     <None Remove="Products\LOGO11.jpg" />
     <None Remove="Products\MAN.jpg" />
@@ -81,6 +82,7 @@
     <Resource Include="Products\DownAdd1.jpg" />
     <Resource Include="Products\iCON.jpg" />
     <Resource Include="Products\images.png" />
+    <Resource Include="Products\Login.jpg" />
     <Resource Include="Products\logo099.jpg" />
     <Resource Include="Products\LOGO11.jpg" />
     <Resource Include="Products\MAN.jpg" />

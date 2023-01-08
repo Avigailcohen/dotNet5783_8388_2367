@@ -27,18 +27,18 @@ namespace PL.Products
 
         private void Button_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if(PassText.Text=="123456" && UserName.Text=="Avigail@gmail.com")
+            if(passW.Password=="123456" && UserName.Text=="avigail@gmail.com")
             {
                 new ChooseForM().Show();
             }
             else
             {
-                PassText.BorderBrush=new SolidColorBrush(Colors.DarkRed);
+                passW.BorderBrush=new SolidColorBrush(Colors.DarkRed);
                 UserName.BorderBrush=new SolidColorBrush(Colors.DarkRed);
                 lblWo.Visibility=Visibility.Visible;
 
             }
-            if (PassText.Text.Length == 0)
+            if (passW.Password.Length == 0)
                 lblEmpty.Visibility = Visibility.Visible;
             if(UserName.Text.Length == 0)
                 lblWe.Visibility=Visibility.Visible;

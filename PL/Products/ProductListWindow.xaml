@@ -11,7 +11,7 @@
     Width="800">
     <Grid
         Name="MainGrid"
-        Background="#FFF1D0D0"
+        Background="#FFFFEEEE"
         RenderTransformOrigin="0.844,0.36">
         <Grid.ColumnDefinitions>
             <ColumnDefinition
@@ -121,7 +121,7 @@
             Margin="576,508,0,10"
             Padding="5"
             FontFamily="Bell MT"
-            Foreground="#FFFFFBFD"
+            Foreground="#FF060606"
             FontSize="24"
             Width="187"
             RenderTransformOrigin="0.554,0.807"

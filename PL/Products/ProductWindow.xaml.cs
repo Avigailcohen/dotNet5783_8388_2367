@@ -285,7 +285,7 @@ namespace PL.Products
                 result = MessageBox.Show("Are you sure you want to delete this product?", "DELETE", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if(result == MessageBoxResult.Yes)
                 {
-                    MessageBox.Show(ex.Message + "deleted succesfuly");
+                    MessageBox.Show(ex.Message + " " +"deleted succesfuly","DELETE",MessageBoxButton.OK,MessageBoxImage.Information);
                     Close();
                 }
                 else

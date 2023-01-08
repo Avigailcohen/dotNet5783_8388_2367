@@ -64,6 +64,7 @@ namespace PL.Products
 
         public OneOrder(int id)
         {
+            Manager = true;
             
             InitializeComponent();
             try
@@ -116,12 +117,13 @@ namespace PL.Products
         }
         public OneOrder(int id,bool manngaer)
         {
+            Manager = manngaer;
             InitializeComponent();
             if (manngaer == false)
             {
 
                 order=bl?.Order.GetOrderById(id);
-                visibility = Visibility.Hidden;
+                
                 //shipDateDatePicker.IsEnabled = false;
                // deliveryDateDatePicker.IsEnabled=false;
             }
