@@ -142,12 +142,14 @@ namespace PL.Products
 
         private void Button_MouseDoubleClick_2(object sender, MouseButtonEventArgs e)
         {
+           
             Visibility = Visibility.Visible;
             result = MessageBox.Show("Are you sure you want to copmplete your order?","CONFIRM",MessageBoxButton.YesNo,MessageBoxImage.Question);
             if(result == MessageBoxResult.Yes)
             {
                 try
                 {
+                    
                     bl.Cart.OrderConfirmation(MyCart1);
                     MyCart1.OrderItems = new List<OrderItem>();
                     MyCart1.Price = 0;

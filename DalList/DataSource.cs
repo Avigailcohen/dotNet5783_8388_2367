@@ -30,6 +30,11 @@ internal static class DataSource
         createAndInitOrders();
         createAndInitOrderItems();
 
+        XmlTools.SaveListToXMLSerializer(productList, "Products");
+        //XmlTools.SaveListToXMLSerializer(orderList, "Orders");
+        //XmlTools.SaveListToXMLSerializer(orderItemList, "OrderItems");
+
+
     }
     //static string [ ,]Names= new string[,]
     //{

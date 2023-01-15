@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfProduct xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Product>
+    <ID>10000</ID>
+    <Name>Green Cashmere Dress</Name>
+    <Category>Dresses</Category>
+    <Price>2222</Price>
+    <InStock>1</InStock>
+  </Product>
+  <Product>
+    <ID>10002</ID>
+    <Name>Knit skirt</Name>
+    <Category>Skirts</Category>
+    <Price>93</Price>
+    <InStock>0</InStock>
+  </Product>
+  <Product>
+    <ID>10003</ID>
+    <Name>White skirt</Name>
+    <Category>Skirts</Category>
+    <Price>80</Price>
+    <InStock>7</InStock>
+  </Product>
+  <Product>
+    <ID>10004</ID>
+    <Name>Golf shirt</Name>
+    <Category>Shirts</Category>
+    <Price>218</Price>
+    <InStock>6</InStock>
+  </Product>
+  <Product>
+    <ID>10005</ID>
+    <Name>Knit shirt</Name>
+    <Category>Shirts</Category>
+    <Price>192</Price>
+    <InStock>9</InStock>
+  </Product>
+  <Product>
+    <ID>10006</ID>
+    <Name>Hats</Name>
+    <Category>Accessories</Category>
+    <Price>229</Price>
+    <InStock>0</InStock>
+  </Product>
+  <Product>
+    <ID>10007</ID>
+    <Name> Yellow Bag</Name>
+    <Category>Accessories</Category>
+    <Price>81</Price>
+    <InStock>1</InStock>
+  </Product>
+  <Product>
+    <ID>10008</ID>
+    <Name>Black Sport shirt</Name>
+    <Category>Sport</Category>
+    <Price>205</Price>
+    <InStock>1</InStock>
+  </Product>
+  <Product>
+    <ID>10009</ID>
+    <Name>Black Sport skirt</Name>
+    <Category>Sport</Category>
+    <Price>193</Price>
+    <InStock>8</InStock>
+  </Product>
+  <Products>
+    <ID>123456</ID>
+    <Name>white skirt</Name>
+    <Category>Skirts</Category>
+    <InStock>34</InStock>
+    <Price>200</Price>
+  </Products>
+</ArrayOfProduct>

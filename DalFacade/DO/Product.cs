@@ -11,7 +11,7 @@ public struct Product
     /// <summary>
     /// the name of the product
     /// </summary>
-    public Enum Category { get; set; }
+    public Category Category { get; set; }
     /// <summary>
     /// the category of the product
     /// </summary>

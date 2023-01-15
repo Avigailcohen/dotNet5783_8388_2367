@@ -232,11 +232,11 @@ namespace PL.Products
                     Close();
                 }
                 // in case the adding faild
-                catch (BO.BlIdAlreadyExistException x)
+                catch (BO.BlIdAlreadyExistException ex)
                 {
 
-                   result1 = MessageBox.Show(x.InnerException!.Message, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
-                    MessageBox.Show(x.Message, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                   result1 = MessageBox.Show(ex.Message, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show(ex.Message, "ERROR", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 catch (BO.BlInvalidInputException)
                 {

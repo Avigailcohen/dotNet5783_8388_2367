@@ -27,7 +27,7 @@ namespace PL.Products
 
         private void Button_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if(passW.Password=="123456" && UserName.Text=="avigail@gmail.com")
+            if(passW.Password=="1" && UserName.Text=="1")
             {
                 new ChooseForM().Show();
             }

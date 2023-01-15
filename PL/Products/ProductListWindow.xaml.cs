@@ -29,7 +29,7 @@ namespace PL.Products
         public ProductListWindow(BIApi.IBl? bl)
         {
             InitializeComponent();
-            Category category = new BO.Category();
+            //Category category = new BO.Category();
             Category.ItemsSource = Enum.GetValues(typeof(BO.Category));
             listViewOfProducts.ItemsSource = bl?.Product.GetListedProducts();
             Category.SelectedIndex = 5;
