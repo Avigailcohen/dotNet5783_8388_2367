@@ -128,5 +128,21 @@ namespace PL.Products
                // deliveryDateDatePicker.IsEnabled=false;
             }
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int idForDelete = order.ID;
+                order = bl.Order.UpdateOrder(Convert.ToInt32(iDTextBox.Text), Convert.ToInt32(prod.Text),Convert.ToInt32(amou.Text));
+                MessageBox.Show("The order was successfully updated");
+                orderItemListView.Items.Refresh();
+
+
+
+            }
+            catch(BO.BlIdDoNotExistException ex) { MessageBox.Show(ex.Message); }
+            catch(BO.BlIncorrectDateException ex) { MessageBox.Show("couldnt do it"); }
+        }
     }
 }

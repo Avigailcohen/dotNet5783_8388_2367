@@ -39,7 +39,9 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>-->
-                    <DataGridTextColumn x:Name="item1Column" Binding="{Binding Item1, StringFormat=dd-MM-yyyy}" Header="Item 1" IsReadOnly="True" Width="100" />
+                    <DataGridTextColumn
+                        x:Name="item1Column"
+                        Binding="{Binding Item1 ,StringFormat={}{0:dd.MM.yy HH:mm} }" Header="Item 1" IsReadOnly="True" Width="100" />
 
                     <DataGridTextColumn x:Name="item2Column" Binding="{Binding Item2}" Header="Item 2" IsReadOnly="True" Width="100"/>
                 </DataGrid.Columns>

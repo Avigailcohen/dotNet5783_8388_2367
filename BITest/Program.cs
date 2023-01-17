@@ -11,10 +11,13 @@ namespace BITest
     {
         static IBl? bl = Factory.Get();
         static Cart newCart = new Cart() { OrderItems = new List<OrderItem>(), Price = 0 };
+        
         static void OrderCheck()
         {
             char choice;
             int ID;
+            int proID;
+            int newAmount;
             Console.WriteLine("Enter your choice");
             Console.WriteLine($@"
 press a for GetOrders for mannager ,
@@ -23,14 +26,17 @@ press c for UpdateOrderShip,
 press d for UpdateDelivertOrder,
 press e for OrderTracking,
 press f for sort list,
-press g for return to the menue");
+press h for return to the menue,
+prees i for return to the menue");
             if (!char.TryParse(Console.ReadLine(), out choice)) throw new Exception("wrong input type");
             try
             {
-                while (choice != 'g')
+                while (choice != 'i')
                 {
+                    
                     switch (choice)
                     {
+
                         case 'a':
                             var v = bl!.Order.GetOrders();
                             Console.WriteLine(String.Join(" ", v));//עובד 
@@ -58,6 +64,16 @@ press g for return to the menue");
                         case 'f':
                             IEnumerable<IGrouping<double, OrderForList>> list = bl!.Order.GetGroupedOrderes();
                             break;
+                        case 'h':
+                            Console.WriteLine("Enter order Id");
+                            if (!int.TryParse(Console.ReadLine(), out ID)) throw new FormatException("wrong input type");
+                            Console.WriteLine("Enter product Id");
+                            if (!int.TryParse(Console.ReadLine(), out proID)) throw new FormatException("wrong input type");
+                            Console.WriteLine("Enter new amount");
+                            if (!int.TryParse(Console.ReadLine(), out newAmount)) throw new FormatException("wrong input type");
+                            Console.WriteLine(bl.Order.UpdateOrder(ID, proID, newAmount));
+                            break;
+
 
                     }
                     char.TryParse(Console.ReadLine(), out choice);

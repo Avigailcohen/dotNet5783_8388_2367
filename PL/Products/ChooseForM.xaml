@@ -51,22 +51,22 @@
         <Button
             Style="{StaticResource myButtonStyle}"
             Content="Products list"
-            Margin="29,227,536,97"
+            Margin="34,279,527,90"
             Grid.Row="1"
             Click="Button_Click"
             Foreground="#FF1D1C1C"
             Background="#FFF6D7D7"
             BorderBrush="{x:Null}"
-            FontFamily="Poor Richard" />
+             />
         <Button
             Style="{StaticResource myButtonStyle}"
             Content=" Orders list"
-            Margin="522,225,35,88"
+            Margin="515,283,35,88"
             Foreground="#FF190404"
             Grid.Row="1"
             BorderBrush="White"
             Background="#FFF6D7D7"
-            FontFamily="Poor Richard"
+            
             RenderTransformOrigin="0.5,0.5"
             Click="OrderList_">
             <Button.RenderTransform>
@@ -116,6 +116,19 @@
             Width="338"
             Foreground="#FFF6D7D7"
             FontSize="24" />
+        <Button
+            Style="{StaticResource myButtonStyle}"
+            Content="order track"
+            HorizontalAlignment="Left"
+            Margin="326,283,0,0"
+            Grid.RowSpan="2"
+            VerticalAlignment="Top"
+            Height="57"
+            Width="152"
+            
+            Background="#FFF3D8D8"
+            FontWeight="Bold"
+            Click="Button_Click_1" />
 
 
 

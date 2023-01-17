@@ -37,5 +37,10 @@ namespace PL.Products
         {
             new OrderList(bl).Show();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            new TrackMa().Show();
+        }
     }
 }

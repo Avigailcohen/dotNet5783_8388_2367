@@ -23,14 +23,16 @@ internal static class DataSource
     internal static List<Product?> productList { get; } = new List<Product?>();
     internal static List<Order?> orderList { get; } = new List<Order?>();
     internal static List<OrderItem?> orderItemList { get; } = new List<OrderItem?>();
+    //internal static List<User?> usersList { get; }= new List<User?>();
 
     private static void s_Initialize()
     {
         createAndInitProducts();
         createAndInitOrders();
         createAndInitOrderItems();
+        //createAndInitUsers();
 
-        XmlTools.SaveListToXMLSerializer(productList, "Products");
+        //XmlTools.SaveListToXMLSerializer(productList, "Products");
         //XmlTools.SaveListToXMLSerializer(orderList, "Orders");
         //XmlTools.SaveListToXMLSerializer(orderItemList, "OrderItems");
 
@@ -210,5 +212,21 @@ internal static class DataSource
         }
 
     }
+    //private static void createAndInitUsers()
+    //{
+    //    usersList.Add(new User
+    //    {
+    //        userName = "Avigailcohen",
+    //        password = "123456",
+    //        Status = Status.Mannager
+    //    });
+    //    usersList.Add(new User
+    //    {
+    //        userName = "customer",
+    //        password = "1111",
+    //        Status = Status.Customer
+
+    //    });
+    //}
 
 }

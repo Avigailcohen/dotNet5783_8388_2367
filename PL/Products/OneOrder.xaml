@@ -10,6 +10,18 @@
     Title="OneOrder"
     Height="450"
     Width="800">
+    <Window.Resources>
+        <Style
+            x:Key="MyLable"
+            TargetType="Label">
+            <Setter
+                Property="FontWeight"
+                Value="Black">
+
+            </Setter>
+
+        </Style>
+    </Window.Resources>
 
     <Grid
         Background="White"
@@ -305,7 +317,7 @@
             x:Name="orderItemListView"
             ItemsSource="{Binding OrderItems}"
             SelectionMode="Single"
-            Margin="133,247,87,0"
+            Margin="10,250,210,-3"
             Background="White"
             Foreground="#FFE3B9B9"
             FontStyle="Italic"
@@ -419,6 +431,44 @@
             VerticalAlignment="Top"
             Width="257"
             Source="/Products/שחורלוגו-חדש-סיבי-06.png" />
+        <TextBox
+            x:Name="prod"
+            HorizontalAlignment="Left"
+            Margin="617,263,0,0"
+            TextWrapping="Wrap"
+            VerticalAlignment="Top"
+            Width="120" />
+        <TextBox
+            x:Name="amou"
+            HorizontalAlignment="Left"
+            Margin="617,324,0,0"
+            TextWrapping="Wrap"
+            VerticalAlignment="Top"
+            Width="120"
+            RenderTransformOrigin="0.303,0.347" />
+        <Label
+            Style="{StaticResource MyLable}"
+            Content="ProductID:"
+            HorizontalAlignment="Left"
+            Margin="542,255,0,0"
+            VerticalAlignment="Top"
+            RenderTransformOrigin="0.503,0.733" />
+        <Label
+            Style="{StaticResource MyLable}"
+            Content="Amount:"
+            HorizontalAlignment="Left"
+            Margin="550,316,0,0"
+            VerticalAlignment="Top" />
+        <Button
+            Content="Update "
+            HorizontalAlignment="Left"
+            Margin="646,361,0,0"
+            VerticalAlignment="Top"
+            Height="21"
+            Width="62"
+            FontWeight="Bold"
+            Background="#FFFFFCFC"
+            Click="Button_Click_1" />
 
         <Grid.Resources>
             <BooleanToVisibilityConverter

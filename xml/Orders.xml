@@ -97,7 +97,7 @@
     <CustomerAddress>Avarham Shpapira 10</CustomerAddress>
     <OrderDate>2023-01-15T18:56:55.0250591+02:00</OrderDate>
     <ShipDate>2023-01-17T18:56:55.0250591+02:00</ShipDate>
-    <DeliveryDate xsi:nil="true" />
+    <DeliveryDate>2023-01-15T19:24:33.3483181+02:00</DeliveryDate>
   </Order>
   <Order>
     <ID>1011</ID>
@@ -233,5 +233,14 @@
     <OrderDate>2023-01-15T17:45:53.3472076+02:00</OrderDate>
     <ShipDate xsi:nil="true" />
     <DeliveryDate xsi:nil="true" />
+  </Order>
+  <Order>
+    <ID>1026</ID>
+    <CustomerName> shira alon</CustomerName>
+    <CustomerEmail> shiraAlon2003@gmail.com</CustomerEmail>
+    <CustomerAddress>Geva 27</CustomerAddress>
+    <OrderDate>2023-01-15T21:44:03.823126+02:00</OrderDate>
+    <ShipDate xsi:nil="true" />
+    <DeliveryDate>2023-01-15T21:44:26.4374353+02:00</DeliveryDate>
   </Order>
 </ArrayOfOrder>

@@ -118,6 +118,7 @@ namespace PL.Products
                 //int amount = orderItem.AmountOfItem;
                 MyCart1 = bl!.Cart.UpdateAmount(MyCart1, orderItem.ProductID, orderItem.AmountOfItem);
                 orderItemListView.Items.Refresh();
+                
                 priceTextBox.Text=MyCart1.Price.ToString();
                 
                 

@@ -56,6 +56,7 @@ namespace PL.Products
             Category = Enum.GetValues(typeof(Category));
             ProductItems = new ObservableCollection<ProductItem>(bl!.Product?.GetListedProductsForC())!;
             Cart1 = cart;
+            
         }
     
         

@@ -5,6 +5,8 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <local:ConvertImagPathToBitmap
-         x:Key="ImagePathToBitmap" />
+            x:Key="ImagePathToBitmap" />
+        <local:ConvertColorToStatus
+            x:Key="ColorStatus" />
     </Application.Resources>
 </Application>

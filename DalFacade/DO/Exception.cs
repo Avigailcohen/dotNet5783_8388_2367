@@ -15,6 +15,7 @@ namespace DO
         public DalIdDoNotExistException(int id, string EName) : base() { EntityId = id; EntityName = EName; }
         public DalIdDoNotExistException(int id, string EName, string message) : base(message) { EntityId = id; EntityName = EName; }
         public DalIdDoNotExistException(int id, string EName, string message, Exception innerException) : base(message, innerException) { EntityId = id; EntityName = EName; }
+        
 
         public override string ToString() => $"Id:{EntityId} of type {EntityName},does not exist";
     }
@@ -28,6 +29,8 @@ namespace DO
         public DalIdAlreadyExistException(int id, string EName) : base() { EntityId = id; EntityName = EName; }
         public DalIdAlreadyExistException(int id, string EName, string message) : base(message) { EntityId = id; EntityName = EName; }
         public DalIdAlreadyExistException(int id, string EName, string message, Exception innerException) : base(message, innerException) { EntityId = id; EntityName = EName; }
+        public DalIdAlreadyExistException(string EName) : base() { }
+
 
         public override string ToString() => $"Id:{EntityId} of type {EntityName},already exists";
     }
@@ -36,6 +39,10 @@ namespace DO
     {
         public DalConfigException(string msg) : base(msg) { }
         public DalConfigException(string msg, Exception ex) : base(msg, ex) { }
+    }
+    public class DalUserNotExsit:Exception
+    {
+        public DalUserNotExsit(string msg) : base(msg) { }
     }
 
 

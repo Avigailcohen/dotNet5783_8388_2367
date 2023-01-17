@@ -197,7 +197,90 @@ namespace BIImplementation
                        select g;
 
         }
-        
+        public BO.Order UpdateOrder(int orderId, int productId, int newAmount)
+        {
+            if (newAmount < 0)
+                throw new BO.BlIncorrectDateException("Negative amount");
+            DO.Order? order;
+            try { order = dal?.Order.GetById(orderId); }
+            catch (Exception ex)
+            {
+                throw new BO.BlIdDoNotExistException( "Order",ex);
+            }
+            if (order?.DeliveryDate !=null)
+                throw new BO.BlIncorrectDateException("Order deliverd");
+            DO.Product product;
+            try { product = (DO.Product)dal!.Product.GetById(productId); }//for update in stock field
+            catch (Exception ex) { throw new BO.BlIdDoNotExistException("Product", ex); }
+            BO.Order? wantedOrder = GetOrderById(orderId);
+            BO.OrderItem? oi = wantedOrder.OrderItems.FirstOrDefault(oi => oi?.ProductID == productId);
+            if (product.InStock <= 0 || product.InStock < newAmount)
+                throw new BO.BlIncorrectDateException("Negative detalis");
+            if (newAmount > product.InStock - oi?.AmountOfItem)
+                throw new BlIncorrectDateException("Negative detalis");
+            if (newAmount != 0)
+            {
+                if (oi == null)//if he product is not in the order, add it
+                {
+                    DO.Product productHelp = dal.Product.GetById(productId);
+                    IEnumerable<DO.OrderItem?> orderItems = dal?.OrderItem.GetAll()!;
+                    oi = new BO.OrderItem()
+                    {
+                        AmountOfItem = newAmount,
+                        Name = productHelp.Name,
+                        Price = productHelp.Price,
+                        ProductID = productId,
+                        TotalPrice = newAmount * productHelp.Price,
+                    };
+                    DO.OrderItem add = new DO.OrderItem()//update in the data layer
+                    {
+                        ID = oi.ID,
+                        Amount = oi.AmountOfItem,
+                        OrderId= orderId,
+                        Price = oi.Price,
+                        ProductId = productId
+                    };
+                    wantedOrder?.OrderItems?.Append(oi);
+                    dal?.OrderItem.Add(add);
+                    product.InStock -= add.Amount;
+                    dal?.Product.Update(product);//update the amount in stocp of product
+                    return wantedOrder!;
+                }
+                //if the product has been in the order already
+                product.InStock += oi.AmountOfItem;
+                wantedOrder!.TotalPrice -= oi!.TotalPrice;//for calculate the new total price of the order
+                oi.AmountOfItem = newAmount;
+                oi.TotalPrice = newAmount * oi.Price;
+                wantedOrder.TotalPrice += oi.TotalPrice;//for calculate the new total price of the order
+                DO.OrderItem update = new DO.OrderItem()
+                {
+                    ID = oi.ID,
+                    Amount = oi.AmountOfItem,
+                    OrderId = orderId,
+                    Price = oi.Price,
+                    ProductId = productId
+                };
+
+                product.InStock -= oi.AmountOfItem;
+                dal.Product.Update(product);
+                dal?.OrderItem.Update(update);
+                return wantedOrder;
+            }
+            else
+            {
+                product.InStock += oi!.AmountOfItem;
+                dal.Product.Update(product);
+                wantedOrder?.OrderItems?.Where(oi => oi?.ProductID == productId);
+                dal?.OrderItem.Delete(oi.ID);
+                if (wantedOrder?.OrderItems?.Count() == 0)
+                {
+                    dal?.Order.Delete(orderId);
+                }
+                return wantedOrder;
+            }
+        }
+
+
     }
     
 

@@ -6,8 +6,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-
+using PL.Products;
+using BO;
+using System.Windows.Media;
 
 namespace PL
 {
@@ -32,6 +33,27 @@ namespace PL
                 return bitmapImage;
             }
 
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+    class ConvertColorToStatus : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+           OrderStatus status = (OrderStatus)value;
+            if(status==OrderStatus.Delivered)
+            {
+                return Brushes.PaleGreen;
+            }
+            if (status == OrderStatus.Shipped) { return Brushes.CornflowerBlue; }
+            else
+            {
+                return Brushes.LightPink;
+            }
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
