@@ -102,7 +102,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <ProgressBar
-                                Name="progBarTime" Maximum="100" Minimum="0" Value="50"
+                                Name="progBarTime" Maximum="100" Background="WhiteSmoke" Minimum="0" Value="{Binding OrderStatus,Converter={StaticResource progCon}}"
                                             />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>

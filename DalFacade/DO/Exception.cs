@@ -15,7 +15,8 @@ namespace DO
         public DalIdDoNotExistException(int id, string EName) : base() { EntityId = id; EntityName = EName; }
         public DalIdDoNotExistException(int id, string EName, string message) : base(message) { EntityId = id; EntityName = EName; }
         public DalIdDoNotExistException(int id, string EName, string message, Exception innerException) : base(message, innerException) { EntityId = id; EntityName = EName; }
-        
+        public DalIdDoNotExistException(string message):base(message) { }   
+
 
         public override string ToString() => $"Id:{EntityId} of type {EntityName},does not exist";
     }

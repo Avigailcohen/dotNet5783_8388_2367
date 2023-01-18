@@ -8,5 +8,8 @@
             x:Key="ImagePathToBitmap" />
         <local:ConvertColorToStatus
             x:Key="ColorStatus" />
+        <local:ConvertProg
+            x:Key="progCon" />
+        
     </Application.Resources>
 </Application>

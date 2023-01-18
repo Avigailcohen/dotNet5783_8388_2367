@@ -1,4 +1,5 @@
 ﻿using DalApi;
+using DO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace Dal
         public IOrder Order { get; } = new DalOrder();
         public IProduct Product { get; } = new DalProduct();
         public IOrderItem OrderItem { get; } = new DalOrderItem();
+        public IUser User { get; } = new DalUser();
     }
 }
     

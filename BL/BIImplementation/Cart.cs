@@ -112,7 +112,7 @@ namespace BIImplementation
             if (NewAmount == 0)//the given new amount
             {
 
-                cart.OrderItems = cart.OrderItems.Where(item => item.ProductID != ProductID);//deletes this item from cart
+                cart.OrderItems = cart.OrderItems.Where(item => item?.ProductID != ProductID);//deletes this item from cart
                 cart.Price += product.Price * (NewAmount - orderItem.AmountOfItem);
                 //update proce(the amount differnce will be a negative number-will reduce the price)
                 cart.Price -= orderItem.TotalPrice;

@@ -8,13 +8,17 @@ using System.Threading.Tasks;
 
 namespace Dal
 {
-    public class DalUser : IUser
+    internal class DalUser : IUser
     {
+        readonly string s_user = "users";
         public void Add(User user)
         {
-            if (DataSource.usersList.Exists(x => x?.userName == user.userName))
+            List<DO.User?> listUsers = XmlTools.LoadListFromXMLSerializer<DO.User>(s_user);
+            if (listUsers.Exists(x => x?.userName == user.userName))
                 throw new DalIdAlreadyExistException("Exist");
-            DataSource.usersList.Add(user);
+            listUsers.Add(user);
+            XmlTools.SaveListToXMLSerializer(listUsers, "users");
+
 
 
         }
@@ -26,14 +30,15 @@ namespace Dal
 
         public IEnumerable<User?> GetAll(Func<User?, bool>? filter = null)
         {
+            List<DO.User?> listUsers = XmlTools.LoadListFromXMLSerializer<DO.User>(s_user);
             if (filter == null)
-                return from item in DataSource.usersList
+                return from item in listUsers
                        select item;
-            return from item in DataSource.usersList
+            return from item in listUsers
                    where filter(item) == true
                    select item;
 
-            
+            throw new NotImplementedException();
         }
 
         public User GetById(int id)
@@ -43,21 +48,11 @@ namespace Dal
 
         public User GetByUserName(string userName)
         {
-            return DataSource.usersList.FirstOrDefault(x => x?.userName == userName) ?? throw new  DalIdDoNotExistException("Not exist");
+            throw new NotImplementedException();
         }
-
-        //public User GetByUserName(string userName)
-        //{
-        //   User user=new User();
-        //    if (DataSource.usersList.Find(x => x.Value.userName == user)) ;
-
-
-        //}
 
         public void Update(User item)
         {
-            
-
             throw new NotImplementedException();
         }
 

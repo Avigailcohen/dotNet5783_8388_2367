@@ -18,4 +18,5 @@
         All,
         
     }
+    public enum Status { Customer, Mannager }
 }

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DO
 {
-    //public struct User
-    //{
-    //    public string  userName { get; set; }
-    //    public string  password { get; set; }
-    //    public Status Status { get; set; }
-    //    public override string ToString() => this.ToStringProperty();
-    //}
+    public struct User
+    {
+        public string? userName { get; set; }
+        public string?  password { get; set; }
+        public Status Status { get; set; }
+        public override string ToString() => this.ToStringProperty();
+    }
 }

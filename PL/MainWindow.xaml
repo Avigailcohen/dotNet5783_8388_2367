@@ -9,12 +9,11 @@
     Title="MainWindow"
     Height="450"
     Width="800">
-
-
-
-    <Grid
+   
+        <Grid
         Background="White">
         <Grid.ColumnDefinitions>
+            
             <ColumnDefinition
                 Width="528*" />
             <ColumnDefinition
@@ -37,7 +36,8 @@
             FontWeight="Bold"
             BorderBrush="#FFEEDEDE"
             Background="#FFFFFDFD"
-            Margin="10,10,0,0">
+            Margin="482,133,0,0"
+            Grid.Column="1">
             <Button.OpacityMask>
                 <LinearGradientBrush
                     EndPoint="0.5,1"
@@ -79,7 +79,6 @@
 
         </Button>
         <Button
-           
             Content="Order Track"
             HorizontalAlignment="Left"
             Margin="440,45,0,0"
@@ -136,7 +135,7 @@
         <Image
             HorizontalAlignment="Left"
             Height="100"
-            Margin="71,-8,0,0"
+            Margin="72,-17,0,0"
             VerticalAlignment="Top"
             Width="100"
             Source="/iCON.jpg"
@@ -223,7 +222,6 @@
         <Image
             x:Name="flower"
             Grid.Column="1"
-            
             HorizontalAlignment="Left"
             Height="261"
             Margin="302,179,0,0"
@@ -260,5 +258,16 @@
             VerticalAlignment="Top"
             Width="79"
             Source="/CartImage.jpg" />
+        <Button
+            
+            Content="Log In"
+            HorizontalAlignment="Left"
+            Margin="10,8,0,0"
+            VerticalAlignment="Top"
+            Click="Button_Click_1"
+            Height="28"
+            Width="68"
+            Background="White"
+            FontWeight="Bold" />
     </Grid>
 </Window>

@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Controls.Primitives;
 
 namespace PL.Products
 {
@@ -22,6 +23,9 @@ namespace PL.Products
     /// </summary>
     public partial class TrackMa : Window
     {
+        ProgressBar progbar = new ProgressBar();
+       
+        
         BackgroundWorker Worker;
         DateTime timeSim=DateTime.Now;
         BIApi.IBl? bl = BIApi.Factory.Get();
@@ -53,13 +57,7 @@ namespace PL.Products
 
         private void Worker_RunWorkerCompleted(object? sender, RunWorkerCompletedEventArgs e)
         {
-            
-            
-                MessageBox.Show("Operation finished");
-            
-               
-            
-               
+                MessageBox.Show("Operation finished");  
         }
 
         private void Worker_ProgressChanged(object? sender, ProgressChangedEventArgs e)
@@ -83,7 +81,7 @@ namespace PL.Products
                         order.ShipDate = timeSim.AddDays(1);
                         order =bl.Order.UpdateDelivertOrder(item.ID);
                     }
-                    OrderForLists = new List<BO.OrderForList>(bl!.Order.GetOrders());
+                    OrderForLists = new List<BO.OrderForList>(bl!.Order.GetOrders())!;
 
                 }
             }

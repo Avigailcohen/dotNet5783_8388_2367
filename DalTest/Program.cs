@@ -13,7 +13,7 @@ namespace DalTest
         //private static DalOrderItem dalOrderItem = new DalOrderItem();
        static  IDal? dal = Factory.Get();
 
-
+       
         /// <summary>
         /// productcheck function which check the function of the ProductCrud.
         /// </summary>
@@ -434,10 +434,11 @@ press h for return to the menue");
 press 1 for Order,
 press 2 for product,
 press 3 for OrderItem,
-press 4 for exit");
+press 4 for exit
+");
             char.TryParse(Console.ReadLine(), out choice);
 
-            while (choice != '5')
+            while (choice != '4')
             {
 
                 switch (choice)
@@ -455,7 +456,9 @@ press 4 for exit");
                         break;
 
                     case '4':
-                        return;
+                        return ;
+                        
+                  
 
 
                 }

@@ -24,6 +24,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "xml", "xml", "{19E4CED8-DA5
 		xml\OrderItems.xml = xml\OrderItems.xml
 		xml\Orders.xml = xml\Orders.xml
 		xml\Products.xml = xml\Products.xml
+		xml\Users.xml = xml\Users.xml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pics", "pics", "{7CEA50D2-1CDD-49F2-B873-1F59D3A37B97}"
@@ -56,7 +57,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pics", "pics", "{7CEA50D2-1
 		pics\מצגת1.jpg = pics\מצגת1.jpg
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DalXml", "DalXml\DalXml.csproj", "{CF19D8B1-858A-4627-9645-F3EE09C90DB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DalXml", "DalXml\DalXml.csproj", "{CF19D8B1-858A-4627-9645-F3EE09C90DB6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
