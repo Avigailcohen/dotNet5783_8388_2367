@@ -48,7 +48,9 @@ namespace Dal
 
         public User GetByUserName(string userName)
         {
-            throw new NotImplementedException();
+            List<DO.User?> listUsers = XmlTools.LoadListFromXMLSerializer<DO.User>(s_user);
+            return listUsers.FirstOrDefault(x => x?.userName == userName) ?? throw new DalIdDoNotExistException("Not exist");
+            
         }
 
         public void Update(User item)

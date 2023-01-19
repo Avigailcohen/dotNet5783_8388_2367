@@ -9,11 +9,11 @@
     Title="MainWindow"
     Height="450"
     Width="800">
-   
-        <Grid
+
+    <Grid
         Background="White">
         <Grid.ColumnDefinitions>
-            
+
             <ColumnDefinition
                 Width="528*" />
             <ColumnDefinition
@@ -25,6 +25,7 @@
         </Grid.ColumnDefinitions>
 
         <Button
+            Visibility="Hidden"
             Content="LOG IN"
             Click="productList"
             HorizontalAlignment="Left"
@@ -142,11 +143,11 @@
             RenderTransformOrigin="0.669,0.439" />
         <Image
             HorizontalAlignment="Left"
-            Height="59"
-            Margin="69,45,0,0"
+            Height="82"
+            Margin="69,22,0,0"
             VerticalAlignment="Top"
             Width="416"
-            Source="/שחורלוגו-חדש-סיבי-06.png"
+            Source="/CBlog.png"
             Grid.Column="1" />
         <Label
             Grid.Column="1"
@@ -259,7 +260,6 @@
             Width="79"
             Source="/CartImage.jpg" />
         <Button
-            
             Content="Log In"
             HorizontalAlignment="Left"
             Margin="10,8,0,0"

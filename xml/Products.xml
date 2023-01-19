@@ -1,66 +1,73 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ArrayOfProduct xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Product>
-    <ID>10000</ID>
-    <Name>Green Cashmere Dress</Name>
+    <ID>10001</ID>
+    <Name>Flower dress</Name>
     <Category>Dresses</Category>
-    <Price>2222</Price>
-    <InStock>0</InStock>
+    <Price>149</Price>
+    <InStock>3</InStock>
   </Product>
   <Product>
     <ID>10002</ID>
     <Name>Knit skirt</Name>
     <Category>Skirts</Category>
-    <Price>93</Price>
+    <Price>53</Price>
     <InStock>0</InStock>
   </Product>
   <Product>
     <ID>10003</ID>
     <Name>White skirt</Name>
     <Category>Skirts</Category>
-    <Price>80</Price>
-    <InStock>6</InStock>
+    <Price>229</Price>
+    <InStock>7</InStock>
   </Product>
   <Product>
     <ID>10004</ID>
     <Name>Golf shirt</Name>
     <Category>Shirts</Category>
-    <Price>218</Price>
-    <InStock>6</InStock>
+    <Price>222</Price>
+    <InStock>7</InStock>
   </Product>
   <Product>
     <ID>10005</ID>
     <Name>Knit shirt</Name>
     <Category>Shirts</Category>
-    <Price>192</Price>
-    <InStock>9</InStock>
+    <Price>50</Price>
+    <InStock>4</InStock>
   </Product>
   <Product>
     <ID>10006</ID>
     <Name>Hats</Name>
     <Category>Accessories</Category>
     <Price>229</Price>
-    <InStock>0</InStock>
+    <InStock>7</InStock>
   </Product>
   <Product>
     <ID>10007</ID>
     <Name> Yellow Bag</Name>
     <Category>Accessories</Category>
-    <Price>81</Price>
+    <Price>225</Price>
     <InStock>1</InStock>
   </Product>
   <Product>
     <ID>10008</ID>
     <Name>Black Sport shirt</Name>
     <Category>Sport</Category>
-    <Price>205</Price>
+    <Price>74</Price>
     <InStock>1</InStock>
   </Product>
   <Product>
     <ID>10009</ID>
     <Name>Black Sport skirt</Name>
     <Category>Sport</Category>
-    <Price>193</Price>
-    <InStock>8</InStock>
+    <Price>115</Price>
+    <InStock>6</InStock>
   </Product>
+  <Products>
+    <ID>1000003</ID>
+    <Name>Dress</Name>
+    <Category>Dresses</Category>
+    <InStock>4</InStock>
+    <Price>122</Price>
+  </Products>
 </ArrayOfProduct>

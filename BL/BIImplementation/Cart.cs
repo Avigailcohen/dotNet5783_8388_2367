@@ -154,18 +154,6 @@ namespace BIImplementation
                 throw new BO.BlNullPropertyException("no items in cart");
             if (cart.OrderItems.Count() == 0)
                 throw new BO.BlNullPropertyException("no items in cart");
-            //if (cart.Items.Count() == 0)//no items in cart
-            //    throw new BO.BlNullPropertyException("no items in cart");
-            //if (cart.CustomerName == " ")//empty name
-            //    throw new BO.BlInvalidInputException("customer name");
-            //if (cart.CustomerAddress == " ")//empty address
-            //    throw new BO.BlInvalidInputException("customer address");
-            //if (cart.CustomerEmail == null || cart.CustomerEmail.Contains("@gmail.com") == false)//empty email or worng email
-            //    throw new BO.BlInvalidInputException("customer email");
-            //if (cart.Items.All(item => item.Amount < 0))//negative amounts of items
-            //    throw new BO.BlInvalidInputException("items amount");
-            //if (cart.Items.All/*forEach?*/(item => Check(item.ProductID, item.Amount) == true) == false)//there is not enough in stock from the items in the cart
-            //    throw new BO.BlInvalidInputException("product amount in stock to execute an order");
             ////all details are correct
             BO.Order order = new BO.Order()
             {

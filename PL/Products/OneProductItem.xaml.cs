@@ -86,7 +86,7 @@ namespace PL.Products
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-            new CustomerWindow(cart).ShowDialog();
+            //new CustomerWindow(cart).ShowDialog();
         }
 
        

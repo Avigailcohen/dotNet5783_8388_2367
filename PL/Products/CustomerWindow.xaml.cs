@@ -54,9 +54,9 @@ namespace PL.Products
         {
             InitializeComponent();
             Category = Enum.GetValues(typeof(Category));
-            ProductItems = new ObservableCollection<ProductItem>(bl!.Product?.GetListedProductsForC())!;
+            ProductItems = new ObservableCollection<ProductItem>(bl!.Product?.GetListedProductsForC()!)!;
             Cart1 = cart;
-            
+            ComboC.Text = "All";
         }
     
         
@@ -64,11 +64,7 @@ namespace PL.Products
         private void Button_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
         {
             new MyCart(Cart1).ShowDialog();
-           
-
-
-
-        }
+         }
 
         private void productItemListView_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
         {
@@ -86,10 +82,52 @@ namespace PL.Products
         {
             var selected = (Category)((ComboBox)sender).SelectedItem;
             ProductItems = null;
+            if (selected == BO.Category.All)
+            {
+                ProductItems = new ObservableCollection<ProductItem?>(bl!.Product.GetListedProductsForC());
+                return;
+            }
+
             ProductItems = new ObservableCollection<ProductItem?>(bl!.Product.GetListedProductsForC().Where(x => x?.Category == selected));
             //ProductItems = new ObservableCollection<ProductItem?>(bl.Product.GetListedProductsForC());
         }
+
        
+
+        private void Label_MouseEnter(object sender, MouseEventArgs e)
+        {
+            ProductItems=new ObservableCollection<ProductItem?>(bl!.Product.GetListedProductsForC().Where(x => x?.Category == BO.Category.Accessories));
+        }
+
+        private void Label_MouseEnter_1(object sender, MouseEventArgs e)
+        {
+            ProductItems = new ObservableCollection<ProductItem?>(bl!.Product.GetListedProductsForC().Where(x => x?.Category == BO.Category.Sport));
+        }
+
+        private void Label_MouseEnter_2(object sender, MouseEventArgs e)
+        {
+            ProductItems = new ObservableCollection<ProductItem?>(bl!.Product.GetListedProductsForC().Where(x => x?.Category == BO.Category.Skirts));
+        }
+
+        private void Label_MouseEnter_3(object sender, MouseEventArgs e)
+        {
+            ProductItems = new ObservableCollection<ProductItem?>(bl!.Product.GetListedProductsForC().Where(x => x?.Category == BO.Category.Shirts));
+        }
+
+        private void Label_MouseEnter_4(object sender, MouseEventArgs e)
+        {
+            ProductItems = new ObservableCollection<ProductItem?>(bl!.Product.GetListedProductsForC().Where(x => x?.Category == BO.Category.Dresses));
+        }
+
+        private void Label_MouseEnter_5(object sender, MouseEventArgs e)
+        {
+            ProductItems = new ObservableCollection<ProductItem?>(bl!.Product.GetListedProductsForC());
+        }
+
+        private void cxbSortByCategory_Checked(object sender, RoutedEventArgs e)
+        {
+            ProductItems = new ObservableCollection<ProductItem?>(bl.Product.MostExpensive(Cart1));
+        }
     }
 
 }

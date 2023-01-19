@@ -52,8 +52,17 @@ namespace PL.Products
             {
                 User = bl.User.LogIn(userNmae.Text, PassW.Password);
                 if (User.status == BO.Status.Mannager)
+                {
                     this.Close();
                     new ChooseForM().Show();
+                }
+                if(User.status==BO.Status.Customer)
+                {
+                    new MainWindow().Show();
+                }
+               
+                    //this.Close();
+                    //new ChooseForM().Show();
                 
 
             }
@@ -67,6 +76,19 @@ namespace PL.Products
             {
                 MessageBox.Show("ERROR");
             }
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                BO.User user;
+                user = new BO.User();
+                bl.User.SignIn(user);
+                MessageBox.Show("Created succefuly");
+            }
+            catch(BO.BlIdAlreadyExistException ex) { MessageBox.Show("Already Exist"); }
+            catch(BO.BlIdDoNotExistException ex) { MessageBox.Show("DONT Exist"); }
         }
     }
 }

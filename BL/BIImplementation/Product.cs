@@ -35,7 +35,8 @@ namespace BIImplementation
                 Name = product.Name,
                 InStock = product.InStock,
                 Price = product.Price,
-                Category = (BO.Category)product.Category
+                Category = (BO.Category)product.Category,
+                ImageRelativeName = @"\pics\Img" + product.ID + ".jpg"
             };
         }
         /// <summary>
@@ -255,7 +256,89 @@ namespace BIImplementation
             }
             return;
         }
-        
+        public IEnumerable<ProductItem?> MostPopular(BO.Cart cart)
+        {
+            //Grouping all ordered products by product ID
+            var productList = from item in dal.OrderItem.GetAll()
+                              group item by item?.ID into groupPopular
+                              select new { id = groupPopular.Key, Items = groupPopular };
+
+            //Sort the products in descending order according to the quantity ordered
+            //Take the first 10
+            productList = productList.OrderByDescending(x => x.Items.Count()).Take(10);
+
+            return from item in productList
+                   let p = dal.Product.GetById(item?.id ?? throw new BlIdDoNotExistException("product doe not exist"))
+                   select new BO.ProductItem
+                   {
+                       ID = p.ID,
+                       ProductItemName = p.Name,
+                       Price = p.Price,
+                       Category = (BO.Category)p.Category!,
+                       ImageRelativeName = @"\pics\Img" + item.id + ".jpg",
+                       //AmountInCart = AmountInCart(cart, p.ID),
+                       //InStock = checkIfstock(p)
+                   };
+        }
+        private bool checkIfstock(int inStock)
+        {
+            if (inStock <= 0)
+                return false;
+            return true;
+        }
+
+        /// <summary>
+        /// the func return the top 10 expensive products
+        /// </summary>
+        /// <param name="cart"></param>
+        /// <returns></returns>
+        /// <exception cref="BlDoesNotExistException"></exception>
+        public IEnumerable<ProductItem?> MostExpensive(BO.Cart cart)
+        {
+            //Sort the products in descending order by price
+            //Take the first 10
+            var productList = dal.Product.GetAll().OrderByDescending(x => x?.Price).Take(10);
+
+            return from DO.Product item in productList
+                   select new BO.ProductItem
+                   {
+                       ID = item.ID,
+                       ProductItemName = item.Name,
+                       Price = item.Price,
+                       Category = (BO.Category)item.Category!,
+                       ImageRelativeName =  @"\pics\Img" + item.ID + ".jpg",
+                       //AmountInCart = AmountInCart(cart, item.ID),
+                       //InStock = checkIfstock(item)
+                   };
+        }
+
+        //public IEnumerable<BO.ProductItem?> getByGrouping()
+        //{
+        //    var result = from DO.Product? doProduct in dal.Product.GetAll()
+        //                 select new BO.ProductItem
+        //                 {
+        //                     ID = doProduct?.ID ?? throw new NullReferenceException("missing id"),
+        //                     ProductItemName = doProduct?.Name ?? throw new NullReferenceException("missing name"),
+        //                     Price = doProduct?.Price ?? throw new NullReferenceException("missing price"),
+        //                     Category = (BO.Category)(doProduct?.Category ?? throw new NullReferenceException("missing category")),
+        //                     AmountInCart = 0,//we cant know here the amount in cart
+        //                     InStock = doProduct?.InStock > 0,
+        //                     //ImageRelativeName = @"\pics\Img" + doProduct.ProductID + ".jpg"
+
+
+        //                 } into product
+        //                 group product by product.Category;
+        //    List<BO.ProductItem> items = new List<BO.ProductItem>();
+        //    foreach (var p in result)
+        //    {
+        //        foreach (var item in p)
+        //            items.Add(item);
+        //    }
+        //    return items;
+        //}
+
+
+
 
 
     }

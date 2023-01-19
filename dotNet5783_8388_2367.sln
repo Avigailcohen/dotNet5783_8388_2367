@@ -45,6 +45,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pics", "pics", "{7CEA50D2-1
 		pics\Img10007.jpg = pics\Img10007.jpg
 		pics\Img10008.jpg = pics\Img10008.jpg
 		pics\Img10009.jpg = pics\Img10009.jpg
+		pics\Inst.jpg = pics\Inst.jpg
 		pics\logo099.jpg = pics\logo099.jpg
 		pics\LOGO11.jpg = pics\LOGO11.jpg
 		pics\MAN.jpg = pics\MAN.jpg
@@ -52,9 +53,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pics", "pics", "{7CEA50D2-1
 		pics\Sargel.jpg = pics\Sargel.jpg
 		pics\SHIpping.jpg = pics\SHIpping.jpg
 		pics\website-icons_Social-Media_01.png = pics\website-icons_Social-Media_01.png
-		pics\אינסטגרם.jpg = pics\אינסטגרם.jpg
-		pics\וואצפ.jpeg = pics\וואצפ.jpeg
-		pics\מצגת1.jpg = pics\מצגת1.jpg
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DalXml", "DalXml\DalXml.csproj", "{CF19D8B1-858A-4627-9645-F3EE09C90DB6}"

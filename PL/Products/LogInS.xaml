@@ -57,13 +57,6 @@
     </Window.Resources>
     <Grid
         Margin="2,0,8,-6">
-        <Image
-            HorizontalAlignment="Center"
-            Height="116"
-            Margin="0,279,0,0"
-            VerticalAlignment="Top"
-            Width="290"
-            Source="/Products/שחורלוגו-חדש-סיבי-06.png" />
         <TextBox
             Name="userNmae"
             HorizontalAlignment="Left"
@@ -112,7 +105,8 @@
             VerticalAlignment="Top"
             Width="104"
             Height="25"
-            RenderTransformOrigin="0.541,0.883" />
+            RenderTransformOrigin="0.541,0.883"
+            Click="Button_Click_1" />
         <Label
             Content="Create an account?"
             HorizontalAlignment="Left"
@@ -124,10 +118,36 @@
         <Image
             HorizontalAlignment="Left"
             Height="58"
-            Margin="370,0,0,0"
+            Margin="0,290,0,0"
             VerticalAlignment="Top"
             Width="53"
             Source="/Products/images.png" />
+        <TextBlock
+            FontFamily="Yu Gothic Light"
+            FontSize="30"
+            Foreground="Black"
+            Margin="418,175,-180,102">
+            SIGN USER
+            <TextBlock.RenderTransform>
+                <RotateTransform
+                    Angle="90" />
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <Image
+            HorizontalAlignment="Left"
+            Height="46"
+            Margin="53,312,0,0"
+            VerticalAlignment="Top"
+            Width="40"
+            Source="/Products/Inst.jpg"
+            RenderTransformOrigin="0.5,0.31" />
+        <Image
+            HorizontalAlignment="Left"
+            Height="26"
+            Margin="93,318,0,0"
+            VerticalAlignment="Top"
+            Width="40"
+            Source="/Products/website-icons_Social-Media_01.png" />
 
     </Grid>
 </Window>

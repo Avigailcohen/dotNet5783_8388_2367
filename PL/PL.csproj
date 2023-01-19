@@ -10,7 +10,7 @@
 	<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	<UseCommonOutputDirectory>true</UseCommonOutputDirectory>
-	<ApplicationIcon>שחורלוגו-חדש-סיבי-06.ico</ApplicationIcon>
+	<ApplicationIcon>logo0991674144907.ico</ApplicationIcon>
 
   </PropertyGroup>
 
@@ -21,6 +21,7 @@
     <None Remove="Bind.jpg" />
     <None Remove="BlueDress.jpg" />
     <None Remove="CartImage.jpg" />
+    <None Remove="CBlog.png" />
     <None Remove="DressM.jpg" />
     <None Remove="Flower.jpg" />
     <None Remove="heart-coloring-page-18.jpg" />
@@ -40,6 +41,7 @@
     <None Remove="Products\DownAdd1.jpg" />
     <None Remove="Products\iCON.jpg" />
     <None Remove="Products\images.png" />
+    <None Remove="Products\Inst.jpg" />
     <None Remove="Products\Login.jpg" />
     <None Remove="Products\logo099.jpg" />
     <None Remove="Products\LOGO11.jpg" />
@@ -47,14 +49,11 @@
     <None Remove="Products\massimo_dutti.jpg" />
     <None Remove="Products\PayPal.png" />
     <None Remove="Products\website-icons_Social-Media_01.png" />
-    <None Remove="Products\אינסטגרם.jpg" />
     <None Remove="Products\וואצפ.jpeg" />
-    <None Remove="Products\שחורלוגו-חדש-סיבי-06.png" />
-    <None Remove="שחורלוגו-חדש-סיבי-06.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="שחורלוגו-חדש-סיבי-06.ico" />
+    <Content Include="logo0991674144907.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -68,6 +67,7 @@
     <Resource Include="Bind.jpg" />
     <Resource Include="BlueDress.jpg" />
     <Resource Include="CartImage.jpg" />
+    <Resource Include="CBlog.png" />
     <Resource Include="DressM.jpg" />
     <Resource Include="Flower.jpg" />
     <Resource Include="heart-coloring-page-18.jpg" />
@@ -87,6 +87,7 @@
     <Resource Include="Products\DownAdd1.jpg" />
     <Resource Include="Products\iCON.jpg" />
     <Resource Include="Products\images.png" />
+    <Resource Include="Products\Inst.jpg" />
     <Resource Include="Products\Login.jpg" />
     <Resource Include="Products\logo099.jpg" />
     <Resource Include="Products\LOGO11.jpg" />
@@ -94,10 +95,7 @@
     <Resource Include="Products\massimo_dutti.jpg" />
     <Resource Include="Products\PayPal.png" />
     <Resource Include="Products\website-icons_Social-Media_01.png" />
-    <Resource Include="Products\אינסטגרם.jpg" />
     <Resource Include="Products\וואצפ.jpeg" />
-    <Resource Include="Products\שחורלוגו-חדש-סיבי-06.png" />
-    <Resource Include="שחורלוגו-חדש-סיבי-06.png" />
   </ItemGroup>
 
 </Project>

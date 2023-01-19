@@ -138,7 +138,8 @@ namespace PL.Products
 
         private void Button_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
         {
-            new CustomerWindow(MyCart1).Show();
+            this.Close();
+            //new CustomerWindow(MyCart1).Show();
         }
 
         private void Button_MouseDoubleClick_2(object sender, MouseButtonEventArgs e)

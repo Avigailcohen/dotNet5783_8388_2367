@@ -10,4 +10,7 @@
     <password>1111</password>
     <Status>Customer</Status>
   </User>
+  <User>
+    <Status>Customer</Status>
+  </User>
 </ArrayOfUser>

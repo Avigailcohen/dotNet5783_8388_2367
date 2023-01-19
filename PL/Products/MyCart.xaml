@@ -148,7 +148,6 @@
                 Grid.Row="3"
                 MaxLength="10"
                 TextWrapping="Wrap"
-                
                 VerticalAlignment="Top"
                 Width="120"
                 Grid.Column="1"
@@ -261,7 +260,7 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
 
-                   
+
 
                     </GridViewColumn>
 
@@ -308,16 +307,17 @@
         <Image
             HorizontalAlignment="Left"
             Height="69"
-            Margin="78,57,0,0"
+            Margin="10,55,0,0"
             VerticalAlignment="Top"
             Width="100"
-            Source="/Products/אינסטגרם.jpg"
+            Source="/Products/Inst.jpg"
             Grid.Row="1"
-            OpacityMask="#FFE6D7D7" />
+            OpacityMask="#FFE6D7D7"
+            RenderTransformOrigin="0.365,0.636" />
         <Image
             HorizontalAlignment="Left"
             Height="44"
-            Margin="154,68,0,0"
+            Margin="91,65,0,0"
             VerticalAlignment="Top"
             Width="84"
             Source="/Products/website-icons_Social-Media_01.png"
@@ -334,18 +334,10 @@
                 </LinearGradientBrush>
             </Image.OpacityMask>
         </Image>
-        <Image
-            HorizontalAlignment="Left"
-            Height="48"
-            Margin="19,65,0,0"
-            VerticalAlignment="Top"
-            Width="109"
-            Source="/Products/וואצפ.jpeg"
-            Grid.Row="1" />
         <Label
             Content="info@cb-fashion.shop"
             HorizontalAlignment="Left"
-            Margin="203,100,0,0"
+            Margin="142,96,0,0"
             Grid.Row="1"
             VerticalAlignment="Top"
             Width="132"
@@ -354,12 +346,23 @@
             Height="26" />
         <Image
             HorizontalAlignment="Left"
-            Height="138"
-            Margin="12,10,0,0"
+            Height="11"
+            Margin="22,298,0,0"
             VerticalAlignment="Top"
-            Width="224"
-            Source="/Products/שחורלוגו-חדש-סיבי-06.png"
-            Grid.Row="1" />
+            Width="182"
+            Source="/Products/LOGO11.jpg"
+            RenderTransformOrigin="0.5,0.5"
+            Grid.RowSpan="2">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform
+                        ScaleY="-1" />
+                    <SkewTransform />
+                    <RotateTransform />
+                    <TranslateTransform />
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
         <Image
             HorizontalAlignment="Left"
             Height="32"

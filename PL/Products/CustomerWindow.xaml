@@ -8,8 +8,8 @@
     mc:Ignorable="d"
     Title="CustomerWindow"
     DataContext="{Binding RelativeSource={RelativeSource self}}"
-    Height="450"
-    Width="800">
+    Height="669"
+    Width="1001">
 
 
 
@@ -78,26 +78,46 @@
             </StackPanel>
         </DataTemplate>
     </Window.Resources>
-    <Grid>
+    <Grid
+        Margin="-174,63,-18,36">
         <Grid.ColumnDefinitions>
             <ColumnDefinition
-                Width="163*" />
+                Width="253*" />
             <ColumnDefinition
-                Width="637*" />
+                Width="0*" />
+            <ColumnDefinition
+                Width="180*" />
+            <ColumnDefinition
+                Width="164*" />
+            <ColumnDefinition
+                Width="82*" />
+            <ColumnDefinition
+                Width="0*" />
+            <ColumnDefinition
+                Width="140" />
+            <ColumnDefinition
+                Width="78*" />
+            <ColumnDefinition
+                Width="248*" />
+            <ColumnDefinition
+                Width="48*" />
+            <ColumnDefinition
+                Width="0*" />
         </Grid.ColumnDefinitions>
         <ScrollViewer
             x:Name="Catalog"
             Background="#ffff"
-            Margin="0,-37,0,37"
-            Grid.ColumnSpan="2">
+            Margin="5,11,57,37"
+            Grid.ColumnSpan="7"
+            Grid.Column="2">
             <ListView
                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                 MouseDoubleClick="productItemListView_MouseDoubleClick_1"
                 RenderTransformOrigin="0.5,0.5"
                 ItemsSource="{Binding ProductItems}"
                 ItemTemplate="{StaticResource prod}"
-                Height="311"
-                Width="785">
+                Height="505"
+                Width="816">
 
 
                 <ItemsControl.ItemsPanel>
@@ -113,25 +133,124 @@
         <Button
             Content="MY CART 🛒"
             HorizontalAlignment="Left"
-            Margin="513,288,0,0"
+            Margin="35,418,0,0"
             VerticalAlignment="Top"
             Height="44"
             Width="102"
             MouseDoubleClick="Button_MouseDoubleClick_1"
-            Background="#FFDDC2C2"
+            Background="White"
             FontWeight="Bold"
             FontStyle="Italic"
             FontFamily="Copperplate Gothic Bold"
-            Grid.Column="1" />
+            Grid.Column="8" />
         <ComboBox
             x:Name="ComboC"
             HorizontalAlignment="Left"
-            Margin="503,0,0,0"
+            Margin="99,-48,0,0"
             VerticalAlignment="Top"
             Width="122"
-            Grid.Column="1"
+            Grid.Column="8"
             Height="32"
             ItemsSource="{Binding Category}"
             SelectionChanged="ComboBox_SelectionChanged_1" />
+        <Label
+            Grid.Column="2"
+            Content="Dresses"
+            HorizontalAlignment="Left"
+            Margin="66,-74,0,0"
+            VerticalAlignment="Top"
+            Height="40"
+            Width="95"
+            FontSize="20"
+            RenderTransformOrigin="0.5,0.5"
+            MouseEnter="Label_MouseEnter_4"
+            Foreground="#FFA36363">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform />
+                    <RotateTransform
+                        Angle="-0.718" />
+                    <TranslateTransform />
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label
+            Grid.Column="3"
+            Content="Label"
+            HorizontalAlignment="Left"
+            Margin="11,-64,0,0"
+            VerticalAlignment="Top"
+            Height="26"
+            Width="3" />
+        <Label
+            Grid.Column="3"
+            Content="Shirts"
+            HorizontalAlignment="Left"
+            Margin="0,-74,0,0"
+            VerticalAlignment="Top"
+            Height="38"
+            Width="87"
+            FontSize="20"
+            MouseEnter="Label_MouseEnter_3"
+            Foreground="#FF3236C6" />
+        <Label
+            Grid.Column="3"
+            Content="Skirts"
+            HorizontalAlignment="Left"
+            Margin="130,-76,0,0"
+            VerticalAlignment="Top"
+            Height="38"
+            Width="68"
+            Grid.ColumnSpan="2"
+            FontSize="20"
+            MouseEnter="Label_MouseEnter_2"
+            Foreground="#FF258F33" />
+        <Label
+            Grid.Column="5"
+            Content="Sports"
+            HorizontalAlignment="Left"
+            Margin="50,-74,0,0"
+            VerticalAlignment="Top"
+            Height="38"
+            Width="79"
+            Grid.ColumnSpan="2"
+            FontSize="20"
+            MouseEnter="Label_MouseEnter_1"
+            Foreground="#FFFF8585" />
+        <Label
+            Grid.Column="7"
+            Content="Accesories"
+            HorizontalAlignment="Left"
+            Margin="72,-74,0,0"
+            VerticalAlignment="Top"
+            Height="40"
+            Width="106"
+            Grid.ColumnSpan="2"
+            FontSize="20"
+            MouseEnter="Label_MouseEnter"
+            Foreground="#FFD9C252" />
+        <Label
+            Content="All"
+            HorizontalAlignment="Left"
+            Margin="223,-70,0,0"
+            VerticalAlignment="Top"
+            Grid.ColumnSpan="3"
+            Width="59"
+            FontSize="20"
+            MouseEnter="Label_MouseEnter_5" />
+        <CheckBox
+            Grid.Column="2"
+            Content="Grouping"
+            Checked="cxbSortByCategory_Checked"
+            HorizontalAlignment="Left"
+            Margin="29,-44,0,0"
+            VerticalAlignment="Top"
+            Height="28"
+            Width="105" />
+
+
+
+
     </Grid>
 </Window>

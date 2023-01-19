@@ -53,7 +53,9 @@ namespace BIApi
         /// </summary>
         /// <param name="product"></param>
         void UpdateProductData(BO.Product product);
+        //IEnumerable<BO.ProductItem?> getByGrouping();
 
-        
+        IEnumerable<ProductItem?> MostExpensive(BO.Cart cart);
+
     }
 }
