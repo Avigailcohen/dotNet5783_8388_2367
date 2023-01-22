@@ -69,6 +69,7 @@ namespace PL.Products
         /// <param name="id"></param>
         public OneOrder(int id)
         {
+            //manger entrie
             Manager = true;
             
             InitializeComponent();
