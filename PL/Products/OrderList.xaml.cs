@@ -1,6 +1,7 @@
 ﻿using BO;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,10 +22,26 @@ namespace PL.Products
     public partial class OrderList : Window
     {
        static readonly BIApi.IBl? bl = BIApi.Factory.Get();
+
+
+
+
+        public ObservableCollection<BO.Order> Orders
+        {
+            get { return (ObservableCollection<Order>)GetValue(OrdersProperty); }
+            set { SetValue(OrdersProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Orders.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty OrdersProperty =
+            DependencyProperty.Register("Orders", typeof(int), typeof(OrderList), new PropertyMetadata(null));
+
+
+
         public OrderList(BIApi.IBl? bl)
         {
             InitializeComponent();
-            orderForListDataGrid.ItemsSource = bl?.Order.GetOrders();
+            orderForListDataGrid.ItemsSource = bl?.Order.GetOrders();//get the list of the orders
             OrderStatus orderStatus= new BO.OrderStatus();
             Category1.ItemsSource = Enum.GetValues(typeof(BO.OrderStatus));
             Category1.SelectedIndex = 1;
@@ -35,6 +52,7 @@ namespace PL.Products
         
         private void orderForListDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            //double click on order to get information about her.
             BO.OrderForList? pfl = orderForListDataGrid.SelectedItem as BO.OrderForList;
             if(pfl!=null)
             {

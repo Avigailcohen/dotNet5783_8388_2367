@@ -38,7 +38,11 @@ namespace PL.Products
             InitializeComponent();
 
         }
-
+        /// <summary>
+        /// for the manger- can get into the next window by his password and userName
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if(userNmae.Text.Length==0||PassW.Password.Length==0)
@@ -50,7 +54,7 @@ namespace PL.Products
 
             try
             {
-                User = bl.User.LogIn(userNmae.Text, PassW.Password);
+                User = bl!.User.LogIn(userNmae.Text, PassW.Password);
                 if (User.status == BO.Status.Mannager)
                 {
                     this.Close();
@@ -78,17 +82,6 @@ namespace PL.Products
             }
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                BO.User user;
-                user = new BO.User();
-                bl.User.SignIn(user);
-                MessageBox.Show("Created succefuly");
-            }
-            catch(BO.BlIdAlreadyExistException ex) { MessageBox.Show("Already Exist"); }
-            catch(BO.BlIdDoNotExistException ex) { MessageBox.Show("DONT Exist"); }
-        }
+       
     }
 }

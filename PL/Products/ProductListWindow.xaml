@@ -115,6 +115,7 @@
             FontFamily="Bahnschrift SemiBold SemiCondensed"
             FontSize="14" />
         <Button
+           
             Content="Add new Product"
             Click="AddProduct"
             HorizontalAlignment="Left"

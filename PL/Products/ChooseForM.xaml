@@ -23,6 +23,7 @@
             <Setter
                 Property="FontWeight"
                 Value="Bold" />
+
         </Style>
     </Window.Resources>
 
@@ -51,21 +52,20 @@
         <Button
             Style="{StaticResource myButtonStyle}"
             Content="Products list"
-            Margin="38,280,523,92"
+            Margin="281,254,280,100"
             Grid.Row="1"
             Click="Button_Click"
             Foreground="#FF1D1C1C"
-            Background="#FFF6D7D7"
-            BorderBrush="{x:Null}" />
+            Background="White"
+            BorderBrush="#FFDAB9B9" />
         <Button
-           
             Style="{StaticResource myButtonStyle}"
             Content=" Orders list"
-            Margin="543,278,7,93"
+            Margin="534,99,56,196"
             Foreground="#FF190404"
             Grid.Row="1"
-            BorderBrush="White"
-            Background="#FFF6D7D7"
+            BorderBrush="#FFEBD6D6"
+            Background="White"
             RenderTransformOrigin="0.5,0.5"
             Click="OrderList_">
             <Button.RenderTransform>
@@ -117,17 +117,17 @@
             FontSize="24" />
         <Button
             Style="{StaticResource myButtonStyle}"
-            Content="order track"
+            Content="Simulator"
             HorizontalAlignment="Left"
-            Margin="308,278,0,0"
+            Margin="71,95,0,0"
             Grid.RowSpan="2"
             VerticalAlignment="Top"
-            Height="66"
-            Width="206"
-            Background="#FFF3D8D8"
+            Height="132"
+            Width="205"
+            Background="White"
             FontWeight="Bold"
             Click="Button_Click_1"
-            BorderBrush="White" />
+            BorderBrush="#FFF3C1C1" />
 
 
 

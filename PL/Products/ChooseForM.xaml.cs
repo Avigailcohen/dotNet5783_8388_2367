@@ -28,16 +28,25 @@ namespace PL.Products
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            ///move to the list of the prodcut window 
             new ProductListWindow(bl).Show();
         }
 
-        
+        /// <summary>
+        /// move to the list of the orders
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void OrderList_(object sender, RoutedEventArgs e)
         {
             new OrderList(bl).Show();
         }
-
+        /// <summary>
+        /// move to the simulator
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             new TrackMa().Show();

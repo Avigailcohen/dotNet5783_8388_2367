@@ -12,11 +12,11 @@ namespace BIImplementation
         /// <summary>
         /// return list of orders 
         /// </summary>
-        /// <returns>kist of order </returns>
-        public IEnumerable<BO.OrderForList> GetOrders()// בקשת רשימת הזמנות למנהל 
+        /// <returns>list of order </returns>
+        public IEnumerable<BO.OrderForList> GetOrders()// return IEnumerable of orders for the manager בקשת רשימת הזמנות למנהל 
         {
-            IEnumerable<DO.Order?> orders = dal!.Order.GetAll();
-            IEnumerable<DO.OrderItem?> items = dal.OrderItem.GetAll();
+            IEnumerable<DO.Order?> orders = dal!.Order.GetAll();//get the list of the orders from dal stage
+            IEnumerable<DO.OrderItem?> items = dal.OrderItem.GetAll();//get the list of the order items form dl stage
 
             return from DO.Order item in orders
                    let orderItems = items.Where(items => items!.Value.OrderId == item.ID)
@@ -48,7 +48,7 @@ namespace BIImplementation
         /// <exception cref="BO.BlInvalidInputException"></exception>
         /// <exception cref="BO.BlIdDoNotExistException"></exception>
 
-        public BO.Order GetOrderById(int OrderId)//בקשת פרטי הזמנה למנהל 
+        public BO.Order GetOrderById(int OrderId)// order detalis for the managerבקשת פרטי הזמנה למנהל 
         {
 
             if (OrderId < 0)
@@ -100,12 +100,12 @@ namespace BIImplementation
         }
 
         /// <summary>
-        /// update the ship date 
+        /// update the ship date to dateTime.now 
         /// </summary>
         /// <param name="OrderId"></param>
         /// <returns>the updated date </returns>
         /// <exception cref="BO.BlIdDoNotExistException"></exception>
-        public BO.Order UpdateOrderShip(int OrderId)//עדכון שילוח הזמנה 
+        public BO.Order UpdateOrderShip(int OrderId)// update shipd date עדכון שילוח הזמנה 
         {
             DO.Order dOrder = new DO.Order();
 
@@ -131,7 +131,7 @@ namespace BIImplementation
        /// <param name="OrderId"></param>
        /// <returns>the updated date of the delivery </returns>
        /// <exception cref="BO.BlIdDoNotExistException"></exception>
-        public BO.Order UpdateDelivertOrder(int OrderId)//עדכון אספקת הזמנה 
+        public BO.Order UpdateDelivertOrder(int OrderId)// update the delivery date עדכון אספקת הזמנה 
         {
             DO.Order dOrder = new DO.Order();
 
@@ -197,6 +197,16 @@ namespace BIImplementation
                        select g;
 
         }
+        /// <summary>
+        /// function which allow the manager to update the amount of the prodcuts in thr cart 
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <param name="productId"></param>
+        /// <param name="newAmount"></param>
+        /// <returns></returns>
+        /// <exception cref="BO.BlIncorrectDateException"></exception>
+        /// <exception cref="BO.BlIdDoNotExistException"></exception>
+        /// <exception cref="BlIncorrectDateException"></exception>
         public BO.Order UpdateOrder(int orderId, int productId, int newAmount)
         {
             if (newAmount < 0)

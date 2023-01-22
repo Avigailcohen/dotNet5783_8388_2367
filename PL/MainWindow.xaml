@@ -55,17 +55,18 @@
         <Button
             Content="Catalog"
             HorizontalAlignment="Left"
-            Margin="10,64,0,0"
+            Margin="58,117,0,0"
             VerticalAlignment="Top"
-            Height="45"
-            Width="125"
+            Height="36"
+            Width="101"
             Foreground="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}"
             FontSize="9"
             FontWeight="Bold"
-            BorderBrush="#FFEEDEDE"
-            Background="#FFD3F0FA"
+            BorderBrush="White"
+            Background="#FFFFF8F8"
             MouseDoubleClick="Button_MouseDoubleClick_1"
-            Click="Button_Click">
+            Click="Button_Click"
+            Grid.Column="1">
             <Button.OpacityMask>
                 <LinearGradientBrush
                     EndPoint="0.5,1"
@@ -77,6 +78,7 @@
                         Offset="1" />
                 </LinearGradientBrush>
             </Button.OpacityMask>
+
 
         </Button>
         <Button
@@ -136,46 +138,40 @@
         <Image
             HorizontalAlignment="Left"
             Height="100"
-            Margin="72,-17,0,0"
+            Margin="262,-14,0,0"
             VerticalAlignment="Top"
             Width="100"
             Source="/iCON.jpg"
-            RenderTransformOrigin="0.669,0.439" />
+            RenderTransformOrigin="0.669,0.439"
+            Grid.Column="1" />
         <Image
             HorizontalAlignment="Left"
-            Height="82"
-            Margin="69,22,0,0"
+            Height="94"
+            Margin="163,10,0,0"
             VerticalAlignment="Top"
-            Width="416"
+            Width="385"
             Source="/CBlog.png"
-            Grid.Column="1" />
+            Grid.ColumnSpan="2" />
         <Label
             Grid.Column="1"
             Content="NEW"
             HorizontalAlignment="Left"
-            Margin="357,119,0,0"
+            Margin="299,119,0,0"
             VerticalAlignment="Top"
             RenderTransformOrigin="0.583,0.926"
             Height="39"
-            Width="60" />
+            Width="60"
+            FontWeight="Bold" />
         <Label
             Grid.Column="1"
             Content="Sale"
             HorizontalAlignment="Left"
-            Margin="212,119,0,0"
+            Margin="212,120,0,0"
             VerticalAlignment="Top"
             Height="39"
             Width="53"
-            Foreground="#FFFF1010" />
-        <Label
-            x:Name="connect"
-            Grid.Column="1"
-            Content="צרי קשר"
-            HorizontalAlignment="Left"
-            Margin="69,121,0,0"
-            VerticalAlignment="Top"
-            Width="54"
-            RenderTransformOrigin="0.275,0.799" />
+            Foreground="#FF295ED4"
+            Background="White" />
         <Label
             Content="GIFT CARD"
             HorizontalAlignment="Left"
@@ -262,12 +258,26 @@
         <Button
             Content="Log In"
             HorizontalAlignment="Left"
-            Margin="10,8,0,0"
+            Margin="143,120,0,0"
             VerticalAlignment="Top"
             Click="Button_Click_1"
             Height="28"
             Width="68"
             Background="White"
-            FontWeight="Bold" />
+            FontWeight="Bold"
+            Grid.ColumnSpan="2"
+            Foreground="Black"
+            BorderBrush="Snow" />
+        <Label
+            Grid.Column="1"
+            Content="About us"
+            HorizontalAlignment="Left"
+            Margin="399,117,0,0"
+            VerticalAlignment="Top"
+            RenderTransformOrigin="0.583,0.926"
+            Height="39"
+            Width="77"
+            FontWeight="Bold"
+            MouseUp="Label_MouseUp" />
     </Grid>
 </Window>

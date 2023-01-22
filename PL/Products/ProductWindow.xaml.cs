@@ -52,7 +52,7 @@ namespace PL.Products
         // Using a DependencyProperty as the backing store for addOrUpdate.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty addOrUpdateProperty =
             DependencyProperty.Register("addOrUpdate", typeof(bool), typeof(Window), new PropertyMetadata(null));
-        public string? ctc { get; set; }
+        public string? ctc { get; set; }//for the content on the button
         public Array Categories { get { return Enum.GetValues(typeof(Category)); } }
 
 
@@ -62,7 +62,7 @@ namespace PL.Products
             ///for add 
             /// when the admin press on add 
             InitializeComponent();
-            addOrUpdate = flag;
+            addOrUpdate = flag;//get the flag from the list of prodcut window true-update false-add
             if (!addOrUpdate)
             ctc = "Add";
             categoryComboBox.ItemsSource = Enum.GetValues(typeof(Category));

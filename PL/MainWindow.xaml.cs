@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PL.Products;
-using BL;
+using BO;
 using System.Security.Cryptography;
 
 namespace PL
@@ -78,7 +78,12 @@ namespace PL
 
         private void MoveToT_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-          int ID=int.Parse(IDText.Text);
+            //check  the text box if he is not empty)
+            if (IDText.Text.Length == 0)
+                MessageBox.Show("Enter your order number","EMPTY",MessageBoxButton.OK,MessageBoxImage.Warning);
+            return;
+            //the id for the order track window 
+            int ID=int.Parse(IDText.Text);
            new OrderTrack(ID).Show();
             
             
@@ -87,6 +92,7 @@ namespace PL
 
         private void Button_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
         {
+            //build a cart to the shop
             BO.Cart cart = new BO.Cart
             {
                 CustomerName = " ",
@@ -118,6 +124,17 @@ namespace PL
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             new LogInS().Show();
+        }
+
+        private void Label_MouseEnter(object sender, MouseEventArgs e)
+        {
+           
+            MessageBox.Show("מי אנחנו\r\nCB היא חנות אופנה בסטייל אירופאי, לצעירות ולנשים שאוהבות קו צעיר, טרנדי ועדכני. זהו מקומו של הביגוד הקלאסי שמשלב יופי, איכות ואופנה על קולב אחד.", "About Us", MessageBoxButton.OK, MessageBoxImage.None);
+        }
+
+        private void Label_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("מי אנחנו\r\nCB היא חנות אופנה בסטייל אירופאי, לצעירות ולנשים שאוהבות קו צעיר, טרנדי ועדכני. זהו מקומו של הביגוד הקלאסי שמשלב יופי, איכות ואופנה על קולב אחד.", "About Us", MessageBoxButton.OK, MessageBoxImage.None);
         }
     }
 };

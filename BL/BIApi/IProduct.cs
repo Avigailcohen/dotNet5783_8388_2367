@@ -13,7 +13,7 @@ namespace BIApi
         BO.Product GetProductsById(int id);
 
         /// <summary>
-        /// get product list for manager 
+        /// return list of products for manager 
         /// </summary>
         /// <returns></returns>
         IEnumerable<ProductForList?> GetListedProducts(Func<BO.ProductForList?, bool>? filter = null);
@@ -25,7 +25,7 @@ namespace BIApi
         IEnumerable<ProductItem?> GetListedProductsForC();
 
         /// <summary>
-        /// get product bt ID for client
+        /// get product by ID for client
         /// </summary>
         /// <returns></returns>
         BO.ProductItem? RequestProductDetailsForC(int ProductId, BO.Cart cart);
@@ -37,7 +37,7 @@ namespace BIApi
         /// <returns></returns>
 
         /// <summary>
-        /// add neww product to DB
+        /// add new product to DB
         /// </summary>
         /// <param name="product"></param>
         void AddProduct(BO.Product product);
@@ -54,8 +54,13 @@ namespace BIApi
         /// <param name="product"></param>
         void UpdateProductData(BO.Product product);
         //IEnumerable<BO.ProductItem?> getByGrouping();
-
+        /// <summary>
+        /// func which grouping the most expensive products
+        /// </summary>
+        /// <param name="cart"></param>
+        /// <returns></returns>
         IEnumerable<ProductItem?> MostExpensive(BO.Cart cart);
+        //IEnumerable<ProductItem?> MostPopulars(BO.Cart cart);
 
     }
 }

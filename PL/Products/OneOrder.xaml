@@ -21,6 +21,46 @@
             </Setter>
 
         </Style>
+        <Style
+            TargetType="Button"
+            x:Key="TabButton">
+            <Setter
+                Property="Background"
+                Value="White" />
+            <Setter
+                Property="TextBlock.TextAlignment"
+                Value="Center" />
+            <Setter
+                Property="Template">
+                <Setter.Value>
+                    <ControlTemplate
+                        TargetType="Button">
+                        <Border
+                            CornerRadius="0"
+                            Background="White"
+                            BorderBrush="#ccc"
+                            BorderThickness="0,1,1,0">
+                            <ContentPresenter
+                                x:Name="contentPresenter"
+                                ContentTemplate="{TemplateBinding ContentTemplate}"
+                                Content="{TemplateBinding Content}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                Margin="{TemplateBinding Padding}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style
+            TargetType="Button"
+            x:Key="TabButtonFirst"
+            BasedOn="{StaticResource TabButton}">
+            <Setter
+                Property="Border.CornerRadius"
+                Value="3,0,0,0" />
+        </Style>
     </Window.Resources>
 
     <Grid
@@ -314,12 +354,13 @@
             Height="18"
             Width="50" />
         <ListView
+            
             x:Name="orderItemListView"
             ItemsSource="{Binding OrderItems}"
             SelectionMode="Single"
             Margin="10,250,210,-3"
             Background="White"
-            Foreground="#FFE3B9B9"
+            Foreground="#FF222020"
             FontStyle="Italic"
             FontWeight="Bold"
             FontFamily="Georgia">
@@ -347,18 +388,7 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn
-                        x:Name="iDColumn2"
-                        Header="ID"
-                        Width="80">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock
-                                    Margin="-6,-1,-6,-1"
-                                    Text="{Binding ID}" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                   
                     <GridViewColumn
                         x:Name="nameColumn"
                         Header="Name"
@@ -411,27 +441,15 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button
-            Content="Close"
-            HorizontalAlignment="Left"
-            Margin="684,-7,0,0"
-            VerticalAlignment="Top"
-            Height="46"
-            Width="96"
-            Background="White"
-            FontWeight="Bold"
-            FontSize="24"
-            MouseDoubleClick="Button_MouseDoubleClick"
-            RenderTransformOrigin="0.855,0.615"
-            Grid.ColumnSpan="2" />
         <Image
             HorizontalAlignment="Left"
             Height="155"
-            Margin="10,10,0,0"
+            Margin="-371,174,0,0"
             VerticalAlignment="Top"
             Width="257"
             Source="/Products/שחורלוגו-חדש-סיבי-06.png" />
         <TextBox
+            Style="{DynamicResource MyText}"
             x:Name="prod"
             HorizontalAlignment="Left"
             Margin="617,263,0,0"
@@ -439,6 +457,7 @@
             VerticalAlignment="Top"
             Width="120" />
         <TextBox
+            Style="{DynamicResource MyText}"
             x:Name="amou"
             HorizontalAlignment="Left"
             Margin="617,324,0,0"
@@ -447,19 +466,22 @@
             Width="120"
             RenderTransformOrigin="0.303,0.347" />
         <Label
-            Style="{StaticResource MyLable}"
+            Style="{DynamicResource LableMy}"
             Content="ProductID:"
             HorizontalAlignment="Left"
             Margin="542,255,0,0"
             VerticalAlignment="Top"
-            RenderTransformOrigin="0.503,0.733" />
+            RenderTransformOrigin="0.503,0.733"
+            FontWeight="Bold" />
         <Label
-            Style="{StaticResource MyLable}"
+            Style="{DynamicResource LableMy}"
             Content="Amount:"
             HorizontalAlignment="Left"
             Margin="550,316,0,0"
-            VerticalAlignment="Top" />
+            VerticalAlignment="Top"
+            FontWeight="Bold" />
         <Button
+            Style="{DynamicResource btn_MU }"
             Content="Update "
             HorizontalAlignment="Left"
             Margin="646,361,0,0"
@@ -468,7 +490,26 @@
             Width="62"
             FontWeight="Bold"
             Background="#FFFFFCFC"
-            Click="Button_Click_1" />
+            Click="Button_Click_1">
+            <Button.Resources>
+                <Style
+                    x:Key="COrner"
+                    TargetType="{x:Type Border}">
+                    <Setter
+                        Property="CornerRadius"
+                        Value="7" />
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Image
+            HorizontalAlignment="Left"
+            Height="219"
+            Margin="516,2,0,0"
+            VerticalAlignment="Top"
+            Width="322"
+            Source="/Products/LOGO11.jpg"
+            Grid.ColumnSpan="3" />
+
 
         <Grid.Resources>
             <BooleanToVisibilityConverter
@@ -487,6 +528,21 @@
                     Property="IsEnabled"
                     Value="{Binding Manager,RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" />
 
+            </Style>
+            <Style
+                TargetType="TextBox"
+                x:Key="MyText">
+                <Setter
+                    Property="Visibility"
+                    Value="{Binding Manager , RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}},Converter={StaticResource BoolToVis}}" />
+
+            </Style>
+            <Style
+                TargetType="Label"
+                x:Key="LableMy">
+                <Setter
+                    Property="Visibility"
+                    Value="{Binding Manager , RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}},Converter={StaticResource BoolToVis}}" />
             </Style>
         </Grid.Resources>
 

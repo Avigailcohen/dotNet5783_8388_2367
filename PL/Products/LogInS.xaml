@@ -106,7 +106,7 @@
             Width="104"
             Height="25"
             RenderTransformOrigin="0.541,0.883"
-            Click="Button_Click_1" />
+           />
         <Label
             Content="Create an account?"
             HorizontalAlignment="Left"

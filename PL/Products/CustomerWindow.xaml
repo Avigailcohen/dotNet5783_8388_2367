@@ -241,16 +241,13 @@
             MouseEnter="Label_MouseEnter_5" />
         <CheckBox
             Grid.Column="2"
-            Content="Grouping"
+            Content="Most expensive"
             Checked="cxbSortByCategory_Checked"
             HorizontalAlignment="Left"
             Margin="29,-44,0,0"
             VerticalAlignment="Top"
             Height="28"
             Width="105" />
-
-
-
-
+       
     </Grid>
 </Window>

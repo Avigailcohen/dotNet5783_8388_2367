@@ -41,6 +41,7 @@ namespace BIImplementation
         }
         /// <summary>
         /// return IEnumerable of the prodcut for the mannager 
+        /// funct which gets filter 
         /// </summary>
         /// <returns></returns>
         /// <exception cref="BO.BlNullPropertyException"></exception>
@@ -55,12 +56,9 @@ namespace BIImplementation
                                                         Category = (BO.Category)doProduct.Category,
                                                         Price = doProduct.Price,
                                                         ImageRelativeName = @"\pics\Img" + doProduct.ID + ".jpg"
-
-
-
                                                     };
 
-            return filter is null ? bList : bList.Where(filter);
+            return filter is null ? bList : bList.Where(filter);//if there is filter return by filtering else return without filter(full list)
         }
         /// <summary>
         /// return producItem for the client by the id 
@@ -107,18 +105,6 @@ namespace BIImplementation
         /// <exception cref="NotImplementedException"></exception>
         public IEnumerable<BO.ProductItem?> GetListedProductsForC()//catalog of products for customer 
         {
-            //IEnumerable<BO.ProductItem?> products = from DO.Product? pro in dal.Product.GetAll()
-            //                                        select new ProductItem
-            //                                        {
-            //                                            ID = pro.Value.ID,
-            //                                            ProductItemName = pro.Value.Name,
-            //                                            Price = pro.Value.Price,
-            //                                            Category = (BO.Category)pro.Value.Category,
-            //                                            AmountInCart = 0,
-            //                                            InStock = pro?.InStock > 0 ? true : false,
-            //                                            ImageRelativeName = @"\pics\Img" + pro.Value.ID + ".jpg"
-            //                                        };
-            //return filter is null ? products : products.Where(filter);
 
             return from DO.Product? doProduct in dal!.Product.GetAll()
                    select new BO.ProductItem
@@ -133,25 +119,7 @@ namespace BIImplementation
 
 
                    };
-
-            throw new NotImplementedException();
         }
-        //public IEnumerable<ProductItem?> GetProductItems(Func<ProductItem?, bool>? func = null)
-        //{
-
-        //    IEnumerable<ProductItem?> productItems = from DO.Product? pro in dal.Product.GetAll()
-        //                                             select new ProductItem
-        //                                             {
-        //                                                 ID = pro.Value.ID,
-        //                                                 Name = pro.Value.Name,
-        //                                                 Price = (int)pro.Value.Price,
-        //                                                 Category = (Enums.Category?)pro.Value.Category,
-        //                                                 Amount = 0,
-        //                                                 Availability = GetAvailability(pro),
-        //                                                 ImageRelativeName = @"\picss\IMG" + pro.Value.ID + ".jpg"
-        //                                             };
-        //    return func is null ? productItems : productItems.Where(func);
-        //}
 
         /// <summary>
         /// add product to the list 
@@ -307,34 +275,31 @@ namespace BIImplementation
                        Price = item.Price,
                        Category = (BO.Category)item.Category!,
                        ImageRelativeName =  @"\pics\Img" + item.ID + ".jpg",
-                       //AmountInCart = AmountInCart(cart, item.ID),
-                       //InStock = checkIfstock(item)
+                       
                    };
         }
 
-        //public IEnumerable<BO.ProductItem?> getByGrouping()
+        //public IEnumerable<ProductItem?> MostPopulars(BO.Cart cart)
         //{
-        //    var result = from DO.Product? doProduct in dal.Product.GetAll()
-        //                 select new BO.ProductItem
-        //                 {
-        //                     ID = doProduct?.ID ?? throw new NullReferenceException("missing id"),
-        //                     ProductItemName = doProduct?.Name ?? throw new NullReferenceException("missing name"),
-        //                     Price = doProduct?.Price ?? throw new NullReferenceException("missing price"),
-        //                     Category = (BO.Category)(doProduct?.Category ?? throw new NullReferenceException("missing category")),
-        //                     AmountInCart = 0,//we cant know here the amount in cart
-        //                     InStock = doProduct?.InStock > 0,
-        //                     //ImageRelativeName = @"\pics\Img" + doProduct.ProductID + ".jpg"
+        //    //Grouping all ordered products by product ID
+        //    var productList = from item in dal.OrderItem.GetAll()
+        //                      group item by item?.ID into groupPopular
+        //                      select new { id = groupPopular.Key, Items = groupPopular };
 
+        //    //Sort the products in descending order according to the quantity ordered
+        //    //Take the first 10
+        //    productList = productList.OrderByDescending(x => x.Items.Count()).Take(3);
 
-        //                 } into product
-        //                 group product by product.Category;
-        //    List<BO.ProductItem> items = new List<BO.ProductItem>();
-        //    foreach (var p in result)
-        //    {
-        //        foreach (var item in p)
-        //            items.Add(item);
-        //    }
-        //    return items;
+        //    return from item in productList
+        //           let p = dal.Product.GetById(item?.id ?? throw new BlIdDoNotExistException("product doe not exist"))
+        //           select new BO.ProductItem
+        //           {
+        //               ID = p.ID,
+        //               ProductItemName = p.Name,
+        //               Price = p.Price,
+        //               Category = (BO.Category)p.Category!,
+        //               ImageRelativeName = @"\pics\Img" + p.ID + ".jpg"
+        //           };
         //}
 
 

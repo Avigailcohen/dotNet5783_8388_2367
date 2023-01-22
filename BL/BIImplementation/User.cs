@@ -16,8 +16,8 @@ namespace BIImplementation
             DO.User user;
             try
             {
-                user=dal!.User.GetByUserName(username);
-                if (user.password != password)
+                user=dal!.User.GetByUserName(username);//get the detalis of the user by dal satge 
+                if (user.password != password)//check the password 
                     throw new BO.BlIncorrectDateException("Worng Password");
 
             }

@@ -21,14 +21,15 @@ namespace BIImplementation
         public BO.Cart AddProduct(BO.Cart cart, int ProductID)
         {
 
-
+            //try to create an new product from dal stage
             DO.Product product = new DO.Product();
             try
             {
+                //check if the product exist 
                 product = dal!.Product.GetById(ProductID);
 
 
-
+                //check if the prodcut exist int the cart-and update the amount of the order item in the cart and the price
                 BO.OrderItem? orderItem = cart.OrderItems?.FirstOrDefault(item => item?.ID == ProductID);
                 if (orderItem != null)
                 {
@@ -40,6 +41,7 @@ namespace BIImplementation
                 }
                 else///if the item is not exist in the cart
                 {
+                    ///crete a new order item in the cart
 
                     if (product.InStock > 0)
                     {
@@ -53,11 +55,13 @@ namespace BIImplementation
                             ProductID = product.ID,
                             ImageRelativeName = @"\pics\Img" + product.ID + ".jpg"
                         };
+                        ///add 
                         cart.OrderItems = cart.OrderItems!.Append(newOrderItem);
                     }
+
                     else
                     {
-                        throw new BO.BlNullPropertyException(" NOT IN STOCK");// חריגה שהמוצר לא במלאי
+                        throw new BO.BlNullPropertyException(" NOT IN STOCK");//the product not in stock חריגה שהמוצר לא במלאי
 
                     }
                 }
@@ -66,7 +70,7 @@ namespace BIImplementation
             {
                 throw new BO.BlIdDoNotExistException("product in cart", ex);
             }
-
+            //update the price
             cart.Price += product.Price;
             return cart;
         }
@@ -123,7 +127,7 @@ namespace BIImplementation
 
 
             }
-            ///here we create the update 
+            
             else
             {
                 double oldTotalPrice = orderItem.TotalPrice;

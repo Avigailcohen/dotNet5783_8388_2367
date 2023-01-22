@@ -39,6 +39,9 @@ namespace PL.Products
             DependencyProperty.Register("Category", typeof(Array), typeof(CustomerWindow));
 
 
+
+      
+
         public ObservableCollection <ProductItem?>ProductItems
         {
             get { return (ObservableCollection<ProductItem?>)GetValue(ProductItemsDep); }
@@ -50,22 +53,26 @@ namespace PL.Products
             DependencyProperty.Register("ProductItems", typeof(ObservableCollection<ProductItem?>), typeof(CustomerWindow));
 
 
-        public CustomerWindow(BO.Cart cart)
+        public CustomerWindow(BO.Cart cart)//get cart in ctor for the next window..
         {
             InitializeComponent();
             Category = Enum.GetValues(typeof(Category));
-            ProductItems = new ObservableCollection<ProductItem>(bl!.Product?.GetListedProductsForC()!)!;
+            ProductItems = new ObservableCollection<ProductItem>(bl!.Product?.GetListedProductsForC()!)!;//get the list of the prodcut item (catalog)
             Cart1 = cart;
-            ComboC.Text = "All";
+            ComboC.Text = "All";//מיותר לזכור להוריד
         }
     
         
 
         private void Button_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
         {
-            new MyCart(Cart1).ShowDialog();
+            new MyCart(Cart1).ShowDialog();//move to the next window with the same cart for the order confirmation
          }
-
+        /// <summary>
+        /// double click for get the detalis of the prodcut 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void productItemListView_MouseDoubleClick_1(object sender, MouseButtonEventArgs e)
         {
             BO.ProductItem? productItem = (BO.ProductItem?)((ListView)sender).SelectedItem;
@@ -76,7 +83,11 @@ namespace PL.Products
             }
         }
 
-        
+        /// <summary>
+        /// מיותר להוריד את זה 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void ComboBox_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
@@ -92,42 +103,78 @@ namespace PL.Products
             //ProductItems = new ObservableCollection<ProductItem?>(bl.Product.GetListedProductsForC());
         }
 
-       
+       /// <summary>
+       /// for get only the Accessories items
+       /// </summary>
+       /// <param name="sender"></param>
+       /// <param name="e"></param>
 
         private void Label_MouseEnter(object sender, MouseEventArgs e)
         {
             ProductItems=new ObservableCollection<ProductItem?>(bl!.Product.GetListedProductsForC().Where(x => x?.Category == BO.Category.Accessories));
         }
 
+
+        /// <summary>
+        /// for get only the sports items
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         private void Label_MouseEnter_1(object sender, MouseEventArgs e)
         {
             ProductItems = new ObservableCollection<ProductItem?>(bl!.Product.GetListedProductsForC().Where(x => x?.Category == BO.Category.Sport));
         }
 
+        /// <summary>
+        /// for get only the skirts items
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+
         private void Label_MouseEnter_2(object sender, MouseEventArgs e)
         {
             ProductItems = new ObservableCollection<ProductItem?>(bl!.Product.GetListedProductsForC().Where(x => x?.Category == BO.Category.Skirts));
         }
-
+        /// <summary>
+        /// for get only the shirts items
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Label_MouseEnter_3(object sender, MouseEventArgs e)
         {
             ProductItems = new ObservableCollection<ProductItem?>(bl!.Product.GetListedProductsForC().Where(x => x?.Category == BO.Category.Shirts));
         }
-
+        /// <summary>
+        /// for get only the dresses items
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Label_MouseEnter_4(object sender, MouseEventArgs e)
         {
             ProductItems = new ObservableCollection<ProductItem?>(bl!.Product.GetListedProductsForC().Where(x => x?.Category == BO.Category.Dresses));
         }
+        /// <summary>
+        /// for get the whole list o the prodcuts
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void Label_MouseEnter_5(object sender, MouseEventArgs e)
         {
             ProductItems = new ObservableCollection<ProductItem?>(bl!.Product.GetListedProductsForC());
         }
-
+        /// <summary>
+        /// for get grouped list of the most expensice prodcut
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cxbSortByCategory_Checked(object sender, RoutedEventArgs e)
         {
-            ProductItems = new ObservableCollection<ProductItem?>(bl.Product.MostExpensive(Cart1));
+            ProductItems = new ObservableCollection<ProductItem?>(bl!.Product.MostExpensive(Cart1));
         }
+
+        
     }
 
 }

@@ -38,6 +38,7 @@ namespace PL.Products
             InitializeComponent();
             try
             {
+                //get the information about the order status by the function 
                 OrderTracking= bl?.Order.OrderTracking(id);
             }
             catch(BO.BlIdDoNotExistException ex)
@@ -63,6 +64,7 @@ namespace PL.Products
 
         private void Button_MouseDoubleClick_2(object sender, MouseButtonEventArgs e)
         {
+            //movve the the order window- the boolean is flase now because the client wants to entire and the buttons should be hidden
             int id = int.Parse(iDTextBox.Text);
             OrderTracking = bl?.Order.OrderTracking(id);
             bool mannager = false;

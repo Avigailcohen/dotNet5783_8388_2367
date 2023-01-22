@@ -153,12 +153,12 @@ namespace PL.Products
                 {
                     
                     bl.Cart.OrderConfirmation(MyCart1);
-                    MyCart1.OrderItems = new List<OrderItem>();
+                    MyCart1.OrderItems = new List<OrderItem>();//create a new cart
                     MyCart1.Price = 0;
                     //customerAddressTextBox.Text= "";
                     //customerEmailTextBox.Text = "";
                     //customerNameTextBox.Text = "";
-                    orderItemListView.ItemsSource = null;
+                    orderItemListView.ItemsSource = null;//create the cart empty
                     Payment.IsEnabled = false;
                     MessageBox.Show("Thank you, Track your order by the number which sent to your mail💕🙏");
                     //MyCart1.OrderItems=new List<OrderItem>();

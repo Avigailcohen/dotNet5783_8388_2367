@@ -69,20 +69,22 @@ namespace PL.Products
                 foreach (var item in OrderForLists)
                 {
                     if (item.OrderStatus != BO.OrderStatus.Delivered)
-                        order=bl.Order.GetOrderById(item.ID)?? throw new Exception("order is null");
-                    if (timeSim-order.OrderDate>=new TimeSpan(3,0,0,0) && item.OrderStatus == BO.OrderStatus.Ordered)
                     {
-                        order.OrderDate = timeSim.AddMinutes(1);
-                        order=bl.Order.UpdateOrderShip(item.ID);
-                        
-                    }
-                    else if (timeSim-order.OrderDate>= new TimeSpan(6,0,0,0) && item.OrderStatus == BO.OrderStatus.Shipped)
-                    {
-                        order.ShipDate = timeSim.AddDays(1);
-                        order =bl.Order.UpdateDelivertOrder(item.ID);
-                    }
-                    OrderForLists = new List<BO.OrderForList>(bl!.Order.GetOrders())!;
+                        order = bl.Order.GetOrderById(item.ID) ?? throw new Exception("order is null");
+                        if (timeSim - order.OrderDate >= new TimeSpan(3, 0, 0, 0) && item.OrderStatus == BO.OrderStatus.Ordered)
+                        {
+                            order.OrderDate = timeSim.AddMinutes(1);
+                            order = bl.Order.UpdateOrderShip(item.ID);
 
+                        }
+                        else if (timeSim - order.OrderDate >= new TimeSpan(6, 0, 0, 0) && item.OrderStatus == BO.OrderStatus.Shipped)
+                        {
+                            order.ShipDate = timeSim.AddDays(1);
+                            order = bl.Order.UpdateDelivertOrder(item.ID);
+                        }
+                        OrderForLists = new List<BO.OrderForList>(bl!.Order.GetOrders())!;
+
+                    }
                 }
             }
             catch(Exception ex)

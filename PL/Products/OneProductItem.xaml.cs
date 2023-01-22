@@ -44,7 +44,7 @@ namespace PL.Products
         // Using a DependencyProperty as the backing store for ProductItem.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty ProductItemProperty =
             DependencyProperty.Register("ProductItem", typeof(BO.ProductItem), typeof(Window), new PropertyMetadata(null));
-
+       
 
 
 
@@ -56,25 +56,34 @@ namespace PL.Products
         }
         public OneProductItem( BO.Cart cart,int ID)
         {
+            ///get information about the prodcut
             InitializeComponent();
             try
             {
-                ProductItem = bl?.Product?.RequestProductDetailsForC(ID, cart);
+                ///get the detalis  form BO
+                ProductItem = bl!.Product?.RequestProductDetailsForC(ID, cart)!;
             }
             catch(BO.BlIdDoNotExistException ex)
             {
                 MessageBox.Show(ex.Message+"try again");
             }
+            //the cart from the window of the catalog
             this.cart = cart;
 
         }
-
+        /// <summary>
+        /// try to add the product item to the cart
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             int ID=int.Parse(iDTextBlock.Text);
             try
             {
                 cart = bl.Cart.AddProduct(cart, ID);
+               
+                MessageBox.Show("Product added succesfuly to your cart 👏","ADD",MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
             catch(BO.BlNullPropertyException)
             {
