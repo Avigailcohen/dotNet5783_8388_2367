@@ -160,7 +160,7 @@ namespace PL.Products
 
             }
             catch(BO.BlIdDoNotExistException ex) { MessageBox.Show(ex.Message); }
-            catch(BO.BlIncorrectDateException ex) { MessageBox.Show("The Order already deliverd","ERROR",MessageBoxButton.OK,MessageBoxImage.Exclamation); }
+            catch(BO.BlIncorrectDateException ex) { MessageBox.Show("The operation failed","ERROR",MessageBoxButton.OK,MessageBoxImage.Exclamation); }
         }
     }
 }
